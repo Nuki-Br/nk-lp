@@ -1,0 +1,1 @@
+export { SuaIdentidade } from "./SuaIdentidade";

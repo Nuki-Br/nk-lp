@@ -1,0 +1,1 @@
+export { RecursoControleAnalise } from "./RecursoControleAnalise";

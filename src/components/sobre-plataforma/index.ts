@@ -1,0 +1,1 @@
+export { SobrePlataforma } from "./SobrePlataforma";

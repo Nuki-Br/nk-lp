@@ -1,0 +1,1 @@
+export { CarrosselLogos } from "./CarrosselLogos";

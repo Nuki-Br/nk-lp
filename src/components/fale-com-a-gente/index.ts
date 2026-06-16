@@ -1,0 +1,1 @@
+export { FaleComAGente } from "./FaleComAGente";

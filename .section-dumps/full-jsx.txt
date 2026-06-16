@@ -1,0 +1,1080 @@
+const imgVector = "https://www.figma.com/api/mcp/asset/5630d308-d3bc-4cce-b186-7d61c86b22dd";
+const imgVuesaxLinearRecord = "https://www.figma.com/api/mcp/asset/3447a5c1-0a69-4dc3-ab2d-8362219c9800";
+const imgImage26 = "https://www.figma.com/api/mcp/asset/d1210702-b245-4b32-96a4-414f89b98a76";
+const imgLogo = "https://www.figma.com/api/mcp/asset/c2ab6a2c-d90c-460f-8f17-3a3825e8cab2";
+const imgRectangle10 = "https://www.figma.com/api/mcp/asset/cd04744a-a331-4aca-a8b4-2c6177ad9591";
+const imgBackground = "https://www.figma.com/api/mcp/asset/630f0c14-ce72-40d0-8818-ae9737e9b4a9";
+const imgImage24 = "https://www.figma.com/api/mcp/asset/2c9479f5-1054-4083-add2-e5e502bb28fd";
+const imgQuadrado = "https://www.figma.com/api/mcp/asset/3b1e19ba-260e-4054-83c5-f39f6ff55f13";
+const imgNukiImagem8 = "https://www.figma.com/api/mcp/asset/94eaa733-6e84-4e6c-b517-00a00d231afb";
+const imgNukiImagem9 = "https://www.figma.com/api/mcp/asset/b064b25b-ff9e-4afc-9522-502620484c6d";
+const imgNukiImagem10 = "https://www.figma.com/api/mcp/asset/7c58e515-7d98-49cd-8063-ba68dd128e53";
+const imgRectangle3 = "https://www.figma.com/api/mcp/asset/78841eec-c59e-4c9e-b899-bcb3e47be4fe";
+const imgNukiLogoHorizontalPreto = "https://www.figma.com/api/mcp/asset/15db128d-959f-4dd7-af52-c5fc9ef4e729";
+const imgRectangle4 = "https://www.figma.com/api/mcp/asset/e1c0a965-5418-43be-9e72-26117d0e3000";
+const imgNukiSimboloPearl1 = "https://www.figma.com/api/mcp/asset/1e93d463-2570-4e66-86ee-e0bac61d8375";
+const imgNukiQuadradinhoPearl3 = "https://www.figma.com/api/mcp/asset/5c7e7cb4-a35e-4062-b273-4ea55d5a826b";
+const imgImage33 = "https://www.figma.com/api/mcp/asset/9e6d2add-3eca-4928-ac7c-4d92bf98b1e6";
+const imgImage34 = "https://www.figma.com/api/mcp/asset/73b11220-b584-4156-939a-20d66369306b";
+const imgImage35 = "https://www.figma.com/api/mcp/asset/0d7dea9e-77ea-4a50-96f9-c5faf7f453ef";
+const imgImage36 = "https://www.figma.com/api/mcp/asset/dbab41fb-5e18-4e25-ab25-39451ee85278";
+const imgGraficoDePizza = "https://www.figma.com/api/mcp/asset/492c7b8b-63de-42af-bbe0-f4886063272a";
+const imgVector1 = "https://www.figma.com/api/mcp/asset/b7a303b8-455e-43e9-9d43-418a8273368a";
+const imgVector2 = "https://www.figma.com/api/mcp/asset/7632a36c-0a53-4210-b599-8ce6c3822fa7";
+const imgVector3 = "https://www.figma.com/api/mcp/asset/a6757046-dd16-475d-b432-ba2fc9ac1f2b";
+const imgVector4 = "https://www.figma.com/api/mcp/asset/62954027-7e21-4c46-8df6-5f6282abe9f3";
+const imgVector5 = "https://www.figma.com/api/mcp/asset/a150716e-c270-4dea-abdd-b50f5ae836af";
+const imgVector6 = "https://www.figma.com/api/mcp/asset/43ee5c78-f664-43fb-935c-921585f9e966";
+const imgRecord = "https://www.figma.com/api/mcp/asset/21431777-9d97-4ffb-814b-f3b5906bbc5d";
+const imgVector7 = "https://www.figma.com/api/mcp/asset/f3b4753e-9bba-49ff-9970-89f436c7b0da";
+const imgVector8 = "https://www.figma.com/api/mcp/asset/f9e6f136-5886-4fa1-a081-e77a6c42f112";
+const imgVector9 = "https://www.figma.com/api/mcp/asset/e566505e-28a4-4955-8c5d-e101684388ad";
+const imgVector10 = "https://www.figma.com/api/mcp/asset/0e81568f-fc45-4ca6-9490-b7def8e58079";
+const imgVector11 = "https://www.figma.com/api/mcp/asset/a570aa48-1fc0-4084-9013-75a6f2126c9e";
+const imgVector12 = "https://www.figma.com/api/mcp/asset/b1915d55-0cb9-4128-b6bd-544e90fea94d";
+const imgVector13 = "https://www.figma.com/api/mcp/asset/a9e0ce7f-d4bb-4407-838e-33a577a4b704";
+const imgVector14 = "https://www.figma.com/api/mcp/asset/e6236e52-c00b-40ae-9a57-f60383b0a0d8";
+const imgVector15 = "https://www.figma.com/api/mcp/asset/9d3a034f-5705-4299-b843-4680da04bbaa";
+const imgVector16 = "https://www.figma.com/api/mcp/asset/7527b8a4-8602-46bd-9925-725dadea1ef1";
+const imgVector17 = "https://www.figma.com/api/mcp/asset/44bfc508-f88a-4928-91a2-d88d899dc806";
+const imgIcone = "https://www.figma.com/api/mcp/asset/a28072b9-6409-400e-b9b8-1fe08b4a6ae0";
+const imgIcone1 = "https://www.figma.com/api/mcp/asset/fc3be608-bfca-45f5-9a21-4e81b56a0a4a";
+const imgIconInstagram = "https://www.figma.com/api/mcp/asset/6b8f51e1-d0c3-4b8a-9cc2-596ef139ea1b";
+const imgIconLinkedIn = "https://www.figma.com/api/mcp/asset/a5b56964-c9a9-4f6f-844c-c4f7ae0a9a0c";
+const imgVector18 = "https://www.figma.com/api/mcp/asset/7c5935b4-86a5-47d9-ae8b-3acdc1b4ee24";
+const imgVector19 = "https://www.figma.com/api/mcp/asset/20191ca4-6a39-4597-8da8-ae73f05f2ddd";
+const imgVector20 = "https://www.figma.com/api/mcp/asset/7a8d01e9-a2b4-4f81-bcb0-28baeb54777a";
+const imgVector21 = "https://www.figma.com/api/mcp/asset/5ecaad7f-e309-4c7e-89a4-7fba47c1be70";
+
+type MenuItemProps = {
+  className?: string;
+  property1?: "Default";
+};
+
+function MenuItem({ className, property1 = "Default" }: MenuItemProps) {
+  return (
+    <div className={className || "content-stretch flex gap-[8px] items-center px-[4px] py-[8px] relative rounded-[20px] w-[232px]"} data-node-id="95:1345">
+      <div className="content-stretch flex flex-[1_0_0] gap-[8px] items-center min-w-px relative" data-node-id="95:1346" data-name="Item description">
+        <div className="overflow-clip relative shrink-0 size-[18px]" data-node-id="95:1347" data-name="bed">
+          <div className="absolute inset-[20.83%_8.33%]" data-node-id="I95:1347;61:1870" data-name="Vector">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector} />
+          </div>
+        </div>
+        <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[14px] text-black whitespace-nowrap" data-node-id="95:1348">
+          <p className="leading-[normal]">Suíte Master</p>
+        </div>
+      </div>
+      <div className="relative shrink-0 size-[18px]" data-node-id="95:1349" data-name="circle">
+        <div className="absolute contents inset-0" data-node-id="I95:1349;24:1141" data-name="vuesax/linear/record">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVuesaxLinearRecord} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function LandingPageHome() {
+  return (
+    <div className="bg-[var(--background,#f7f7f7)] relative size-full" data-node-id="168:6307" data-name="Landing Page | Home">
+      <div className="absolute bottom-[3074px] contents left-[658px]" data-node-id="176:7184" data-name="Imagem">
+        <div className="absolute bottom-[3155px] flex h-[404px] items-center justify-center left-[744px] w-[852px]">
+          <div className="-scale-y-100 flex-none rotate-180">
+            <div className="h-[404px] relative rounded-br-[400px] rounded-tr-[400px] w-[852px]" data-node-id="176:7185" data-name="image 26">
+              <img alt="" className="absolute inset-0 max-w-none object-bottom pointer-events-none rounded-br-[400px] rounded-tr-[400px] size-full" src={imgImage26} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute bg-white bottom-[3074px] content-stretch flex flex-col items-start justify-center left-[658px] overflow-clip pb-[22.588px] pt-[21.176px] px-[25.412px] rounded-[105.882px] shadow-[0px_2.824px_2.824px_0px_rgba(0,0,0,0.25)] w-[496.941px]" data-node-id="176:7186" data-name="Ranking">
+          <div className="content-stretch flex gap-[28.235px] items-center relative shrink-0 w-full" data-node-id="176:7187">
+            <div className="relative shrink-0 size-[136.235px]" data-node-id="176:7188" data-name="Gráfico de pizza">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGraficoDePizza} />
+            </div>
+            <div className="content-stretch flex flex-[1_0_0] flex-col gap-[11.294px] items-start justify-center min-w-px relative" data-node-id="176:7193" data-name="Legenda">
+              <div className="content-stretch flex flex-col gap-[5.647px] items-start justify-center relative shrink-0 w-full" data-node-id="176:7194">
+                <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="176:7195">
+                  <p className="[word-break:break-word] flex-[1_0_0] font-['Manrope:Bold'] font-bold leading-[normal] min-w-px relative text-[#434343] text-[11.294px]" data-node-id="176:7196">
+                    Status dos clientes
+                  </p>
+                </div>
+                <p className="[word-break:break-word] font-['Manrope:Regular'] font-normal leading-[normal] relative shrink-0 text-[#595959] text-[9.882px] w-full" data-node-id="176:7197">
+                  Divisão dos clientes por status
+                </p>
+              </div>
+              <div className="content-stretch flex flex-col gap-[11.294px] items-start relative shrink-0 w-[215.294px]" data-node-id="176:7198" data-name="Legenda">
+                <div className="content-stretch flex gap-[5.647px] items-center relative shrink-0 w-full" data-node-id="176:7199">
+                  <div className="content-stretch flex gap-[5.647px] items-center relative shrink-0 w-[141.176px]" data-node-id="176:7200">
+                    <div className="bg-[#025259] relative rounded-[8.471px] shrink-0 size-[11.294px]" data-node-id="176:7201" />
+                    <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#595959] text-[9.882px] whitespace-nowrap" data-node-id="176:7202">
+                      Finalizado
+                    </p>
+                  </div>
+                  <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#595959] text-[9.882px] text-right whitespace-nowrap" data-node-id="176:7203">
+                    30%
+                  </p>
+                  <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Bold'] font-bold leading-[normal] min-w-px not-italic relative text-[#595959] text-[9.882px] text-right" data-node-id="176:7204">
+                    125
+                  </p>
+                </div>
+                <div className="content-stretch flex gap-[5.647px] items-start relative shrink-0 w-full" data-node-id="176:7205">
+                  <div className="content-stretch flex gap-[5.647px] items-center relative shrink-0 w-[141.176px]" data-node-id="176:7206">
+                    <div className="bg-[#049494] relative rounded-[8.471px] shrink-0 size-[11.294px]" data-node-id="176:7207" />
+                    <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#595959] text-[9.882px] whitespace-nowrap" data-node-id="176:7208">
+                      Esperando validação
+                    </p>
+                  </div>
+                  <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#595959] text-[9.882px] text-right whitespace-nowrap" data-node-id="176:7209">
+                    11%
+                  </p>
+                  <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Bold'] font-bold leading-[normal] min-w-px not-italic relative text-[#595959] text-[9.882px] text-right" data-node-id="176:7210">
+                    80
+                  </p>
+                </div>
+                <div className="content-stretch flex gap-[5.647px] items-start relative shrink-0 w-full" data-node-id="176:7211">
+                  <div className="content-stretch flex gap-[5.647px] items-center relative shrink-0 w-[141.176px]" data-node-id="176:7212">
+                    <div className="bg-[#05b1b1] relative rounded-[8.471px] shrink-0 size-[11.294px]" data-node-id="176:7213" />
+                    <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#595959] text-[9.882px] whitespace-nowrap" data-node-id="176:7214">
+                      Em aberto
+                    </p>
+                  </div>
+                  <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#595959] text-[9.882px] text-right whitespace-nowrap" data-node-id="176:7215">
+                    12%
+                  </p>
+                  <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Bold'] font-bold leading-[normal] min-w-px not-italic relative text-[#595959] text-[9.882px] text-right" data-node-id="176:7216">
+                    20
+                  </p>
+                </div>
+                <div className="content-stretch flex gap-[5.647px] items-start relative shrink-0 w-full" data-node-id="176:7217">
+                  <div className="content-stretch flex gap-[5.647px] items-center relative shrink-0 w-[141.176px]" data-node-id="176:7218">
+                    <div className="bg-[#b3efef] relative rounded-[8.471px] shrink-0 size-[11.294px]" data-node-id="176:7219" />
+                    <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#595959] text-[9.882px] whitespace-nowrap" data-node-id="176:7220">
+                      Não acessou
+                    </p>
+                  </div>
+                  <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#595959] text-[9.882px] text-right whitespace-nowrap" data-node-id="176:7221">
+                    47%
+                  </p>
+                  <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Bold'] font-bold leading-[normal] min-w-px not-italic relative text-[#595959] text-[9.882px] text-right" data-node-id="176:7222">
+                    15
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="absolute bg-white bottom-[3345px] content-stretch drop-shadow-[2px_2px_5px_rgba(0,0,0,0.08)] flex flex-col gap-[24px] items-start left-[984px] p-[24px] rounded-[48px] w-[330px]" data-node-id="176:7223" data-name="Card empreendimento">
+          <div className="content-stretch flex flex-col gap-[8px] items-start relative shrink-0 w-full" data-node-id="176:7224" data-name="Card Title">
+            <div className="content-stretch flex gap-[8px] items-center relative shrink-0 w-full" data-node-id="176:7225" data-name="Card Title Content">
+              <p className="[word-break:break-word] flex-[1_0_0] font-['Manrope:SemiBold'] font-semibold leading-[normal] min-w-px relative text-[#0d0d0d] text-[20px]" data-node-id="176:7226">
+                Vale Verde
+              </p>
+              <div className="h-[39px] relative shrink-0 w-[70px]" data-node-id="176:7227" data-name="Logo">
+                <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgLogo} />
+              </div>
+            </div>
+            <div className="bg-[rgba(217,217,217,0.36)] content-stretch flex h-[14px] items-center justify-center relative rounded-[7.483px] shrink-0 w-[199px]" data-node-id="176:7228" />
+          </div>
+          <div className="flex items-center justify-center relative shrink-0 w-full">
+            <div className="-scale-y-100 flex-none rotate-180 w-full">
+              <div className="bg-[#f0f0f0] h-px relative rounded-[43px] w-full" data-node-id="176:7230" data-name="Divider" />
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col gap-[5px] items-start relative shrink-0 w-full" data-node-id="176:7231" data-name="Card Info">
+            <div className="content-stretch flex gap-[14px] items-center relative shrink-0" data-node-id="176:7232" data-name="Card Info - Tipo">
+              <p className="[word-break:break-word] font-['Manrope:Regular'] font-normal leading-[normal] relative shrink-0 text-[#0d0d0d] text-[14px] w-[85px]" data-node-id="176:7233">
+                Tipo:
+              </p>
+              <div className="bg-[rgba(217,217,217,0.36)] content-stretch flex h-[14px] items-center justify-center relative rounded-[7.483px] shrink-0 w-[76px]" data-node-id="176:7234" />
+            </div>
+            <div className="content-stretch flex gap-[14px] items-center relative shrink-0" data-node-id="176:7236" data-name="Card Info - Lançamento">
+              <p className="[word-break:break-word] font-['Manrope:Regular'] font-normal leading-[normal] relative shrink-0 text-[#0d0d0d] text-[14px] whitespace-nowrap" data-node-id="176:7237">
+                Lançamento:
+              </p>
+              <div className="bg-[rgba(217,217,217,0.36)] content-stretch flex h-[14px] items-center justify-center relative rounded-[7.483px] shrink-0 w-[76px]" data-node-id="176:7238" />
+            </div>
+            <div className="content-stretch flex gap-[14px] items-center relative shrink-0" data-node-id="176:7240" data-name="Card Info  - Obras">
+              <p className="[word-break:break-word] font-['Manrope:Regular'] font-normal leading-[normal] relative shrink-0 text-[#0d0d0d] text-[14px] w-[85px]" data-node-id="176:7241">{`Início obras: `}</p>
+              <div className="bg-[rgba(217,217,217,0.36)] content-stretch flex h-[14px] items-center justify-center relative rounded-[7.483px] shrink-0 w-[76px]" data-node-id="176:7242" />
+            </div>
+          </div>
+          <div className="content-stretch flex items-center justify-between relative shrink-0 w-full" data-node-id="176:7244" data-name="Card Tag">
+            <div className="bg-[#f5f5f5] content-stretch flex gap-[8px] items-center justify-center px-[8px] py-[4px] relative rounded-[8px] shrink-0" data-node-id="176:7245" data-name="Status">
+              <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#595959] text-[12px] whitespace-nowrap" data-node-id="I176:7245;2020:13773">
+                <p className="leading-[normal]">Período de personalização finalizado</p>
+              </div>
+              <div className="overflow-clip relative shrink-0 size-[12px]" data-node-id="I176:7245;2020:13782" data-name="info">
+                <div className="absolute inset-[8.33%]" data-node-id="I176:7245;2020:13782;61:1959" data-name="Vector">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector1} />
+                </div>
+              </div>
+            </div>
+            <div className="bg-[#025259] content-stretch flex items-center justify-center relative rounded-[60px] shrink-0 size-[32px]" data-node-id="176:7246" data-name="Button">
+              <div className="content-stretch flex items-center justify-center relative shrink-0" data-node-id="I176:7246;10:644" data-name="iconWrap">
+                <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="I176:7246;10:645" data-name="isIconOnly">
+                  <div className="absolute inset-[26.74%_36.28%]" data-node-id="I176:7246;10:645;59:2100" data-name="Vector">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector2} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="absolute bottom-[3212.84px] content-stretch drop-shadow-[0px_4px_2px_rgba(0,0,0,0.25)] flex items-center left-[978px]" data-node-id="176:7247">
+          <div className="content-stretch flex items-center relative shrink-0" data-node-id="176:7248">
+            <div className="bg-[#047676] content-stretch flex items-center justify-center px-[25.406px] py-[12.703px] relative rounded-[60px] shrink-0" data-node-id="176:7249" data-name="Button">
+              <div className="content-stretch flex gap-[12.703px] items-center justify-center relative shrink-0" data-node-id="I176:7249;11:1127" data-name="ButtonWrap">
+                <div className="overflow-clip relative shrink-0 size-[31.757px]" data-node-id="I176:7249;11:1128" data-name="startContent">
+                  <div className="absolute inset-[20.83%]" data-node-id="I176:7249;11:1128;2009:8237" data-name="Vector">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector3} />
+                  </div>
+                </div>
+                <div className="content-stretch flex gap-[12.703px] items-center justify-center relative shrink-0" data-node-id="I176:7249;11:1129" data-name="ChildrenLoadingWrap">
+                  <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[30.26px] text-white whitespace-nowrap" data-node-id="I176:7249;11:1131">
+                    <p className="leading-[normal]">Adicionar empreendimento</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="-translate-x-1/2 absolute bg-[var(--verde,#025259)] h-[404px] left-1/2 top-[4757px] w-[1440px]" data-node-id="168:6314" data-name="Imagem" />
+      <div className="-translate-x-1/2 absolute h-[884px] left-[calc(50%+0.5px)] overflow-clip top-[2275px] w-[1571px]" data-node-id="168:6315" data-name="Login | Inserir CPF">
+        <div className="absolute flex h-[1117px] items-center justify-center left-0 top-0 w-[1570.781px]">
+          <div className="-scale-y-100 flex-none rotate-180">
+            <div className="blur-[3.818px] h-[1117px] relative w-[1570.781px]" data-node-id="168:6316">
+              <div aria-hidden className="absolute inset-0 pointer-events-none">
+                <div className="absolute bg-[var(--branco,white)] inset-0" />
+                <div className="absolute inset-0 opacity-50 overflow-hidden">
+                  <img alt="" className="absolute h-[128.42%] left-[-25.12%] max-w-none top-[-8.95%] w-[136.97%]" src={imgRectangle10} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="absolute h-[1117px] left-0 top-0 w-[1570.781px]" data-node-id="168:6317" />
+        <div className="absolute content-stretch flex flex-col gap-[96px] items-center left-[173px] top-[128px] w-[1224px]" data-node-id="168:6318">
+          <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[48px] text-[color:var(--preto,black)] text-center tracking-[0.1px] w-full" data-node-id="168:6319">
+            <p>
+              <span className="[word-break:break-word] font-['Manrope:ExtraBold'] font-extrabold leading-[54px]">Navegando</span>
+              <span className="leading-[54px]">{` na plataforma`}</span>
+            </p>
+          </div>
+          <div className="content-stretch flex flex-col gap-[64px] items-center relative shrink-0 w-full" data-node-id="184:6881">
+            <div className="content-stretch flex gap-[24px] items-center relative shrink-0 w-full" data-node-id="184:6882">
+              <div className="bg-[var(--branco,white)] content-stretch flex flex-[1_0_0] flex-col h-[348px] items-start min-w-px p-[24px] relative rounded-[24px]" data-node-id="184:6883" data-name="Sobre a Plataforma">
+                <div className="content-stretch flex flex-[1_0_0] flex-col items-start justify-center min-h-px relative w-full" data-node-id="184:6884" data-name="Titulo">
+                  <div className="content-stretch flex flex-[1_0_0] flex-col items-start justify-between min-h-px relative w-full" data-node-id="184:6885">
+                    <div className="content-stretch flex items-center justify-between relative shrink-0 w-full" data-node-id="184:6886">
+                      <div className="flex flex-row items-center self-stretch">
+                        <div className="content-stretch flex flex-col h-full items-start mr-[-32px] relative shrink-0 w-[344px]" data-node-id="184:6887">
+                          <div className="[word-break:break-word] flex flex-col font-['Manrope:ExtraBold'] font-extrabold justify-center leading-[0] relative shrink-0 text-[32px] text-[color:var(--preto,black)] tracking-[0.1px] w-full" data-node-id="184:6888">
+                            <p className="leading-[36px]">01</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="relative shrink-0 size-[32px]" data-node-id="184:6889" data-name="zoom_out_map">
+                        <div className="absolute inset-0 overflow-clip" data-node-id="I184:6889;95:694" data-name="zoom_out_map">
+                          <div className="absolute inset-[12.5%]" data-node-id="I184:6889;95:694;59:1946" data-name="Vector">
+                            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector4} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="184:6890">
+                      <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="184:6891">
+                        <div className="[word-break:break-word] flex flex-col font-['Manrope:ExtraBold'] font-extrabold justify-center leading-[0] relative shrink-0 text-[32px] text-[color:var(--preto,black)] text-center tracking-[0.1px] whitespace-nowrap" data-node-id="184:6892">
+                          <p className="leading-[36px]">Personalize</p>
+                        </div>
+                      </div>
+                      <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="184:6893">
+                        <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[20px] text-[color:var(--cinza,#434343)] tracking-[0.1px] w-full" data-node-id="184:6894">
+                          <p className="leading-[28px]">Personalize seu imóvel com praticidade.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-[var(--branco,white)] content-stretch flex flex-[1_0_0] flex-col h-[348px] items-start min-w-px p-[24px] relative rounded-[24px]" data-node-id="184:6895" data-name="Sobre a Plataforma">
+                <div className="content-stretch flex flex-[1_0_0] flex-col items-start justify-center min-h-px relative w-full" data-node-id="184:6896" data-name="Titulo">
+                  <div className="content-stretch flex flex-[1_0_0] flex-col items-start justify-between min-h-px relative w-full" data-node-id="184:6897">
+                    <div className="content-stretch flex items-center justify-between relative shrink-0 w-full" data-node-id="184:6898">
+                      <div className="[word-break:break-word] flex flex-col font-['Manrope:ExtraBold'] font-extrabold h-full justify-center leading-[0] mr-[-32px] relative shrink-0 text-[32px] text-[color:var(--preto,black)] tracking-[0.1px] w-[344px]" data-node-id="184:6899">
+                        <p className="leading-[36px]">02</p>
+                      </div>
+                      <div className="relative shrink-0 size-[32px]" data-node-id="184:6900" data-name="zoom_out_map">
+                        <div className="absolute inset-0 overflow-clip" data-node-id="I184:6900;95:694" data-name="zoom_out_map">
+                          <div className="absolute inset-[12.5%]" data-node-id="I184:6900;95:694;59:1946" data-name="Vector">
+                            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector4} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="184:6901">
+                      <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="184:6902">
+                        <div className="[word-break:break-word] flex flex-col font-['Manrope:ExtraBold'] font-extrabold justify-center leading-[0] relative shrink-0 text-[32px] text-[color:var(--preto,black)] tracking-[0.1px] w-full" data-node-id="184:6903">
+                          <p className="leading-[36px]">Escolha os acabamentos</p>
+                        </div>
+                      </div>
+                      <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="184:6904">
+                        <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[20px] text-[color:var(--cinza,#434343)] tracking-[0.1px] w-full" data-node-id="184:6905">
+                          <p>
+                            <span className="leading-[28px]">{`Selecione as opções `}</span>
+                            <span className="[word-break:break-word] font-['Manrope:Regular'] font-normal leading-[28px]">visualizando prévias de cada ambiente</span>
+                            <span className="[word-break:break-word] font-['Manrope:Regular'] font-normal leading-[28px]">.</span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-[var(--branco,white)] content-stretch flex flex-[1_0_0] flex-col h-[348px] items-start min-w-px p-[24px] relative rounded-[24px]" data-node-id="184:6906" data-name="Sobre a Plataforma">
+                <div className="content-stretch flex flex-[1_0_0] flex-col items-start justify-center min-h-px relative w-full" data-node-id="184:6907" data-name="Titulo">
+                  <div className="content-stretch flex flex-[1_0_0] flex-col items-start justify-between min-h-px relative w-full" data-node-id="184:6908">
+                    <div className="content-stretch flex items-center justify-between relative shrink-0 w-full" data-node-id="184:6909">
+                      <div className="[word-break:break-word] flex flex-col font-['Manrope:ExtraBold'] font-extrabold h-full justify-center leading-[0] mr-[-32px] relative shrink-0 text-[32px] text-[color:var(--preto,black)] tracking-[0.1px] w-[344px]" data-node-id="184:6910">
+                        <p className="leading-[36px]">03</p>
+                      </div>
+                      <div className="relative shrink-0 size-[32px]" data-node-id="184:6911" data-name="zoom_out_map">
+                        <div className="absolute inset-0 overflow-clip" data-node-id="I184:6911;95:694" data-name="zoom_out_map">
+                          <div className="absolute inset-[12.5%]" data-node-id="I184:6911;95:694;59:1946" data-name="Vector">
+                            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector4} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="184:6912">
+                      <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="184:6913">
+                        <div className="[word-break:break-word] flex flex-col font-['Manrope:ExtraBold'] font-extrabold justify-center leading-[0] relative shrink-0 text-[32px] text-[color:var(--preto,black)] tracking-[0.1px] w-full" data-node-id="184:6914">
+                          <p className="leading-[36px]">Faça uma simulação</p>
+                        </div>
+                      </div>
+                      <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="184:6915">
+                        <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[20px] text-[color:var(--cinza,#434343)] tracking-[0.1px] w-full" data-node-id="184:6916">
+                          <p className="leading-[28px]">Simule suas preferências e orçamentos.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-[var(--preto,black)] content-stretch flex items-center justify-center px-[24px] py-[14px] relative rounded-[60px] shrink-0" data-node-id="184:6917" data-name="Button Principal">
+              <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:6917;176:8301" data-name="ButtonWrap">
+                <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:6917;176:8303" data-name="ChildrenLoadingWrap">
+                  <div className="[word-break:break-word] flex flex-col font-['Manrope:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[16px] text-[color:var(--branco,white)] whitespace-nowrap" data-node-id="I184:6917;176:8305">
+                    <p className="leading-[normal]">Solicitar demo</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="-translate-x-1/2 absolute bg-[var(--verde-03,#00363a)] h-[888px] left-1/2 top-[1079px] w-[1440px]" data-node-id="168:6356" data-name="Imagem" />
+      <div className="-translate-x-1/2 absolute bg-[var(--verde,#025259)] h-[308px] left-1/2 top-[1967px] w-[1440px]" data-node-id="168:6357" data-name="Imagem" />
+      <div className="absolute flex h-[577px] items-center justify-center left-0 top-[5161px] w-[1440px]">
+        <div className="-scale-y-100 flex-none rotate-180">
+          <div className="h-[577px] relative w-[1440px]" data-node-id="168:6358" data-name="Background">
+            <div aria-hidden className="absolute inset-0 pointer-events-none">
+              <div className="absolute bg-white inset-0" />
+              <div className="absolute inset-0 opacity-40 overflow-hidden">
+                <img alt="" className="absolute h-[460.29%] left-[-16.27%] max-w-none top-[-312.17%] w-[123.11%]" src={imgBackground} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute h-[404px] left-[-14px] rounded-br-[400px] rounded-tr-[400px] top-[3374px] w-[852px]" data-node-id="168:6359" data-name="image 24">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-br-[400px] rounded-tr-[400px]">
+          <img alt="" className="absolute h-[209.41%] left-[-53.95%] max-w-none top-[-90.03%] w-[178.86%]" src={imgImage24} />
+        </div>
+      </div>
+      <div className="absolute bg-[#f7f7f7] content-stretch flex h-[995px] items-center justify-between left-0 pl-[108px] pr-[99px] py-[88px] top-[84px] w-[1440px]" data-node-id="168:6361">
+        <div className="content-stretch flex flex-col gap-[32px] items-start justify-center relative shrink-0 w-[416px]" data-node-id="168:6362" data-name="Apresentação">
+          <div className="[word-break:break-word] flex flex-col font-['Manrope:ExtraBold'] font-extrabold justify-center leading-[0] min-w-full relative shrink-0 text-[64px] text-[color:var(--preto,black)] tracking-[0.1px] w-[min-content]" data-node-id="168:6363">
+            <p className="leading-[64px]">Visualize, personalize e realize.</p>
+          </div>
+          <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] min-w-full relative shrink-0 text-[20px] text-[color:var(--cinza,#434343)] tracking-[0.2px] w-[min-content]" data-node-id="168:6364">
+            <p className="leading-[36px]">A Nuki oferece uma jornada de personalização que transforma a experiência do seu cliente, permitindo que ele escolha acabamentos e customize o imóvel com total facilidade e fluidez, criando o lar dos sonhos com poucos cliques</p>
+          </div>
+          <div className="bg-[var(--preto,black)] content-stretch flex items-center justify-center px-[24px] py-[14px] relative rounded-[60px] shrink-0" data-node-id="184:5699" data-name="Button Principal">
+            <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:5699;176:8301" data-name="ButtonWrap">
+              <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:5699;176:8303" data-name="ChildrenLoadingWrap">
+                <div className="[word-break:break-word] flex flex-col font-['Manrope:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[16px] text-[color:var(--branco,white)] whitespace-nowrap" data-node-id="I184:5699;176:8305">
+                  <p className="leading-[normal]">Solicitar demo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="168:6366" data-name="Imagem">
+          <div className="col-1 flex h-[523px] items-center justify-center ml-0 mt-[102px] relative row-1 w-[528px]">
+            <div className="-scale-y-100 flex-none">
+              <div className="h-[523px] relative w-[528px]" data-node-id="168:6367" data-name="Quadrado">
+                <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgQuadrado} />
+              </div>
+            </div>
+          </div>
+          <div className="col-1 h-[631px] ml-[239px] mt-0 relative rounded-[200px] row-1 shadow-[0px_25px_30.8px_0px_rgba(0,0,0,0.25)] w-[429px]" data-node-id="168:6368" data-name="nuki_imagem_8">
+            <div aria-hidden className="absolute inset-0 pointer-events-none rounded-[200px]">
+              <img alt="" className="absolute max-w-none object-cover rounded-[200px] size-full" src={imgNukiImagem8} />
+              <div className="absolute inset-0 overflow-hidden rounded-[200px]">
+                <img alt="" className="absolute h-full left-[-47.95%] max-w-none top-0 w-[195.91%]" src={imgNukiImagem9} />
+              </div>
+              <div className="absolute inset-0 overflow-hidden rounded-[200px]">
+                <img alt="" className="absolute h-[106.07%] left-[-27.89%] max-w-none top-[-3.03%] w-[155.78%]" src={imgNukiImagem10} />
+              </div>
+            </div>
+          </div>
+          <div className="col-1 content-stretch drop-shadow-[0px_4px_2px_rgba(0,0,0,0.25)] flex flex-col items-end ml-[71px] mt-[406px] relative rounded-[24px] row-1 w-[263px]" data-node-id="168:6369" data-name="Side Menu">
+            <div className="bg-[var(--branco,white)] border-[#d9d9d9] border-r border-solid content-stretch flex flex-col gap-[16px] items-center p-[16px] relative rounded-[24px] shrink-0 w-[264px]" data-node-id="168:6370" data-name="Ambiente Menu">
+              <div className="content-stretch flex gap-[8px] items-center relative shrink-0 w-full" data-node-id="168:6371" data-name="Menu Title">
+                <p className="[word-break:break-word] font-['Manrope:Bold'] font-bold leading-[normal] relative shrink-0 text-[#434343] text-[14px] whitespace-nowrap" data-node-id="168:6372">
+                  Selecione um ambiente
+                </p>
+                <div className="overflow-clip relative shrink-0 size-[18px]" data-node-id="168:6373" data-name="CkQuestion">
+                  <div className="-translate-x-1/2 -translate-y-1/2 absolute left-1/2 size-[14.25px] top-1/2" data-node-id="I168:6373;27:1523" data-name="Vector">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector5} />
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="168:6374">
+                <div className="content-stretch flex flex-col gap-[8px] items-start relative shrink-0 w-full" data-node-id="168:6375" data-name="Menu content">
+                  <div className="content-stretch flex gap-[8px] items-center px-[4px] py-[8px] relative rounded-[20px] shrink-0 w-full" data-node-id="168:6376" data-name="Menu item">
+                    <div className="content-stretch flex flex-[1_0_0] gap-[8px] items-center min-w-px relative" data-node-id="I168:6376;64:2955" data-name="Item description">
+                      <div className="overflow-clip relative shrink-0 size-[18px]" data-node-id="I168:6376;64:2956" data-name="weekend">
+                        <div className="absolute inset-[16.67%_0]" data-node-id="I168:6376;64:2956;61:1905" data-name="Vector">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector6} />
+                        </div>
+                      </div>
+                      <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[14px] text-[color:var(--preto,black)] whitespace-nowrap" data-node-id="I168:6376;64:2957">
+                        <p className="leading-[normal]">Estar/Jantar/Circulação</p>
+                      </div>
+                    </div>
+                    <div className="relative shrink-0 size-[18px]" data-node-id="I168:6376;64:2958" data-name="circle">
+                      <div className="absolute contents inset-0" data-node-id="I168:6376;64:2958;24:1141" data-name="vuesax/linear/record">
+                        <div className="absolute inset-[0_-33.33%_-33.33%_0]" data-node-id="I168:6376;64:2958;24:1142" data-name="record">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgRecord} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-[#f0f0f0] h-px relative rounded-[43px] shrink-0 w-full" data-node-id="168:6377" data-name="Divider" />
+                  <div className="content-stretch flex flex-col gap-[8px] items-start justify-center relative rounded-[8px] shrink-0 w-full" data-node-id="168:6378" data-name="Menu item">
+                    <div className="content-stretch flex items-center justify-between px-[4px] py-[8px] relative rounded-[8px] shrink-0 w-full" data-node-id="I168:6378;2409:31143">
+                      <div className="content-stretch flex flex-[1_0_0] gap-[8px] items-center min-w-px relative" data-node-id="I168:6378;64:2967" data-name="Item description">
+                        <div className="overflow-clip relative shrink-0 size-[18px]" data-node-id="I168:6378;64:2968" data-name="kitchen">
+                          <div className="absolute inset-[8.33%_16.67%]" data-node-id="I168:6378;64:2968;61:1872" data-name="Vector">
+                            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector7} />
+                          </div>
+                        </div>
+                        <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#047676] text-[14px] whitespace-nowrap" data-node-id="I168:6378;64:2969">
+                          <p className="leading-[normal]">Cozinha / A.S.</p>
+                        </div>
+                      </div>
+                      <div className="overflow-clip relative shrink-0 size-[18px]" data-node-id="I168:6378;64:2970" data-name="check_circle_outline">
+                        <div className="absolute inset-[8.33%]" data-node-id="I168:6378;64:2970;61:1948" data-name="Vector">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector8} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-[#f0f0f0] h-px relative rounded-[43px] shrink-0 w-full" data-node-id="168:6379" data-name="Divider" />
+                  <div className="content-stretch flex gap-[8px] items-center px-[4px] py-[8px] relative rounded-[20px] shrink-0 w-full" data-node-id="168:6380" data-name="Menu item">
+                    <div className="content-stretch flex flex-[1_0_0] gap-[8px] items-center min-w-px relative" data-node-id="I168:6380;64:2955" data-name="Item description">
+                      <div className="overflow-clip relative shrink-0 size-[18px]" data-node-id="I168:6380;64:2956" data-name="grass">
+                        <div className="absolute inset-[18.52%_8.33%]" data-node-id="I168:6380;64:2956;61:2064" data-name="Vector">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector9} />
+                        </div>
+                      </div>
+                      <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[14px] text-black whitespace-nowrap" data-node-id="I168:6380;64:2957">
+                        <p className="leading-[normal]">Terraço Gourmet</p>
+                      </div>
+                    </div>
+                    <div className="relative shrink-0 size-[18px]" data-node-id="I168:6380;64:2958" data-name="circle">
+                      <div className="absolute contents inset-0" data-node-id="I168:6380;64:2958;24:1141" data-name="vuesax/linear/record">
+                        <div className="absolute inset-[0_-33.33%_-33.33%_0]" data-node-id="I168:6380;64:2958;24:1142" data-name="record">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgRecord} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-[#f0f0f0] h-px relative rounded-[43px] shrink-0 w-full" data-node-id="168:6381" data-name="Divider" />
+                  <MenuItem className="content-stretch flex gap-[8px] items-center px-[4px] py-[8px] relative rounded-[20px] shrink-0 w-full" />
+                  <div className="bg-[#f0f0f0] h-px relative rounded-[43px] shrink-0 w-full" data-node-id="168:6383" data-name="Divider" />
+                  <div className="content-stretch flex gap-[8px] items-center px-[4px] py-[8px] relative rounded-[20px] shrink-0 w-full" data-node-id="168:6384" data-name="Menu item">
+                    <div className="content-stretch flex flex-[1_0_0] gap-[8px] items-center min-w-px relative" data-node-id="I168:6384;64:2955" data-name="Item description">
+                      <div className="overflow-clip relative shrink-0 size-[18px]" data-node-id="I168:6384;64:2956" data-name="shower">
+                        <div className="absolute inset-[12.5%_20.83%]" data-node-id="I168:6384;64:2956;61:2067" data-name="Vector">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector10} />
+                        </div>
+                      </div>
+                      <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[14px] text-black whitespace-nowrap" data-node-id="I168:6384;64:2957">
+                        <p className="leading-[normal]">Banheiro</p>
+                      </div>
+                    </div>
+                    <div className="relative shrink-0 size-[18px]" data-node-id="I168:6384;64:2958" data-name="circle">
+                      <div className="absolute contents inset-0" data-node-id="I168:6384;64:2958;24:1141" data-name="vuesax/linear/record">
+                        <div className="absolute inset-[0_-33.33%_-33.33%_0]" data-node-id="I168:6384;64:2958;24:1142" data-name="record">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgRecord} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-[var(--preto,black)] col-1 content-stretch flex gap-[16px] items-center ml-[426px] mt-[118px] px-[16px] py-[12px] relative rounded-[20px] row-1 w-[270px]" data-node-id="168:6385" data-name="Composição Card">
+            <div className="relative rounded-[20px] shrink-0 size-[82px]" data-node-id="168:6386">
+              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full" src={imgRectangle3} />
+            </div>
+            <div className="content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start min-w-px relative" data-node-id="168:6387" data-name="Comosição content">
+              <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="168:6388" data-name="Title">
+                <div className="[word-break:break-word] flex flex-col font-['Manrope:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[14px] text-[color:var(--branco,white)] whitespace-nowrap" data-node-id="168:6389">
+                  <p className="leading-[normal]">Material 01</p>
+                </div>
+                <div className="relative shrink-0 size-[16px]" data-node-id="168:6390" data-name="Tootltip">
+                  <div className="absolute inset-0 overflow-clip" data-node-id="I168:6390;81:8608" data-name="workspace_premium">
+                    <div className="absolute inset-[7.05%_16.67%]" data-node-id="I168:6390;81:8608;61:1915" data-name="Vector">
+                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector11} />
+                    </div>
+                  </div>
+                  <div className="absolute content-stretch flex flex-col inset-[-206.25%_-300%_137.5%_-312.5%] items-start max-h-[344px]" data-node-id="I168:6390;81:8614" data-name="Tooltip">
+                    <div className="-translate-x-1/2 absolute bottom-[-6.07px] flex items-center justify-center left-[calc(50%+0.59px)] size-[14.142px]">
+                      <div className="flex-none rotate-45">
+                        <div className="bg-[#025259] relative rounded-[2px] size-[10px]" data-node-id="I168:6390;81:8615" data-name="presentation.absolute" />
+                      </div>
+                    </div>
+                    <div className="bg-[#025259] content-stretch drop-shadow-[0px_0px_7.5px_rgba(0,0,0,0.03),0px_2px_15px_rgba(0,0,0,0.08),0px_0px_0.5px_rgba(0,0,0,0.3)] flex flex-col items-center justify-center px-[16px] py-[4px] relative rounded-[var(--layout\/radius\/rounded-large,14px)] shrink-0" data-node-id="I168:6390;81:8616" data-name="div.z-10">
+                      <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[14px] text-white whitespace-nowrap" data-node-id="I168:6390;81:8617">
+                        <p className="leading-[normal]">Mais popular!</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full" data-node-id="168:6391" data-name="Descrição">
+                <div className="[word-break:break-word] flex flex-col font-['Manrope:Medium'] font-medium justify-center leading-[0] relative shrink-0 text-[12px] text-[color:var(--branco,white)] w-full" data-node-id="168:6393">
+                  <p className="leading-[normal]">Piso laminado Eucafloor linha Evidence Caravalho.</p>
+                </div>
+              </div>
+              <div className="content-stretch flex gap-[4px] items-end justify-center relative shrink-0" data-node-id="168:6394" data-name="Ver Mais">
+                <div className="[word-break:break-word] flex flex-col font-['Manrope:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[12px] text-[color:var(--verde-02,#047676)] whitespace-nowrap" data-node-id="168:6395">
+                  <p className="leading-[normal]">Ver mais</p>
+                </div>
+                <div className="overflow-clip relative shrink-0 size-[14px]" data-node-id="168:6396" data-name="expand_more">
+                  <div className="absolute inset-[36.28%_26.72%]" data-node-id="I168:6396;59:2052" data-name="Vector">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector12} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute bg-[var(--branco,white)] content-stretch drop-shadow-[0px_3px_3.2px_rgba(0,0,0,0.15)] flex flex-col items-center left-[56px] py-[12px] rounded-[24px] top-[24px] w-[1328px]" data-node-id="184:5308" data-name="Header">
+        <div className="content-stretch flex items-center justify-between relative shrink-0 w-[1224px]" data-node-id="I184:5308;184:4203" data-name="Frame Header">
+          <div className="flex flex-row items-center self-stretch">
+            <div className="content-stretch flex h-full items-center relative shrink-0" data-node-id="I184:5308;184:4204" data-name="Logo">
+              <div className="h-[60px] relative shrink-0 w-[122px]" data-node-id="I184:5308;184:4205" data-name="nuki_logo_horizontal_preto">
+                <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgNukiLogoHorizontalPreto} />
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex gap-[40px] items-center relative shrink-0" data-node-id="I184:5308;184:4206" data-name="Links">
+            <div className="content-stretch flex items-center relative shrink-0" data-node-id="I184:5308;184:4292">
+              <div className="content-stretch flex items-center justify-center pl-[12px] pr-[8px] py-[12px] relative rounded-[8px] shrink-0" data-node-id="I184:5308;184:4269" data-name="Button Texto">
+                <p className="[word-break:break-word] font-['Manrope:Bold'] font-bold leading-[20px] relative shrink-0 text-[16px] text-[color:var(--preto,black)] text-center tracking-[0.1px] whitespace-nowrap" data-node-id="I184:5308;184:4269;184:3903">
+                  Recursos
+                </p>
+              </div>
+              <div className="relative shrink-0 size-[20px]" data-node-id="I184:5308;184:4288" data-name="endContent">
+                <div className="absolute inset-0 overflow-clip" data-node-id="I184:5308;184:4288;95:712" data-name="expand_more">
+                  <div className="absolute inset-[36.28%_26.72%]" data-node-id="I184:5308;184:4288;95:712;59:2052" data-name="Vector">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector13} />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex items-center justify-center p-[12px] relative rounded-[8px] shrink-0" data-node-id="I184:5308;184:4285" data-name="Button Texto">
+              <p className="[word-break:break-word] font-['Manrope:Bold'] font-bold leading-[20px] relative shrink-0 text-[16px] text-[color:var(--preto,black)] text-center tracking-[0.1px] whitespace-nowrap" data-node-id="I184:5308;184:4285;184:3903">
+                Sobre a Nuki
+              </p>
+            </div>
+            <div className="content-stretch flex items-center justify-center p-[12px] relative rounded-[8px] shrink-0" data-node-id="I184:5308;184:4279" data-name="Button Texto">
+              <p className="[word-break:break-word] font-['Manrope:Bold'] font-bold leading-[20px] relative shrink-0 text-[16px] text-[color:var(--preto,black)] text-center tracking-[0.1px] whitespace-nowrap" data-node-id="I184:5308;184:4279;184:3903">
+                Nuki Lab
+              </p>
+            </div>
+          </div>
+          <div className="content-stretch flex gap-[24px] items-center justify-end relative shrink-0" data-node-id="I184:5308;184:4211" data-name="Demo e Contato">
+            <div className="border-2 border-[var(--preto,black)] border-solid content-stretch flex h-[48px] items-center justify-center px-[24px] relative rounded-[60px] shrink-0" data-node-id="I184:5308;184:4261" data-name="Button Secundário">
+              <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:5308;184:4261;176:8461" data-name="ButtonWrap">
+                <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:5308;184:4261;176:8463" data-name="ChildrenLoadingWrap">
+                  <div className="[word-break:break-word] flex flex-col font-['Manrope:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[16px] text-[color:var(--preto,black)] whitespace-nowrap" data-node-id="I184:5308;184:4261;176:8465">
+                    <p className="leading-[normal]">Login</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-[var(--preto,black)] content-stretch flex items-center justify-center px-[24px] py-[14px] relative rounded-[60px] shrink-0" data-node-id="I184:5308;184:4253" data-name="Button Principal">
+              <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:5308;184:4253;176:8301" data-name="ButtonWrap">
+                <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:5308;184:4253;176:8303" data-name="ChildrenLoadingWrap">
+                  <div className="[word-break:break-word] flex flex-col font-['Manrope:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[16px] text-[color:var(--branco,white)] whitespace-nowrap" data-node-id="I184:5308;184:4253;176:8305">
+                    <p className="leading-[normal]">Solicitar demo</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute bg-[var(--preto,black)] content-stretch drop-shadow-[0px_4px_2px_rgba(0,0,0,0.25)] flex flex-col h-[90.686px] items-start justify-center left-[173px] px-[19.346px] rounded-[48px] top-[3329px] w-[380.88px]" data-node-id="168:6408" data-name="Side Bar Title">
+        <div className="content-stretch flex gap-[9.673px] items-start relative shrink-0 w-full" data-node-id="168:6409" data-name="Menu Title">
+          <div className="flex items-center justify-center relative shrink-0">
+            <div className="flex-none rotate-180">
+              <div className="overflow-clip relative size-[21.765px]" data-node-id="168:6410" data-name="menu_open">
+                <div className="absolute bottom-1/4 left-[13.35%] right-[13.35%] top-1/4" data-node-id="I168:6410;61:1929" data-name="Vector">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector14} />
+                </div>
+              </div>
+            </div>
+          </div>
+          <p className="[word-break:break-word] font-['Manrope:Bold'] font-bold leading-[normal] relative shrink-0 text-[19.346px] text-white whitespace-nowrap" data-node-id="168:6411">
+            Opções de plantas
+          </p>
+          <div className="overflow-clip relative shrink-0 size-[21.765px]" data-node-id="168:6412" data-name="CkQuestion">
+            <div className="-translate-x-1/2 -translate-y-1/2 absolute left-1/2 size-[17.23px] top-1/2" data-node-id="I168:6412;27:1523" data-name="Vector">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector15} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute bg-white content-stretch drop-shadow-[0px_4px_2px_rgba(0,0,0,0.25)] flex gap-[19.346px] items-start left-[445px] px-[9.673px] py-[19.346px] rounded-[48px] top-[3636px] w-[326.468px]" data-node-id="168:6413" data-name="Composição Card">
+        <div className="relative rounded-[24.183px] shrink-0 size-[99.15px]" data-node-id="168:6414">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[24.183px]">
+            <img alt="" className="absolute h-[111.3%] left-0 max-w-none top-0 w-full" src={imgRectangle4} />
+          </div>
+        </div>
+        <div className="content-stretch flex flex-[1_0_0] flex-col gap-[9.673px] items-start min-w-px relative" data-node-id="168:6415" data-name="Comosição content">
+          <div className="content-stretch flex gap-[9.673px] items-center relative shrink-0" data-node-id="168:6416" data-name="Title">
+            <div className="[word-break:break-word] flex flex-col font-['Manrope:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#141414] text-[16.928px] whitespace-nowrap" data-node-id="168:6417">
+              <p className="leading-[normal]">Planta 01</p>
+            </div>
+            <div className="relative shrink-0 size-[19.346px]" data-node-id="168:6418" data-name="Tootltip">
+              <div className="absolute inset-0 overflow-clip" data-node-id="I168:6418;81:8603" data-name="workspace_premium">
+                <div className="absolute inset-[7.05%_16.67%]" data-node-id="I168:6418;81:8603;61:1915" data-name="Vector">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector16} />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col gap-[4.837px] items-start relative shrink-0 w-full" data-node-id="168:6419" data-name="Descrição">
+            <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#141414] text-[14.51px] w-full" data-node-id="168:6421">
+              <p className="leading-[normal]">3 quartos sendo 1 suíte; Cozinha americana; Sala ampliada; Varanda integrada a sala de estar; banheiro máster ampliado</p>
+            </div>
+          </div>
+          <div className="content-stretch flex gap-[4.837px] items-end justify-center relative shrink-0" data-node-id="168:6422" data-name="Ver Mais">
+            <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[14.51px] text-black whitespace-nowrap" data-node-id="168:6423">
+              <p className="[text-decoration-skip-ink:none] [text-underline-position:from-font] decoration-from-font decoration-solid leading-[normal] underline">Ver menos</p>
+            </div>
+            <div className="overflow-clip relative shrink-0 size-[16.928px]" data-node-id="168:6424" data-name="expand_less">
+              <div className="absolute inset-[36.28%_26.72%]" data-node-id="I168:6424;59:2068" data-name="Vector">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector17} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute content-stretch flex flex-col gap-[40px] h-[522px] items-start justify-center left-[949px] top-[3315px] w-[376px]" data-node-id="184:7063" data-name="Funcionalidade">
+        <div className="[word-break:break-word] content-stretch flex flex-col gap-[32px] items-start leading-[0] relative shrink-0 tracking-[0.1px] w-full" data-node-id="184:7064">
+          <div className="content-stretch flex flex-col font-['Manrope:ExtraBold'] font-extrabold gap-[8px] items-start relative shrink-0 w-full" data-node-id="184:7065">
+            <div className="flex flex-col justify-center relative shrink-0 text-[16px] text-[color:var(--verde,#025259)] whitespace-nowrap" data-node-id="184:7066">
+              <p className="leading-[24px]">RECURSO</p>
+            </div>
+            <div className="flex flex-col justify-center min-w-full relative shrink-0 text-[48px] text-[color:var(--preto,black)] w-[min-content]" data-node-id="184:7067">
+              <p className="leading-[54px]">Personalização</p>
+            </div>
+          </div>
+          <div className="flex flex-col font-['Manrope:Regular'] font-normal justify-center relative shrink-0 text-[20px] text-[color:var(--preto,black)] w-full" data-node-id="184:7068">
+            <p className="leading-[36px]">Com o recurso de personalização da Nuki, seu cliente customiza o imóvel de forma simples e com total liberdade de escolha, além de contar com condições de pagamento sob medida para uma experiência ainda mais personalizada.</p>
+          </div>
+        </div>
+        <div className="bg-[var(--preto,black)] content-stretch flex items-center justify-center px-[24px] py-[14px] relative rounded-[60px] shrink-0" data-node-id="184:7069" data-name="Button Principal">
+          <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:7069;176:8301" data-name="ButtonWrap">
+            <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:7069;176:8303" data-name="ChildrenLoadingWrap">
+              <div className="[word-break:break-word] flex flex-col font-['Manrope:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[16px] text-white whitespace-nowrap" data-node-id="I184:7069;176:8305">
+                <p className="leading-[normal]">Saiba mais</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute content-stretch flex flex-col gap-[40px] h-[522px] items-start justify-center left-[108px] top-[4013px] w-[468px]" data-node-id="184:7161" data-name="Funcionalidade">
+        <div className="[word-break:break-word] content-stretch flex flex-col gap-[32px] items-start leading-[0] relative shrink-0 tracking-[0.1px] w-full" data-node-id="184:7162">
+          <div className="content-stretch flex flex-col font-['Manrope:ExtraBold'] font-extrabold gap-[12px] items-start relative shrink-0 w-full" data-node-id="184:7163">
+            <div className="flex flex-col justify-center relative shrink-0 text-[16px] text-[color:var(--verde,#025259)] whitespace-nowrap" data-node-id="184:7164">
+              <p className="leading-[24px]">RECURSO</p>
+            </div>
+            <div className="flex flex-col justify-center min-w-full relative shrink-0 text-[48px] text-[color:var(--preto,black)] w-[min-content]" data-node-id="184:7165">
+              <p>
+                <span className="leading-[54px]">Controle e</span>
+                <span className="[word-break:break-word] font-['Manrope:Regular'] font-normal leading-[54px]">{` `}</span>
+                <span className="leading-[54px]">análise</span>
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col font-['Manrope:Regular'] font-normal justify-center relative shrink-0 text-[20px] text-[color:var(--preto,black)] w-full" data-node-id="184:7166">
+            <p className="leading-[36px]">Nuki oferece um dashboard completo para acompanhar a jornada de personalização do cliente. Com visibilidade total das escolhas, contratos, você garante uma gestão eficiente e organizada em cada etapa.</p>
+          </div>
+        </div>
+        <div className="bg-[var(--preto,black)] content-stretch flex items-center justify-center px-[24px] py-[14px] relative rounded-[60px] shrink-0" data-node-id="184:7167" data-name="Button Principal">
+          <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:7167;176:8301" data-name="ButtonWrap">
+            <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:7167;176:8303" data-name="ChildrenLoadingWrap">
+              <div className="[word-break:break-word] flex flex-col font-['Manrope:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[16px] text-[color:var(--branco,white)] whitespace-nowrap" data-node-id="I184:7167;176:8305">
+                <p className="leading-[normal]">Saiba mais</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="-translate-x-1/2 absolute content-stretch flex flex-col gap-[40px] items-center justify-center left-1/2 top-[5290px] w-[440px]" data-node-id="184:7441" data-name="Funcionalidade">
+        <div className="content-stretch flex flex-col gap-[32px] items-center relative shrink-0 w-full" data-node-id="184:7442">
+          <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="184:7443">
+            <div className="[word-break:break-word] flex flex-col font-['Manrope:ExtraBold'] font-extrabold justify-center leading-[0] relative shrink-0 text-[48px] text-[color:var(--preto,black)] text-center tracking-[0.1px] w-full" data-node-id="184:7444">
+              <p>
+                <span className="[word-break:break-word] font-['Manrope:Regular'] font-normal leading-[54px]">Nuki</span>
+                <span className="leading-[54px]">{` Lab`}</span>
+              </p>
+            </div>
+          </div>
+          <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[20px] text-[color:var(--preto,black)] text-center tracking-[0.1px] w-full" data-node-id="184:7445">
+            <p className="leading-[36px]">Ofereça aos seus clientes a oportunidade de personalizar seu próprio espaço em minutos, criando uma experiência sob medida que encante a todos.</p>
+          </div>
+        </div>
+        <div className="bg-[var(--preto,black)] content-stretch flex items-center justify-center px-[24px] py-[14px] relative rounded-[60px] shrink-0" data-node-id="184:7446" data-name="Button Principal">
+          <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:7446;176:8301" data-name="ButtonWrap">
+            <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:7446;176:8303" data-name="ChildrenLoadingWrap">
+              <div className="[word-break:break-word] flex flex-col font-['Manrope:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[16px] text-[color:var(--branco,white)] whitespace-nowrap" data-node-id="I184:7446;176:8305">
+                <p className="leading-[normal]">Saiba mais</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex h-[1719px] items-center justify-center left-0 top-[5738px] w-[1440px]">
+        <div className="-scale-y-100 flex-none rotate-180">
+          <div className="bg-[var(--preto,black)] h-[1719px] relative w-[1440px]" data-node-id="168:6486" data-name="Background" />
+        </div>
+      </div>
+      <div className="-translate-x-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 top-[5917px] w-[1016px]" data-node-id="168:6487" data-name="Funcionalidade">
+        <div className="content-stretch flex gap-[32px] items-start justify-center relative shrink-0 w-full" data-node-id="168:6488">
+          <div className="content-stretch flex flex-[1_0_0] flex-col items-start min-w-px relative" data-node-id="168:6489">
+            <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[48px] text-[color:var(--branco,white)] tracking-[0.1px] w-full" data-node-id="168:6490">
+              <p>
+                <span className="leading-[54px]">{`Sobre a `}</span>
+                <span className="[word-break:break-word] font-['Manrope:Bold'] font-bold leading-[54px]">Nuki</span>
+              </p>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-[1_0_0] flex-col gap-[40px] items-start min-w-px relative" data-node-id="168:6491">
+            <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] min-w-full relative shrink-0 text-[20px] text-[color:var(--branco,white)] tracking-[0.1px] w-[min-content] whitespace-pre-wrap" data-node-id="168:6492">
+              <p className="leading-[36px] mb-0">A Nuki é uma startup inovadora dedicada a transformar a forma como clientes personalizam seus apartamentos.</p>
+              <p className="leading-[36px] mb-0">​</p>
+              <p className="leading-[36px]">Nosso foco é fornecer uma plataforma intuitiva, prática e segura, onde cada detalhe do imóvel é ajustado ao estilo e preferência do cliente, sem complicações.</p>
+            </div>
+            <div className="border-2 border-[var(--branco,white)] border-solid content-stretch flex h-[48px] items-center justify-center px-[24px] relative rounded-[60px] shrink-0" data-node-id="184:5739" data-name="Button Secundário Negativo">
+              <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:5739;184:3844" data-name="ButtonWrap">
+                <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:5739;184:3846" data-name="ChildrenLoadingWrap">
+                  <div className="[word-break:break-word] flex flex-col font-['Manrope:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[16px] text-[color:var(--branco,white)] whitespace-nowrap" data-node-id="I184:5739;184:3848">
+                    <p className="leading-[normal]">Saiba mais</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute h-[588px] left-[-327px] top-[6065px] w-[827px]" data-node-id="168:6494" data-name="nuki_simbolo_pearl 1">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <img alt="" className="absolute h-[96.21%] left-[-0.07%] max-w-none top-0 w-[100.15%]" src={imgNukiSimboloPearl1} />
+        </div>
+      </div>
+      <div className="absolute content-stretch flex flex-col gap-[40px] items-center justify-center left-[500px] top-[6739px] w-[440px]" data-node-id="184:6643" data-name="Funcionalidade">
+        <div className="content-stretch flex flex-col gap-[32px] items-center relative shrink-0 w-full" data-node-id="184:6644">
+          <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="184:6645">
+            <div className="[word-break:break-word] flex flex-col font-['Manrope:ExtraBold'] font-extrabold justify-center leading-[0] relative shrink-0 text-[48px] text-[color:var(--branco,white)] text-center tracking-[0.1px] w-full" data-node-id="184:6646">
+              <p className="leading-[54px]">Fale com a gente!</p>
+            </div>
+          </div>
+          <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[20px] text-[color:var(--branco,white)] text-center tracking-[0.1px] w-full" data-node-id="184:6647">
+            <p className="leading-[36px] mb-0">Ficou interessado? Nos mande uma mensagem</p>
+            <p className="leading-[36px]">por e-mail ou nos contate por telefone!</p>
+          </div>
+          <div className="content-stretch flex items-center justify-between p-[10px] relative shrink-0 w-full" data-node-id="184:6648" data-name="Contato">
+            <div className="content-stretch flex gap-[8px] items-start relative shrink-0" data-node-id="184:6649" data-name="Email">
+              <div className="relative shrink-0 size-[20px]" data-node-id="184:6650" data-name="Icone">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcone} />
+              </div>
+              <p className="[word-break:break-word] font-['Manrope:ExtraBold'] font-extrabold leading-[20px] relative shrink-0 text-[20px] text-[color:var(--branco,white)] tracking-[0.1px] whitespace-nowrap" data-node-id="184:6652">
+                nuki@email.com
+              </p>
+            </div>
+            <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[20px] text-[color:var(--branco,white)] text-center tracking-[0.1px] w-[28px]" data-node-id="184:6653">
+              <p className="leading-[20px]">|</p>
+            </div>
+            <div className="content-stretch flex gap-[8px] items-start relative shrink-0" data-node-id="184:6654" data-name="Telefone">
+              <div className="relative shrink-0 size-[20px]" data-node-id="184:6655" data-name="Icone">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcone1} />
+              </div>
+              <p className="[word-break:break-word] font-['Manrope:ExtraBold'] font-extrabold leading-[20px] relative shrink-0 text-[20px] text-[color:var(--branco,white)] tracking-[0.1px] whitespace-nowrap" data-node-id="184:6657">
+                00 0000.0000
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="border-2 border-[var(--branco,white)] border-solid content-stretch flex h-[48px] items-center justify-center px-[24px] relative rounded-[60px] shrink-0" data-node-id="184:6658" data-name="Button Secundário Negativo">
+          <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:6658;184:3844" data-name="ButtonWrap">
+            <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:6658;184:3846" data-name="ChildrenLoadingWrap">
+              <div className="[word-break:break-word] flex flex-col font-['Manrope:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[16px] text-[color:var(--branco,white)] whitespace-nowrap" data-node-id="I184:6658;184:3848">
+                <p className="leading-[normal]">Solicitar demo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex h-[733px] items-center justify-center left-[930px] top-[7162px] w-[739px]">
+        <div className="flex-none rotate-180">
+          <div className="h-[733px] relative w-[739px]" data-node-id="168:6511" data-name="nuki_quadradinho_pearl 3">
+            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgNukiQuadradinhoPearl3} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex h-[507px] items-center justify-center left-[-180px] top-[7037px] w-[512px]">
+        <div className="-scale-y-100 flex-none rotate-180">
+          <div className="blur-[5.8px] h-[507px] relative w-[512px]" data-node-id="168:6512" data-name="nuki_quadradinho_pearl 4">
+            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgNukiQuadradinhoPearl3} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex h-[193px] items-center justify-center left-[1137px] top-[6494px] w-[195px]">
+        <div className="-scale-y-100 flex-none rotate-180">
+          <div className="blur-[6.9px] h-[193px] relative w-[195px]" data-node-id="168:6513" data-name="nuki_quadradinho_pearl 5">
+            <img alt="" className="absolute inset-0 max-w-none object-cover opacity-90 pointer-events-none size-full" src={imgNukiQuadradinhoPearl3} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute bg-[var(--background,#f7f7f7)] bottom-[-1px] h-[228px] overflow-clip right-0 shadow-[0px_10px_20.7px_0px_rgba(0,0,0,0.25)] w-[1440px]" data-node-id="168:6514" data-name="Footer">
+        <div className="absolute content-stretch flex items-center justify-between left-[108px] top-[40px] w-[1224px]" data-node-id="168:6516" data-name="Content">
+          <div className="content-stretch flex items-start relative shrink-0" data-node-id="168:6517" data-name="Logo">
+            <div className="h-[60px] relative shrink-0 w-[122px]" data-node-id="168:6518" data-name="nuki_logo_horizontal_preto">
+              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgNukiLogoHorizontalPreto} />
+            </div>
+          </div>
+          <div className="content-stretch flex items-start justify-between relative shrink-0 w-[912px]" data-node-id="168:6519">
+            <div className="content-stretch flex gap-[152px] items-start relative shrink-0" data-node-id="168:6520">
+              <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start relative shrink-0 text-[12px] whitespace-nowrap" data-node-id="168:6521" data-name="Services">
+                <p className="font-['Manrope:ExtraBold'] font-extrabold leading-[24px] relative shrink-0 text-[color:var(--preto,black)] tracking-[0.15px]" data-node-id="168:6522">
+                  Recursos
+                </p>
+                <div className="content-stretch flex flex-col font-['Manrope:Regular'] font-normal gap-[6px] items-start leading-[20px] relative shrink-0 text-[color:var(--cinza,#434343)] tracking-[0.25px]" data-node-id="168:6523" data-name="Pages">
+                  <p className="relative shrink-0" data-node-id="168:6524">
+                    Personalização
+                  </p>
+                  <p className="relative shrink-0" data-node-id="168:6525">
+                    Controle e análise
+                  </p>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0" data-node-id="168:6526">
+                <div className="content-stretch flex flex-col items-start relative shrink-0" data-node-id="168:6527" data-name="Privacy">
+                  <p className="[word-break:break-word] font-['Manrope:ExtraBold'] font-extrabold leading-[24px] relative shrink-0 text-[12px] text-[color:var(--preto,black)] tracking-[0.15px] whitespace-nowrap" data-node-id="168:6528">
+                    Sobre a Nuki
+                  </p>
+                </div>
+                <div className="content-stretch flex flex-col items-start relative shrink-0" data-node-id="168:6529" data-name="Privacy">
+                  <p className="[word-break:break-word] font-['Manrope:ExtraBold'] font-extrabold leading-[20px] relative shrink-0 text-[12px] text-[color:var(--preto,black)] tracking-[0.15px] whitespace-nowrap" data-node-id="168:6530">
+                    Nuki Lab
+                  </p>
+                </div>
+              </div>
+              <div className="content-stretch flex gap-[15.25px] items-center relative shrink-0" data-node-id="168:6531" data-name="Icons">
+                <div className="relative shrink-0 size-[22.875px]" data-node-id="168:6532" data-name="Icon Instagram">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconInstagram} />
+                </div>
+                <div className="relative shrink-0 size-[22.875px]" data-node-id="168:6537" data-name="Icon LinkedIn">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconLinkedIn} />
+                </div>
+              </div>
+            </div>
+            <div className="bg-[var(--preto,black)] content-stretch flex items-center justify-center px-[24px] py-[10px] relative rounded-[60px] shrink-0" data-node-id="184:5799" data-name="Button Principal">
+              <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:5799;184:5756" data-name="ButtonWrap">
+                <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:5799;184:5758" data-name="ChildrenLoadingWrap">
+                  <div className="[word-break:break-word] flex flex-col font-['Manrope:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[14px] text-[color:var(--branco,white)] whitespace-nowrap" data-node-id="I184:5799;184:5760">
+                    <p className="leading-[normal]">Solicitar demo</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="-translate-x-1/2 absolute content-stretch flex flex-col gap-[64px] items-center left-1/2 top-[2037px] w-[1472px]" data-node-id="168:6540" data-name="Carrossel Logos">
+        <div className="[word-break:break-word] flex flex-col font-['Manrope:ExtraBold'] font-extrabold justify-center leading-[0] relative shrink-0 text-[0px] text-center text-white tracking-[0.1px] whitespace-nowrap" data-node-id="168:6541">
+          <p className="text-[24px]">
+            <span className="leading-[32px]">Construtoras</span>
+            <span className="[word-break:break-word] font-['Manrope:Bold'] font-bold leading-[32px]">{` `}</span>
+            <span className="[word-break:break-word] font-['Manrope:Regular'] font-normal leading-[32px]">{`que `}</span>
+            <span className="[word-break:break-word] font-['Manrope:Regular'] font-normal leading-[32px]">acreditam no nosso trabalho</span>
+          </p>
+        </div>
+        <div className="content-stretch flex items-center justify-between relative shrink-0 w-[1180px]" data-node-id="168:6542" data-name="Logos">
+          <div className="h-[29.66px] relative shrink-0 w-[226.06px]" data-node-id="168:6543" data-name="image 33">
+            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage33} />
+          </div>
+          <div className="h-[36.875px] relative shrink-0 w-[192.391px]" data-node-id="168:6544" data-name="image 34">
+            <img alt="" className="absolute inset-0 max-w-none object-bottom pointer-events-none size-full" src={imgImage34} />
+          </div>
+          <div className="h-[48.098px] relative shrink-0 w-[176.359px]" data-node-id="168:6545" data-name="image 35">
+            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage35} />
+          </div>
+          <div className="h-[40.082px] relative shrink-0 w-[185.177px]" data-node-id="168:6546" data-name="image 36">
+            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage36} />
+          </div>
+        </div>
+      </div>
+      <div className="absolute content-stretch flex flex-col gap-[82px] items-center left-[108px] top-[1159px] w-[1223px]" data-node-id="168:6547">
+        <div className="content-stretch flex flex-col gap-[10px] items-center justify-center p-[10px] relative shrink-0" data-node-id="168:6548">
+          <div className="[word-break:break-word] flex flex-col font-['Manrope:ExtraBold'] font-extrabold justify-center leading-[0] relative shrink-0 text-[48px] text-[color:var(--branco,white)] text-center tracking-[0.1px] whitespace-nowrap" data-node-id="168:6549">
+            <p>
+              <span className="[word-break:break-word] font-['Manrope:Regular'] font-normal leading-[54px] text-white">{`Sobre a `}</span>
+              <span className="leading-[54px]">plataforma</span>
+            </p>
+          </div>
+          <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="168:6550">
+            <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[20px] text-[color:var(--branco,white)] text-center tracking-[0.1px] w-full" data-node-id="168:6551">
+              <p className="leading-[28px]">Simplifique as operações com nosso sistema</p>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex gap-[24px] items-center relative shrink-0 w-full" data-node-id="168:6552">
+          <div className="flex flex-[1_0_0] items-center justify-center min-w-px relative">
+            <div className="-scale-y-100 flex-none rotate-180 w-full">
+              <div className="bg-[var(--branco-10\%,rgba(255,255,255,0.1))] content-stretch flex flex-col gap-[32px] h-[473px] items-start p-[24px] relative rounded-[24px] w-full" data-node-id="168:6553" data-name="Sobre a Plataforma">
+                <div className="absolute flex h-[393px] items-center justify-center left-[830px] top-[40px] w-[32px]">
+                  <div className="-scale-y-100 flex-none rotate-180">
+                    <div className="content-stretch flex flex-col gap-[63px] h-[393px] items-center relative w-[32px]" data-node-id="168:6554">
+                      <div className="overflow-clip relative shrink-0 size-[32px]" data-node-id="168:6555" data-name="draw">
+                        <div className="absolute inset-[12.5%_13.55%]" data-node-id="I168:6555;95:877" data-name="Vector">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector18} />
+                        </div>
+                      </div>
+                      <div className="flex flex-[1_0_0] items-center justify-center min-h-px relative w-[25px]" style={{ containerType: "size" }}>
+                        <div className="-rotate-90 flex-none w-[100cqh]">
+                          <div className="[word-break:break-word] flex flex-col font-['Manrope:ExtraBold'] font-extrabold h-[25px] justify-center leading-[0] relative text-[0px] text-black w-full" data-node-id="168:6556">
+                            <p className="text-[28px] text-white">
+                              <span className="leading-[0.79]">{` `}</span>
+                              <span className="[word-break:break-word] font-['Manrope:Regular'] font-normal leading-[0.79]">Personalização</span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute flex h-[382px] items-center justify-center left-[40px] top-[51px] w-[429px]">
+                  <div className="-scale-y-100 flex-none rotate-180">
+                    <div className="content-stretch flex flex-col h-[382px] items-start justify-between relative w-[429px]" data-node-id="168:6565">
+                      <div className="[word-break:break-word] content-stretch flex flex-col gap-[32px] h-[193px] items-start leading-[0] relative shrink-0 text-[color:var(--branco,white)] w-full" data-node-id="168:6566">
+                        <div className="flex flex-col font-['Manrope:ExtraBold'] font-extrabold justify-center relative shrink-0 text-[32px] w-full" data-node-id="168:6567">
+                          <p className="leading-[0.79]">Personalização</p>
+                        </div>
+                        <div className="flex flex-col font-['Manrope:Regular'] font-normal justify-center relative shrink-0 text-[20px] tracking-[0.1px] w-full" data-node-id="168:6568">
+                          <p className="leading-[36px]">Na Nuki, seu cliente tem liberdade! Desde a escolha da planta ideal até os acabamentos perfeitos, tudo personalizado. E ainda pode optar pela melhor forma de pagamento, garantindo uma experiência completa e sem limitações.</p>
+                        </div>
+                      </div>
+                      <a className="border-2 border-[var(--branco,white)] border-solid content-stretch cursor-pointer flex h-[48px] items-center justify-center px-[24px] relative rounded-[60px] shrink-0" data-node-id="184:6236" data-name="Button Secundário Negativo">
+                        <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:6236;184:3844" data-name="ButtonWrap">
+                          <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:6236;184:3846" data-name="ChildrenLoadingWrap">
+                            <div className="[word-break:break-word] flex flex-col font-['Manrope:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[16px] text-[color:var(--branco,white)] text-left whitespace-nowrap" data-node-id="I184:6236;184:3848">
+                              <p className="leading-[normal]">Próximo</p>
+                            </div>
+                          </div>
+                          <div className="relative shrink-0 size-[20px]" data-node-id="I184:6236;184:3849" data-name="endContent">
+                            <div className="absolute inset-0 overflow-clip" data-node-id="I184:6236;184:3849;95:717" data-name="chevron_right">
+                              <div className="absolute inset-[26.74%_36.28%]" data-node-id="I184:6236;184:3849;95:717;59:2100" data-name="Vector">
+                                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector19} />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-[var(--branco-10\%,rgba(255,255,255,0.1))] content-stretch flex h-[473px] items-center px-[48px] py-[39px] relative rounded-[24px] shrink-0 w-[129px]" data-node-id="168:6557">
+            <div className="absolute content-stretch flex flex-col h-[393px] items-center justify-between left-[48px] top-[40px] w-[32px]" data-node-id="168:6783">
+              <div className="overflow-clip relative shrink-0 size-[32px]" data-node-id="168:6798" data-name="people_alt">
+                <div className="absolute inset-[16.67%_4.17%]" data-node-id="I168:6798;95:895" data-name="Vector">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector20} />
+                </div>
+              </div>
+              <div className="flex h-[259px] items-center justify-center relative shrink-0 w-[34px]">
+                <div className="-rotate-90 flex-none">
+                  <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative text-[28px] text-[color:var(--branco,white)] whitespace-nowrap" data-node-id="168:6785">
+                    <p className="leading-[1.2]">Experiência em foco</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-[var(--branco-10\%,rgba(255,255,255,0.1))] content-stretch flex h-[473px] items-center px-[48px] py-[39px] relative rounded-[24px] shrink-0 w-[129px]" data-node-id="168:6561">
+            <div className="absolute content-stretch flex flex-col h-[393px] items-center justify-between left-[48px] top-[40px] w-[32px]" data-node-id="168:6793">
+              <div className="overflow-clip relative shrink-0 size-[32px]" data-node-id="169:2702" data-name="view_module">
+                <div className="absolute inset-[20.83%_12.5%]" data-node-id="I169:2702;95:885" data-name="Vector">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector21} />
+                </div>
+              </div>
+              <div className="flex h-[250px] items-center justify-center relative shrink-0 w-[68px]">
+                <div className="-rotate-90 flex-none">
+                  <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] relative text-[28px] text-[color:var(--branco,white)] whitespace-nowrap" data-node-id="168:6795">
+                    <p className="leading-[1.2] mb-0 whitespace-pre">{`Elimine os `}</p>
+                    <p className="leading-[1.2] whitespace-pre">processos manuais</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute content-stretch flex items-start justify-between left-[212px] top-[4843px] w-[1016px]" data-node-id="184:7259">
+        <div className="[word-break:break-word] flex flex-col font-['Manrope:ExtraBold'] font-extrabold justify-center leading-[0] relative shrink-0 text-[48px] text-[color:var(--branco,white)] tracking-[0.1px] whitespace-nowrap" data-node-id="184:7260">
+          <p>
+            <span className="[word-break:break-word] font-['Manrope:Regular'] font-normal leading-[54px]">{`Sua `}</span>
+            <span className="leading-[54px]">identidade</span>
+          </p>
+        </div>
+        <div className="content-stretch flex flex-col gap-[40px] items-start relative shrink-0 w-[496px]" data-node-id="184:7261">
+          <div className="[word-break:break-word] flex flex-col font-['Manrope:Regular'] font-normal justify-center leading-[0] min-w-full relative shrink-0 text-[20px] text-[color:var(--branco,white)] tracking-[0.1px] w-[min-content]" data-node-id="184:7262">
+            <p className="leading-[36px]">A Nuki é uma plataforma white label, que se adapta totalmente à sua marca e identidade visual, oferecendo um sistema personalizado para entregar uma experiência alinhada ao seu negócio.</p>
+          </div>
+          <div className="border-2 border-[var(--branco,white)] border-solid content-stretch flex h-[48px] items-center justify-center px-[24px] relative rounded-[60px] shrink-0" data-node-id="184:7263" data-name="Button Secundário Negativo">
+            <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:7263;184:3844" data-name="ButtonWrap">
+              <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0" data-node-id="I184:7263;184:3846" data-name="ChildrenLoadingWrap">
+                <div className="[word-break:break-word] flex flex-col font-['Manrope:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[16px] text-[color:var(--branco,white)] whitespace-nowrap" data-node-id="I184:7263;184:3848">
+                  <p className="leading-[normal]">Solicitar demo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

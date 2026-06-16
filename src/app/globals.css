@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-manrope);
+
+  --color-nuki-preto: #000000;
+  --color-nuki-branco: #ffffff;
+  --color-nuki-cinza: #434343;
+  --color-nuki-cinza-claro: #f7f7f7;
+  --color-nuki-cinza-divisor: #f0f0f0;
+  --color-nuki-cinza-borda: #d9d9d9;
+  --color-nuki-verde-02: #047676;
+  --color-nuki-verde-03: #00363a;
+  --color-nuki-verde-08: #025259;
+}
+
+body {
+  background: var(--color-nuki-cinza-claro);
+  color: var(--color-nuki-preto);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}

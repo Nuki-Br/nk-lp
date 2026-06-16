@@ -1,0 +1,1 @@
+export { NavegandoNaPlataforma } from "./NavegandoNaPlataforma";
