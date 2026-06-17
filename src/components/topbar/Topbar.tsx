@@ -11,7 +11,7 @@ const links: TopbarLink[] = [
     ],
   },
   { label: "Sobre a Nuki", href: "#sobre" },
-  { label: "Nuki Lab", href: "#lab" },
+  // { label: "Nuki Lab", href: "#lab" },
 ];
 
 export function Topbar() {

@@ -119,22 +119,22 @@ function FormStep({
         />
       </div>
 
-      <div className="flex flex-1 flex-col gap-8 overflow-y-auto px-6 py-8 sm:px-8 md:py-14 md:pl-14 md:pr-11">
-        <div className="flex flex-col gap-4">
+      <div className="flex flex-1 flex-col gap-6 overflow-y-auto px-6 py-6 sm:px-8 md:py-10 md:pl-12 md:pr-10">
+        <div className="flex flex-col gap-2">
           <h2
             id="demo-modal-title"
-            className="text-[32px] leading-tight tracking-[0.1px] text-nuki-preto sm:text-[40px] md:text-[48px] md:leading-[54px]"
+            className="text-[28px] leading-tight tracking-[0.1px] text-nuki-preto sm:text-[32px] md:text-[36px] md:leading-[42px]"
           >
             <span className="font-extrabold">Solicite</span>{" "}
             <span className="font-normal">a versão demo!</span>
           </h2>
-          <p className="text-[16px] font-normal leading-7 tracking-[0.1px] text-nuki-preto sm:text-[18px] md:text-[20px] md:leading-8">
+          <p className="text-[14px] font-normal leading-6 tracking-[0.1px] text-nuki-preto sm:text-[15px] md:text-[16px] md:leading-7">
             Adoraríamos te mostrar como a Nuki funciona.
           </p>
         </div>
 
         <form
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-5"
           onSubmit={(event) => {
             event.preventDefault();
             const data = new FormData(event.currentTarget);
@@ -142,7 +142,7 @@ function FormStep({
             onSubmit(submittedEmail);
           }}
         >
-          <div className="flex flex-col gap-5 sm:flex-row sm:gap-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
             <Field
               id="demo-nome"
               label="Nome"
@@ -259,7 +259,7 @@ function Field({
 }) {
   return (
     <div className="flex flex-1 flex-col">
-      <div className="flex h-16 flex-col justify-center gap-1 rounded-lg border border-nuki-cinza-borda bg-nuki-branco px-3 py-2.5 transition-colors focus-within:border-nuki-verde-02">
+      <div className="flex h-14 flex-col justify-center gap-1 rounded-lg border border-nuki-cinza-borda bg-nuki-branco px-3 py-2 transition-colors focus-within:border-nuki-verde-02">
         <label htmlFor={id} className="text-[12px] leading-none text-nuki-cinza-12">
           {label}
         </label>

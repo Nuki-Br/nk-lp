@@ -17,12 +17,12 @@ export function FaleComAGente() {
       />
 
       <div className=" mx-auto flex max-w-360 flex-col items-center justify-center gap-10 px-27 py-15">
-        <div className="flex w-[440px] flex-col items-center gap-8">
-          <h2 className="w-full text-center text-[48px] font-extrabold leading-[54px] tracking-[0.1px] text-nuki-branco">
+        <div className="flex w-110 flex-col items-center gap-8">
+          <h2 className="w-full text-center text-[42px] font-extrabold leading-[54px] tracking-[0.1px] text-nuki-branco">
             Fale com a gente!
           </h2>
 
-          <p className="w-full text-center text-[20px] font-normal leading-9 tracking-[0.1px] text-nuki-branco">
+          <p className="w-full text-center text-[18px] font-normal leading-9 tracking-[0.1px] text-nuki-branco">
             Ficou interessado? Nos mande uma mensagem
             <br />
             por e-mail ou nos contate por telefone!
@@ -34,8 +34,8 @@ export function FaleComAGente() {
               className="flex items-start gap-2 text-nuki-branco transition-opacity hover:opacity-80"
             >
               <EmailIcon className="size-5 shrink-0" />
-              <span className="whitespace-nowrap text-[20px] font-extrabold leading-5 tracking-[0.1px]">
-                nuki@email.com
+              <span className="whitespace-nowrap text-[18px] font-extrabold leading-5 tracking-[0.1px]">
+                contato@nukibr.com
               </span>
             </a>
 
@@ -47,12 +47,15 @@ export function FaleComAGente() {
             </span>
 
             <a
-              href="tel:0000000000"
+              href="https://wa.me/551531994490"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Conversar com a Nuki pelo WhatsApp"
               className="flex items-start gap-2 text-nuki-branco transition-opacity hover:opacity-80"
             >
               <PhoneIcon className="size-5 shrink-0" />
-              <span className="whitespace-nowrap text-[20px] font-extrabold leading-5 tracking-[0.1px]">
-                00 0000.0000
+              <span className="whitespace-nowrap text-[18px] font-extrabold leading-5 tracking-[0.1px]">
+                +55 15 3199-4490
               </span>
             </a>
           </div>

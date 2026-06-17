@@ -125,7 +125,7 @@ export default function RecursosPersonalizacaoPage() {
       </section>
 
       <section className="w-full bg-nuki-verde-03">
-        <div className="mx-auto flex w-full max-w-[1440px] flex-col-reverse items-start gap-10 px-6 py-12 sm:px-8 sm:py-14 md:px-12 md:py-16 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:px-16 lg:py-20 xl:px-[108px] xl:py-[88px]">
+        <div className="mx-auto flex w-full max-w-[1440px] flex-col-reverse items-start gap-10 px-6 py-12 sm:px-8 sm:py-14 md:px-12 md:py-16 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:py-20 lg:pl-16 lg:pr-0 xl:py-[88px] xl:pl-[108px] xl:pr-0">
           <div className="flex w-full flex-col gap-8 lg:w-[468px] lg:shrink-0">
             <div className="flex w-full flex-col gap-3">
               <p className="text-[14px] font-extrabold leading-6 text-nuki-verde-02 sm:text-[16px]">
@@ -578,17 +578,9 @@ function MenuRow({ icon, label }: { icon: string; label: string }) {
 
 function ControleDashboardMockup() {
   return (
-    <div className="relative w-full lg:flex-1 lg:max-w-[700px]">
-      <div className="relative aspect-[700/520] w-full">
-        <div className="absolute right-0 top-0 h-[78%] w-[80%] overflow-hidden rounded-l-[200px]">
-          <Image
-            src="/recursos-personalizacao/ca-banheiro-bg.png"
-            alt=""
-            fill
-            sizes="(max-width: 1024px) 80vw, 560px"
-            className="object-cover"
-          />
-        </div>
+    <div className="relative w-full lg:flex-1 lg:max-w-175">
+      <div className="relative aspect-700/520 w-full">
+
 
         <div className="absolute right-[2%] top-[4%] flex w-[55%] flex-col gap-4 rounded-[40px] bg-nuki-branco p-5 shadow-[2px_2px_5px_rgba(0,0,0,0.08)]">
           <div className="flex items-center justify-between gap-3">
@@ -623,11 +615,6 @@ function ControleDashboardMockup() {
             </span>
           </div>
         </div>
-
-        <button className="absolute right-[4%] top-[44%] flex items-center gap-2 rounded-full bg-nuki-verde-02 px-5 py-3 text-[12px] font-semibold text-nuki-branco shadow-md sm:text-[14px] md:text-[16px]">
-          <img src="/recursos-personalizacao/ic-plus.svg" alt="" className="size-4" />
-          <span>Adicionar empreendimento</span>
-        </button>
 
         <div className="absolute bottom-[6%] left-0 flex w-[60%] items-center gap-4 rounded-[40px] bg-nuki-branco px-5 py-4 shadow-[0_3px_3px_rgba(0,0,0,0.25)]">
           <div className="relative size-20 shrink-0">

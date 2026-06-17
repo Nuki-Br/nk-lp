@@ -4,7 +4,7 @@ import { SolicitarDemoButton } from "@/components/demo-modal";
 export function Footer() {
   return (
     <footer className="w-full bg-nuki-cinza-claro shadow-[0_10px_20.7px_0_rgba(0,0,0,0.25)]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start gap-8 px-6 py-12 sm:px-8 sm:py-14 md:flex-row md:items-center md:justify-between md:px-12 md:py-16 lg:h-[228px] lg:gap-[152px] lg:px-16 lg:py-0 xl:px-[108px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start gap-6 px-6 py-8 sm:px-8 sm:py-10 md:flex-row md:items-center md:justify-between md:px-12 md:py-10 lg:h-[160px] lg:gap-[152px] lg:px-16 lg:py-0 xl:px-[108px]">
         <a href="/" aria-label="Nuki" className="shrink-0">
           <img
             src="/footer/nuki-logo-horizontal-preto.png"
@@ -48,12 +48,12 @@ export function Footer() {
               >
                 Sobre a Nuki
               </Link>
-              <a
+              {/* <a
                 href="#"
                 className="text-[12px] font-extrabold leading-5 tracking-[0.15px] text-nuki-preto transition-colors hover:text-nuki-verde-02"
               >
                 Nuki Lab
-              </a>
+              </a> */}
             </nav>
 
             <div className="flex items-center gap-[15.25px]">

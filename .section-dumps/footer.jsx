@@ -1,4 +1,4 @@
-<div className="absolute bg-[var(--background,#f7f7f7)] bottom-[-1px] h-[228px] overflow-clip right-0 shadow-[0px_10px_20.7px_0px_rgba(0,0,0,0.25)] w-[1440px]" data-node-id="168:6514" data-name="Footer">
+<div className="absolute bg-(--background,#f7f7f7) -bottom-px h-50 overflow-clip right-0 shadow-[0px_10px_20.7px_0px_rgba(0,0,0,0.25)] w-360" data-node-id="168:6514" data-name="Footer">
   <div className="absolute content-stretch flex items-center justify-between left-[108px] top-[40px] w-[1224px]" data-node-id="168:6516" data-name="Content">
     <div className="content-stretch flex items-start relative shrink-0" data-node-id="168:6517" data-name="Logo">
       <div className="h-[60px] relative shrink-0 w-[122px]" data-node-id="168:6518" data-name="nuki_logo_horizontal_preto">

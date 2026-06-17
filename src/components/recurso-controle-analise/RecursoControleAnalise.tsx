@@ -78,7 +78,7 @@ export function RecursoControleAnalise() {
             </div>
           </div>
 
-          <div className="absolute bottom-4 left-4 w-[240px] max-sm:hidden lg:w-[290px]">
+          <div className="absolute bottom-4 left-4 w-60 max-sm:hidden lg:w-72.5">
             <div
               role="presentation"
               aria-hidden

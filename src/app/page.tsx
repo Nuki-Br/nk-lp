@@ -3,7 +3,7 @@ import { FaleComAGente } from "@/components/fale-com-a-gente";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { NavegandoNaPlataforma } from "@/components/navegando-na-plataforma";
-import { NukiLab } from "@/components/nuki-lab";
+// import { NukiLab } from "@/components/nuki-lab";
 import { RecursoControleAnalise } from "@/components/recurso-controle-analise";
 import { RecursoPersonalizacao } from "@/components/recurso-personalizacao";
 import { SobreANuki } from "@/components/sobre-a-nuki";
@@ -20,7 +20,7 @@ export default function Home() {
         <RecursoPersonalizacao />
         <RecursoControleAnalise />
         <SuaIdentidade />
-        <NukiLab />
+        {/* <NukiLab /> */}
         <SobreANuki />
         <FaleComAGente />
         <Footer />
