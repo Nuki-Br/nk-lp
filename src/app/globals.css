@@ -12,6 +12,16 @@
   --color-nuki-verde-02: #047676;
   --color-nuki-verde-03: #00363a;
   --color-nuki-verde-08: #025259;
+  --color-nuki-verde-suave: #e6fafa;
+  --color-nuki-cinza-medio: #595959;
+  --color-nuki-cinza-7: #8c8c8c;
+  --color-nuki-cinza-12: #141414;
+  --color-nuki-laranja: #e8713f;
+  --color-nuki-laranja-suave: #fdf1ec;
+  --color-nuki-status-roxo: #efdbff;
+  --color-nuki-status-verde: #d9f7be;
+  --color-nuki-status-laranja: #ffe7ba;
+  --color-nuki-status-vermelho: #ffefef;
 }
 
 body {

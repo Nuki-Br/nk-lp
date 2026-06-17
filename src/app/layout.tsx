@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 import { Topbar } from "@/components/topbar";
+import { DemoModalProvider } from "@/components/demo-modal";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -23,8 +24,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${manrope.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-nuki-cinza-claro text-nuki-preto">
-        <Topbar />
-        {children}
+        <DemoModalProvider>
+          <Topbar />
+          {children}
+        </DemoModalProvider>
       </body>
     </html>
   );

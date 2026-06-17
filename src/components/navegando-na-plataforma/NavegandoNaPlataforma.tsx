@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SolicitarDemoButton } from "@/components/demo-modal";
 
 const cards = [
   {
@@ -31,25 +32,24 @@ export function NavegandoNaPlataforma() {
         />
       </div>
 
-      <div className="relative mx-auto flex max-w-[1440px] flex-col items-center gap-24 px-[108px] py-32">
-        <h2 className="text-center text-[48px] leading-[54px] tracking-[0.1px] text-nuki-preto">
+      <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center gap-12 px-6 py-12 sm:gap-14 sm:px-8 sm:py-14 md:gap-16 md:px-12 md:py-16 lg:gap-20 lg:px-16 lg:py-20 xl:gap-24 xl:px-[108px] xl:py-[88px]">
+        <h2 className="text-center text-[28px] leading-8 tracking-[0.1px] text-nuki-preto sm:text-[32px] sm:leading-9 md:text-[36px] md:leading-10 lg:text-[42px] lg:leading-12 xl:text-[48px] xl:leading-[54px]">
           <span className="font-extrabold">Navegando</span>
           <span className="font-normal"> na plataforma</span>
         </h2>
 
         <div className="flex w-full flex-col items-center gap-16">
-          <div className="flex w-full gap-6">
+          <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3 md:gap-5 lg:gap-6">
             {cards.map((card) => (
               <Card key={card.number} {...card} />
             ))}
           </div>
 
-          <a
-            href="#demo"
+          <SolicitarDemoButton
             className="flex items-center justify-center rounded-full bg-nuki-preto px-6 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-nuki-verde-02"
           >
             Solicitar demo
-          </a>
+          </SolicitarDemoButton>
         </div>
       </div>
     </section>
@@ -66,18 +66,18 @@ function Card({
   description: string;
 }) {
   return (
-    <div className="flex h-[348px] flex-1 flex-col justify-between rounded-3xl bg-nuki-branco p-6">
+    <div className="flex min-h-[260px] flex-1 flex-col justify-between rounded-3xl bg-nuki-branco p-6 md:min-h-[300px] lg:h-[348px]">
       <div className="flex w-full items-center justify-between">
-        <span className="text-[32px] font-extrabold leading-9 tracking-[0.1px] text-nuki-preto">
+        <span className="text-[22px] font-extrabold tracking-[0.1px] text-nuki-preto sm:text-[24px] md:text-[28px] lg:text-[30px] xl:text-[32px] xl:leading-9">
           {number}
         </span>
         <ZoomOutMapIcon className="size-8 text-nuki-preto" />
       </div>
       <div className="flex flex-col gap-3">
-        <h3 className="text-[32px] font-extrabold leading-9 tracking-[0.1px] text-nuki-preto">
+        <h3 className="text-[22px] font-extrabold tracking-[0.1px] text-nuki-preto sm:text-[24px] md:text-[28px] lg:text-[30px] xl:text-[32px] xl:leading-9">
           {title}
         </h3>
-        <p className="text-[20px] leading-7 tracking-[0.1px] text-nuki-cinza">
+        <p className="text-[16px] leading-7 tracking-[0.1px] text-nuki-cinza sm:text-[17px] md:text-[18px] lg:text-[19px] xl:text-[20px] xl:leading-9">
           {description}
         </p>
       </div>

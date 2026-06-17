@@ -1,0 +1,278 @@
+"use client";
+
+import Image from "next/image";
+import { useEffect, useRef } from "react";
+import { useDemoModal } from "./DemoModalContext";
+
+const FOCUSABLE =
+  'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+export function DemoModal() {
+  const { isOpen, step, email, close, submit } = useDemoModal();
+  const cardRef = useRef<HTMLDivElement>(null);
+  const previouslyFocused = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    previouslyFocused.current = document.activeElement as HTMLElement | null;
+
+    const card = cardRef.current;
+    const getFocusable = () =>
+      card
+        ? Array.from(card.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
+            (el) => el.offsetParent !== null,
+          )
+        : [];
+
+    getFocusable()[0]?.focus();
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        close();
+        return;
+      }
+      if (event.key !== "Tab" || !card) return;
+
+      const items = getFocusable();
+      if (items.length === 0) return;
+
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement;
+
+      if (event.shiftKey) {
+        if (active === first || !card.contains(active)) {
+          event.preventDefault();
+          last.focus();
+        }
+      } else if (active === last || !card.contains(active)) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      previouslyFocused.current?.focus?.();
+    };
+  }, [isOpen, step, close]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4 sm:p-6"
+      onClick={(event) => {
+        if (event.target === event.currentTarget) close();
+      }}
+    >
+      <div
+        ref={cardRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="demo-modal-title"
+        tabIndex={-1}
+        className={
+          step === "form"
+            ? "relative flex max-h-[90vh] w-full max-w-[480px] flex-col overflow-hidden rounded-[32px] bg-nuki-branco shadow-[0_25px_60px_rgba(0,0,0,0.35)] outline-none md:max-w-[996px] md:flex-row md:rounded-l-[48px] md:rounded-r-[72px]"
+            : "relative flex max-h-[90vh] w-full max-w-[728px] flex-col overflow-hidden rounded-[32px] bg-nuki-branco shadow-[0_25px_60px_rgba(0,0,0,0.35)] outline-none md:rounded-[48px]"
+        }
+      >
+        {step === "form" ? (
+          <FormStep onSubmit={submit} onClose={close} />
+        ) : (
+          <SuccessStep email={email} onClose={close} />
+        )}
+      </div>
+    </div>
+  );
+}
+
+function FormStep({
+  onSubmit,
+  onClose,
+}: {
+  onSubmit: (email: string) => void;
+  onClose: () => void;
+}) {
+  return (
+    <>
+      <div className="relative hidden shrink-0 bg-nuki-cinza-borda md:block md:w-[444px]">
+        <Image
+          src="/demo-modal/predio.png"
+          alt="Empreendimento Nuki"
+          fill
+          sizes="444px"
+          className="object-cover"
+        />
+      </div>
+
+      <div className="flex flex-1 flex-col gap-8 overflow-y-auto px-6 py-8 sm:px-8 md:py-14 md:pl-14 md:pr-11">
+        <div className="flex flex-col gap-4">
+          <h2
+            id="demo-modal-title"
+            className="text-[32px] leading-tight tracking-[0.1px] text-nuki-preto sm:text-[40px] md:text-[48px] md:leading-[54px]"
+          >
+            <span className="font-extrabold">Solicite</span>{" "}
+            <span className="font-normal">a versão demo!</span>
+          </h2>
+          <p className="text-[16px] font-normal leading-7 tracking-[0.1px] text-nuki-preto sm:text-[18px] md:text-[20px] md:leading-8">
+            Adoraríamos te mostrar como a Nuki funciona.
+          </p>
+        </div>
+
+        <form
+          className="flex flex-col gap-8"
+          onSubmit={(event) => {
+            event.preventDefault();
+            const data = new FormData(event.currentTarget);
+            const submittedEmail = String(data.get("demo-email") ?? "").trim();
+            onSubmit(submittedEmail);
+          }}
+        >
+          <div className="flex flex-col gap-5 sm:flex-row sm:gap-8">
+            <Field
+              id="demo-nome"
+              label="Nome"
+              placeholder="Entre seu nome"
+              autoComplete="given-name"
+              required
+            />
+            <Field
+              id="demo-sobrenome"
+              label="Sobrenome"
+              placeholder="Entre seu sobrenome"
+              autoComplete="family-name"
+              required
+            />
+          </div>
+
+          <Field
+            id="demo-email"
+            label="Email"
+            type="email"
+            placeholder="Entre seu e-mail"
+            autoComplete="email"
+            required
+          />
+
+          <Field
+            id="demo-empresa"
+            label="Nome da empresa"
+            placeholder="Nome da sua empresa"
+            autoComplete="organization"
+            required
+          />
+
+          <label className="flex items-start gap-2 text-[14px] font-medium leading-snug text-nuki-cinza-medio">
+            <input
+              type="checkbox"
+              required
+              className="mt-0.5 size-4 shrink-0 rounded-[3px] border border-nuki-cinza-borda accent-nuki-verde-02"
+            />
+            <span>
+              Ao checar o box ao lado você está concordando com as{" "}
+              <span className="underline">políticas de privacidade</span> da
+              Nuki
+            </span>
+          </label>
+
+          <div className="flex items-center gap-3">
+            <button
+              type="submit"
+              className="flex items-center justify-center rounded-full bg-nuki-preto px-6 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-nuki-verde-02"
+            >
+              Solicitar demo
+            </button>
+            <button
+              type="button"
+              onClick={onClose}
+              className="flex items-center justify-center rounded-lg p-3 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-black/5"
+            >
+              Fechar
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
+  );
+}
+
+function SuccessStep({
+  email,
+  onClose,
+}: {
+  email: string;
+  onClose: () => void;
+}) {
+  const displayEmail = email || "seu e-mail";
+  return (
+    <div className="flex flex-col items-center gap-8 px-6 py-10 text-center sm:px-12 sm:py-14 md:px-20 md:py-16">
+      <h2
+        id="demo-modal-title"
+        className="text-[28px] font-extrabold leading-tight tracking-[0.1px] text-nuki-preto sm:text-[36px] md:text-[48px] md:leading-[54px]"
+      >
+        Versão demo solicitada!
+      </h2>
+      <p className="max-w-[520px] text-[16px] font-normal leading-7 tracking-[0.1px] text-nuki-preto sm:text-[18px] md:text-[20px] md:leading-8">
+        Perfeito! Entraremos em contato com o email{" "}
+        <span className="font-semibold">{displayEmail}</span> em até 72 horas.
+        Muito obrigado pelo seu interesse na plataforma Nuki :)
+      </p>
+      <button
+        type="button"
+        onClick={onClose}
+        className="flex items-center justify-center rounded-full bg-nuki-preto px-6 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-nuki-verde-02"
+      >
+        Fechar
+      </button>
+    </div>
+  );
+}
+
+function Field({
+  id,
+  label,
+  placeholder,
+  type = "text",
+  autoComplete,
+  required = false,
+}: {
+  id: string;
+  label: string;
+  placeholder: string;
+  type?: string;
+  autoComplete?: string;
+  required?: boolean;
+}) {
+  return (
+    <div className="flex flex-1 flex-col">
+      <div className="flex h-16 flex-col justify-center gap-1 rounded-lg border border-nuki-cinza-borda bg-nuki-branco px-3 py-2.5 transition-colors focus-within:border-nuki-verde-02">
+        <label htmlFor={id} className="text-[12px] leading-none text-nuki-cinza-12">
+          {label}
+        </label>
+        <input
+          id={id}
+          name={id}
+          type={type}
+          placeholder={placeholder}
+          autoComplete={autoComplete}
+          required={required}
+          className="w-full bg-transparent text-[14px] leading-none text-nuki-cinza-12 outline-none placeholder:text-nuki-cinza-7"
+        />
+      </div>
+    </div>
+  );
+}

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function SobreANuki() {
   return (
     <section className="relative w-full overflow-hidden bg-nuki-preto h-auto">
@@ -14,10 +16,10 @@ export function SobreANuki() {
         className="pointer-events-none absolute right-24 top-220 w-[200px] -translate-y-1/2 blur-[3px]"
       />
 
-      <div className="relative mx-auto max-w-[1440px] px-[108px] py-[300px]">
-        <div className="mx-auto flex w-[1016px] max-w-full items-start justify-center gap-8">
+      <div className="relative mx-auto max-w-360 px-27 pt-40 pb-120">
+        <div className="mx-auto flex w-254 max-w-full items-start justify-center gap-8">
           <div className="flex flex-1 flex-col items-start">
-            <h2 className="w-full text-[48px] leading-[54px] tracking-[0.1px] text-nuki-branco">
+            <h2 className="w-full text-[48px] leading-13.5 tracking-[0.1px] text-nuki-branco">
               <span className="font-normal">Sobre a </span>
               <span className="font-bold">Nuki</span>
             </h2>
@@ -36,12 +38,12 @@ export function SobreANuki() {
               </p>
             </div>
 
-            <a
-              href="#saiba-mais"
+            <Link
+              href="/conheca-nossa-historia"
               className="flex h-12 items-center justify-center rounded-full border-2 border-nuki-branco px-6 text-[16px] font-semibold text-nuki-branco transition-colors hover:bg-nuki-branco hover:text-nuki-preto"
             >
               Saiba mais
-            </a>
+            </Link>
           </div>
         </div>
       </div>

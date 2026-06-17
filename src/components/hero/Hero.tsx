@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SolicitarDemoButton } from "@/components/demo-modal";
 
 const ambientes = [
   { icon: "/hero/ic-weekend.svg", label: "Estar/Jantar/Circulação", state: "default" },
@@ -11,26 +12,41 @@ const ambientes = [
 export function Hero() {
   return (
     <section className="w-full bg-nuki-cinza-claro">
-      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between pl-[108px] pr-[99px] py-[88px]">
-        <div className="flex w-[416px] flex-col items-start justify-center gap-8">
-          <h1 className="text-[64px] font-extrabold leading-[64px] tracking-[0.1px] text-nuki-preto">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-6 py-12 sm:px-8 sm:py-14 md:px-12 md:py-16 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:px-16 lg:py-20 xl:pl-[108px] xl:pr-[99px] xl:py-[88px]">
+        <div className="flex w-full flex-col items-start justify-center gap-8 lg:w-[416px] lg:shrink-0">
+          <h1 className="text-[36px] font-extrabold leading-10 tracking-[0.1px] text-nuki-preto sm:text-[44px] sm:leading-12 md:text-[52px] md:leading-14 lg:text-[60px] lg:leading-[60px] xl:text-[64px] xl:leading-[64px]">
             Visualize, personalize e realize.
           </h1>
-          <p className="text-[20px] leading-9 tracking-[0.2px] text-nuki-cinza">
+          <p className="text-[16px] leading-7 tracking-[0.2px] text-nuki-cinza sm:text-[17px] md:text-[18px] lg:text-[19px] xl:text-[20px] xl:leading-9">
             A Nuki oferece uma jornada de personalização que transforma a
             experiência do seu cliente, permitindo que ele escolha acabamentos e
             customize o imóvel com total facilidade e fluidez, criando o lar dos
             sonhos com poucos cliques
           </p>
-          <a
-            href="#demo"
+          <SolicitarDemoButton
             className="flex items-center justify-center rounded-full bg-nuki-preto px-6 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-nuki-verde-02"
           >
             Solicitar demo
-          </a>
+          </SolicitarDemoButton>
         </div>
 
-        <div className="relative h-[716px] w-[696px] shrink-0">
+        {/* Mobile/Tablet right block (<lg): simplified image + floating card */}
+        <div className="relative w-full lg:hidden">
+          <div className="relative mx-auto w-full max-w-[429px] aspect-[429/631] overflow-hidden rounded-[80px] shadow-[0_25px_30.8px_rgba(0,0,0,0.25)] sm:rounded-[120px]">
+            <Image
+              src="/hero/ambiente-10.png"
+              alt="Ambiente personalizado"
+              fill
+              sizes="(max-width: 640px) 100vw, 429px"
+              className="object-cover"
+              priority
+            />
+          </div>
+          <CompositionCard className="absolute bottom-[-24px] left-1/2 -translate-x-1/2 sm:left-auto sm:right-4 sm:translate-x-0" />
+        </div>
+
+        {/* Desktop right block (lg+): preserve original composition intact */}
+        <div className="relative hidden h-[716px] w-[696px] shrink-0 lg:block">
           <div className="absolute left-0 top-[102px] h-[523px] w-[528px] -scale-y-100">
             <Image
               src="/hero/quadrado.png"

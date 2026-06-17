@@ -1,3 +1,5 @@
+import { SolicitarDemoButton } from "@/components/demo-modal";
+
 export function FaleComAGente() {
   return (
     <section className="relative flex items-center justify-center w-full min-h-screen overflow-hidden bg-nuki-preto">
@@ -56,12 +58,11 @@ export function FaleComAGente() {
           </div>
         </div>
 
-        <a
-          href="#demo"
+        <SolicitarDemoButton
           className="flex h-12 items-center justify-center rounded-full border-2 border-nuki-branco px-6 text-[16px] font-semibold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-nuki-branco hover:text-nuki-preto"
         >
           Solicitar demo
-        </a>
+        </SolicitarDemoButton>
       </div>
     </section>
   );
