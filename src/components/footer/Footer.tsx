@@ -58,14 +58,18 @@ export function Footer() {
 
             <div className="flex items-center gap-[15.25px]">
               <a
-                href="#"
+                href="https://www.instagram.com/nukibr/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="text-nuki-preto transition-colors hover:text-nuki-verde-02"
               >
                 <InstagramIcon className="size-[22.875px]" />
               </a>
               <a
-                href="#"
+                href="https://br.linkedin.com/company/nukibrasil"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="LinkedIn"
                 className="text-nuki-preto transition-colors hover:text-nuki-verde-02"
               >

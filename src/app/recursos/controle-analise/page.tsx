@@ -2,33 +2,38 @@ import Image from "next/image";
 import Link from "next/link";
 import { SolicitarDemoButton } from "@/components/demo-modal";
 import { Footer } from "@/components/footer";
+import { Topbar } from "@/components/topbar";
 import { EstamosAquiAccordion } from "./EstamosAquiAccordion";
 
 export default function RecursosControleAnalisePage() {
   return (
-    <main className="flex flex-col bg-nuki-branco">
-      <div className="w-full bg-nuki-branco">
-        <div className="mx-auto w-full max-w-[1440px] px-6 pt-4 sm:px-8 md:px-12 lg:px-16 xl:px-[108px]">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-[14px] font-semibold text-nuki-cinza-medio transition-colors hover:text-nuki-preto"
-          >
-            <ChevronLeftIcon className="size-4" />
-            Início
-          </Link>
-        </div>
+    <>
+      <div className="bg-nuki-verde-03">
+        <Topbar />
       </div>
-
-      <section className="w-full bg-nuki-branco">
-        <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-3 px-6 pt-8 text-center sm:px-8 md:px-12 md:pt-12 lg:px-16 xl:px-[108px] xl:pt-16">
-          <p className="text-[14px] font-extrabold leading-6 tracking-[0.1px] text-nuki-verde-08">
-            RECURSO
-          </p>
-          <h1 className="text-[36px] font-extrabold leading-10 tracking-[0.1px] text-nuki-preto sm:text-[42px] sm:leading-12 md:text-[48px] md:leading-[54px] lg:text-[54px] lg:leading-[60px] xl:text-[60px] xl:leading-[66px]">
-            Controle e análise
-          </h1>
+      <main className="flex flex-col bg-nuki-branco">
+        <div className="w-full bg-nuki-verde-03">
+          <div className="mx-auto w-full max-w-[1440px] px-6 pt-4 sm:px-8 md:px-12 lg:px-16 xl:px-[108px]">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 text-[14px] font-semibold text-nuki-branco/70 transition-colors hover:text-nuki-branco"
+            >
+              <ChevronLeftIcon className="size-4" />
+              Início
+            </Link>
+          </div>
         </div>
-      </section>
+
+        <section className="w-full bg-nuki-verde-03">
+          <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-3 px-6 pt-8 text-center sm:px-8 md:px-12 md:pt-12 lg:px-16 xl:px-[108px] xl:pt-16">
+            <p className="text-[14px] font-extrabold leading-6 tracking-[0.1px] text-nuki-verde-02">
+              RECURSO
+            </p>
+            <h1 className="text-[36px] font-extrabold leading-10 tracking-[0.1px] text-nuki-branco sm:text-[42px] sm:leading-12 md:text-[48px] md:leading-[54px] lg:text-[54px] lg:leading-[60px] xl:text-[60px] xl:leading-[66px]">
+              Controle e análise
+            </h1>
+          </div>
+        </section>
 
       <section className="relative w-full bg-nuki-verde-03 overflow-hidden">
         <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-12 px-6 py-12 sm:px-8 sm:py-14 md:px-12 md:py-16 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:px-16 lg:py-20 xl:px-[108px] xl:py-[88px]">
@@ -180,8 +185,9 @@ export default function RecursosControleAnalisePage() {
         </div>
       </section>
 
-      <Footer />
-    </main>
+        <Footer />
+      </main>
+    </>
   );
 }
 

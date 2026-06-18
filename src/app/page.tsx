@@ -9,10 +9,13 @@ import { RecursoPersonalizacao } from "@/components/recurso-personalizacao";
 import { SobreANuki } from "@/components/sobre-a-nuki";
 import { SobrePlataforma } from "@/components/sobre-plataforma";
 import { SuaIdentidade } from "@/components/sua-identidade";
+import { Topbar } from "@/components/topbar";
 
 export default function Home() {
   return (
-    <main className="flex flex-1 flex-col">
+    <>
+      <Topbar />
+      <main className="flex flex-1 flex-col">
         <Hero />
         <SobrePlataforma />
         <CarrosselLogos />
@@ -24,6 +27,7 @@ export default function Home() {
         <SobreANuki />
         <FaleComAGente />
         <Footer />
-    </main>
+      </main>
+    </>
   );
 }

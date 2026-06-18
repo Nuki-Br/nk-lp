@@ -3,196 +3,214 @@ import Link from "next/link";
 import { CarrosselLogos } from "@/components/carrossel-logos";
 import { SolicitarDemoButton } from "@/components/demo-modal";
 import { Footer } from "@/components/footer";
+import { Topbar } from "@/components/topbar";
 
 export default function ConhecaNossaHistoriaPage() {
   return (
-    <main className="flex flex-col">
-      {/* ===== História (fundo preto) ===== */}
-      <section className="relative w-full overflow-hidden bg-nuki-preto">
-        {/* Decorações pearl */}
-        <Image
-          src="/conheca-nossa-historia/quadradinho-pearl.png"
-          alt=""
-          aria-hidden
-          width={195}
-          height={193}
-          className="pointer-events-none absolute right-[6%] top-[8%] w-[120px] rotate-180 opacity-90 blur-[7px] sm:w-[150px] lg:w-[195px]"
-        />
-        <Image
-          src="/conheca-nossa-historia/quadradinho-pearl.png"
-          alt=""
-          aria-hidden
-          width={521}
-          height={515}
-          className="pointer-events-none absolute -left-24 top-[38%] w-[260px] opacity-90 blur-[7px] lg:w-[400px] xl:w-[521px]"
-        />
-        <Image
-          src="/conheca-nossa-historia/quadradinho-pearl.png"
-          alt=""
-          aria-hidden
-          width={382}
-          height={378}
-          className="pointer-events-none absolute right-[1%] top-[70%] w-[180px] opacity-90 blur-[7px] lg:w-[300px] xl:w-[382px]"
-        />
+    <>
+      <div className="bg-nuki-preto">
+        <Topbar />
+      </div>
+      <main className="flex flex-col">
+        {/* ===== História (fundo preto) ===== */}
+        <section className="relative w-full overflow-hidden bg-nuki-preto">
+          {/* Decorações pearl */}
+          <Image
+            src="/conheca-nossa-historia/quadradinho-pearl.png"
+            alt=""
+            aria-hidden
+            width={195}
+            height={193}
+            className="pointer-events-none absolute right-[6%] top-[8%] w-[120px] rotate-180 opacity-90 blur-[7px] sm:w-[150px] lg:w-[195px]"
+          />
+          <Image
+            src="/conheca-nossa-historia/quadradinho-pearl.png"
+            alt=""
+            aria-hidden
+            width={521}
+            height={515}
+            className="pointer-events-none absolute -left-24 top-[38%] w-[260px] opacity-90 blur-[7px] lg:w-[400px] xl:w-[521px]"
+          />
+          <Image
+            src="/conheca-nossa-historia/quadradinho-pearl.png"
+            alt=""
+            aria-hidden
+            width={382}
+            height={378}
+            className="pointer-events-none absolute right-[1%] top-[70%] w-[180px] opacity-90 blur-[7px] lg:w-[300px] xl:w-[382px]"
+          />
 
-        <div className="relative mx-auto w-full max-w-[1440px] px-6 pb-16 pt-4 sm:px-8 sm:pb-20 md:px-12 md:pb-24 lg:px-16 lg:pb-28 xl:px-[108px] xl:pb-[120px]">
-          <Link
-            href="/"
-            className="inline-flex h-10 items-center gap-2 rounded-full px-4 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-white/10"
-          >
-            <ChevronLeftIcon className="size-5" />
-            Voltar
-          </Link>
+          <div className="relative mx-auto w-full max-w-[1440px] px-6 pb-16 pt-4 sm:px-8 sm:pb-20 md:px-12 md:pb-24 lg:px-16 lg:pb-28 xl:px-[108px] xl:pb-[120px]">
+            <Link
+              href="/"
+              className="inline-flex h-10 items-center gap-2 rounded-full px-4 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-white/10"
+            >
+              <ChevronLeftIcon className="size-5" />
+              Voltar
+            </Link>
 
-          <h1 className="mt-6 text-center text-[28px] font-normal leading-tight tracking-[0.1px] text-nuki-branco sm:text-[32px] md:text-[36px] lg:text-[42px] xl:text-[48px] xl:leading-[54px]">
-            Conheça nossa <span className="font-extrabold">história</span>
-          </h1>
+            <h1 className="mt-6 text-center text-[28px] font-normal leading-tight tracking-[0.1px] text-nuki-branco sm:text-[32px] md:text-[36px] lg:text-[42px] xl:text-[48px] xl:leading-[54px]">
+              Conheça nossa <span className="font-extrabold">história</span>
+            </h1>
 
-          <div className="mt-14 flex flex-col gap-16 sm:mt-16 sm:gap-20 md:mt-20 md:gap-24 lg:gap-28 xl:mt-24 xl:gap-32">
-            {/* Linha 1 — texto (esq) / imagem pill (dir) */}
-            <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
-              <StoryText
-                title="Como começamos"
-                lead="Texto sobre como começamos e como tivemos essa ideia."
-              >
-                Lorem ipsum dolor sit amet consectetur. Eget elementum eget
-                pellentesque nunc ut elementum. Lorem ipsum dolomet consectetur.
-                Lorem ipsum dolor sit ametr.
-              </StoryText>
+            <div className="mt-14 flex flex-col gap-16 sm:mt-16 sm:gap-20 md:mt-20 md:gap-24 lg:gap-28 xl:mt-24 xl:gap-32">
+              {/* Linha 1 — texto (esq) / imagem pill (dir) */}
+              <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+                <StoryText
+                  title="Como começamos"
+                  lead="Da percepção de uma dor real até a primeira versão da plataforma."
+                >
+                  A Nuki nasceu da observação de uma fricção comum entre
+                  construtoras e seus clientes: o processo de personalização de
+                  imóveis era manual, lento e sem visibilidade para ninguém.
+                  Reunimos profissionais com vivência em incorporação, tecnologia
+                  e design de produto para repensar essa jornada da escolha da
+                  planta até a assinatura digital dos contratos.
+                </StoryText>
 
-              <div className="relative mx-auto w-full max-w-[429px] lg:mx-0 lg:w-[429px] lg:shrink-0">
-                <div className="relative aspect-[429/631] w-full overflow-hidden rounded-[120px] shadow-[0_25px_30.8px_rgba(0,0,0,0.25)] sm:rounded-[160px] xl:rounded-[200px]">
-                  <Image
-                    src="/conheca-nossa-historia/sala-estar.png"
-                    alt="Sala de estar personalizada"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 429px"
-                    className="object-cover"
-                  />
+                <div className="relative mx-auto w-full max-w-[429px] lg:mx-0 lg:w-[429px] lg:shrink-0">
+                  <div className="relative aspect-[429/631] w-full overflow-hidden rounded-[120px] shadow-[0_25px_30.8px_rgba(0,0,0,0.25)] sm:rounded-[160px] xl:rounded-[200px]">
+                    <Image
+                      src="/conheca-nossa-historia/sala-estar.png"
+                      alt="Sala de estar personalizada"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 429px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <span className="absolute left-[-6%] top-[12%] z-10 flex aspect-square w-[18%] items-center justify-center rounded-[22%] bg-nuki-branco shadow-[0_4px_2px_rgba(0,0,0,0.25)]">
+                    <RollerIcon className="w-[56%] text-nuki-verde-02" />
+                  </span>
+                  <span className="absolute bottom-[4%] right-[-8%] z-10 flex aspect-square w-[26%] items-center justify-center rounded-[20%] bg-nuki-verde-02">
+                    <WeekendIcon className="w-[48%] text-nuki-branco" />
+                  </span>
                 </div>
-                <span className="absolute left-[-6%] top-[12%] z-10 flex aspect-square w-[18%] items-center justify-center rounded-[22%] bg-nuki-branco shadow-[0_4px_2px_rgba(0,0,0,0.25)]">
-                  <RollerIcon className="w-[56%] text-nuki-verde-02" />
-                </span>
-                <span className="absolute bottom-[4%] right-[-8%] z-10 flex aspect-square w-[26%] items-center justify-center rounded-[20%] bg-nuki-verde-02">
-                  <WeekendIcon className="w-[48%] text-nuki-branco" />
-                </span>
-              </div>
-            </div>
-
-            {/* Linha 2 — imagem (esq, sangra) / texto (dir) */}
-            <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
-              <div className="relative w-full lg:-ml-16 lg:flex-1 xl:-ml-[108px]">
-                <div className="relative aspect-[722/709] w-full overflow-hidden rounded-[48px] shadow-[0_29px_35.8px_rgba(0,0,0,0.25)] lg:rounded-l-none lg:rounded-r-[200px] xl:rounded-r-[400px]">
-                  <Image
-                    src="/conheca-nossa-historia/textura-3d.png"
-                    alt="Detalhe arquitetônico"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 722px"
-                    className="object-cover"
-                  />
-                </div>
-                <span className="absolute bottom-[-6%] left-[28%] z-10 flex aspect-square w-[13%] items-center justify-center rounded-[20%] bg-nuki-verde-02">
-                  <ViewInArIcon className="w-[58%] text-nuki-branco" />
-                </span>
               </div>
 
-              <StoryText
-                title="Nosso time"
-                lead="Texto sobre quem compõe nosso time e mini resumo das nossas expertises."
-              >
-                Lorem ipsum dolor sit amet consectetur. Eget elementum eget
-                pellentesque nunc ut elementum. Lorem ipsum dolomet consectetur.
-                Lorem ipsum dolor sit ametr.
-              </StoryText>
-            </div>
-
-            {/* Linha 3 — texto (esq) / imagem círculo (dir) */}
-            <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
-              <StoryText
-                title="Nossa missão"
-                lead="Texto sobre porque acreditamos que podemos te ajudar."
-              >
-                Lorem ipsum dolor sit amet consectetur. Eget elementum eget
-                pellentesque nunc ut elementum. Lorem ipsum dolomet consectetur.
-                Lorem ipsum dolor sit ametr.
-              </StoryText>
-
-              <div className="relative mx-auto w-full max-w-[498px] lg:mx-0 lg:w-[498px] lg:shrink-0">
-                <div className="relative aspect-square w-full overflow-hidden rounded-full">
-                  <Image
-                    src="/conheca-nossa-historia/cozinha.png"
-                    alt="Cozinha personalizada"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 498px"
-                    className="object-cover"
-                  />
+              {/* Linha 2 — imagem (esq, sangra) / texto (dir) */}
+              <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
+                <div className="relative w-full lg:-ml-16 lg:flex-1 xl:-ml-[108px]">
+                  <div className="relative aspect-[722/709] w-full overflow-hidden rounded-[48px] shadow-[0_29px_35.8px_rgba(0,0,0,0.25)] lg:rounded-l-none lg:rounded-r-[200px] xl:rounded-r-[400px]">
+                    <Image
+                      src="/conheca-nossa-historia/textura-3d.png"
+                      alt="Detalhe arquitetônico"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 722px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <span className="absolute bottom-[-6%] left-[28%] z-10 flex aspect-square w-[13%] items-center justify-center rounded-[20%] bg-nuki-verde-02">
+                    <ViewInArIcon className="w-[58%] text-nuki-branco" />
+                  </span>
                 </div>
-                <TextureIcon className="absolute right-[1%] top-[-3%] z-10 w-[26%] text-nuki-verde-02" />
+
+                <StoryText
+                  title="Nosso time"
+                  lead="Tecnologia, design e mercado imobiliário trabalhando juntos."
+                >
+                  Somos um time multidisciplinar que combina expertise técnica em
+                  desenvolvimento de software com vivência prática do dia a dia
+                  da incorporação. Trabalhamos lado a lado com arquitetos,
+                  engenheiros, gestores de empreendimento e times comerciais
+                  para entregar uma plataforma que faz sentido para quem vende,
+                  gerencia e personaliza o imóvel.
+                </StoryText>
+              </div>
+
+              {/* Linha 3 — texto (esq) / imagem círculo (dir) */}
+              <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+                <StoryText
+                  title="Nossa missão"
+                  lead="Personalização como diferencial para o cliente final e para a construtora."
+                >
+                  Acreditamos que escolher cada detalhe do próprio lar deveria
+                  ser uma experiência prazerosa, não burocrática. Nossa missão é
+                  dar autonomia ao cliente final e simplificar a operação das
+                  construtoras, transformando a personalização em uma vantagem
+                  competitiva e em um diferencial visível na satisfação de quem
+                  compra um imóvel.
+                </StoryText>
+
+                <div className="relative mx-auto w-full max-w-[498px] lg:mx-0 lg:w-[498px] lg:shrink-0">
+                  <div className="relative aspect-square w-full overflow-hidden rounded-full">
+                    <Image
+                      src="/conheca-nossa-historia/cozinha.png"
+                      alt="Cozinha personalizada"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 498px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <TextureIcon className="absolute right-[1%] top-[-3%] z-10 w-[26%] text-nuki-verde-02" />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ===== Carrossel de logos ===== */}
-      <CarrosselLogos />
+        {/* ===== Carrossel de logos ===== */}
+        <CarrosselLogos />
 
-      {/* ===== Fale com a gente (fundo claro) ===== */}
-      <section className="relative w-full overflow-hidden bg-nuki-cinza-claro">
-        <Image
-          src="/conheca-nossa-historia/simbolo-pearl.png"
-          alt=""
-          aria-hidden
-          width={827}
-          height={588}
-          className="pointer-events-none absolute -bottom-10 -left-32 w-[380px] opacity-70 lg:w-[580px] xl:w-[760px]"
-        />
+        {/* ===== Fale com a gente (fundo claro) ===== */}
+        <section className="relative w-full overflow-hidden bg-nuki-cinza-claro">
+          <Image
+            src="/conheca-nossa-historia/simbolo-pearl.png"
+            alt=""
+            aria-hidden
+            width={827}
+            height={588}
+            className="pointer-events-none absolute -bottom-10 -left-32 w-[380px] opacity-70 lg:w-[580px] xl:w-[760px]"
+          />
 
-        <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center gap-10 px-6 py-16 text-center sm:px-8 sm:py-20 md:px-12 md:py-24 lg:px-16 xl:px-[108px] xl:py-28">
-          <div className="flex w-full max-w-[440px] flex-col items-center gap-6 xl:gap-8">
-            <h2 className="text-[28px] font-extrabold leading-tight tracking-[0.1px] text-nuki-preto sm:text-[32px] md:text-[36px] lg:text-[42px] xl:text-[48px] xl:leading-[54px]">
-              Fale com a gente!
-            </h2>
-            <p className="text-[16px] font-normal leading-7 tracking-[0.1px] text-nuki-preto sm:text-[17px] md:text-[18px] lg:text-[19px] xl:text-[20px] xl:leading-9">
-              Ficou interessado? Nos mande uma mensagem
-              <br />
-              por e-mail ou nos contate por telefone!
-            </p>
-            <div className="flex w-full items-center justify-between p-2.5">
-              <a
-                href="mailto:nuki@email.com"
-                className="flex items-center gap-2 text-nuki-preto transition-opacity hover:opacity-70"
-              >
-                <EmailIcon className="size-5 shrink-0" />
-                <span className="whitespace-nowrap text-[16px] font-extrabold leading-5 tracking-[0.1px] sm:text-[18px] xl:text-[20px]">
-                  nuki@email.com
+          <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center gap-10 px-6 py-16 text-center sm:px-8 sm:py-20 md:px-12 md:py-24 lg:px-16 xl:px-[108px] xl:py-28">
+            <div className="flex w-full max-w-[440px] flex-col items-center gap-6 xl:gap-8">
+              <h2 className="text-[28px] font-extrabold leading-tight tracking-[0.1px] text-nuki-preto sm:text-[32px] md:text-[36px] lg:text-[42px] xl:text-[48px] xl:leading-[54px]">
+                Fale com a gente!
+              </h2>
+              <p className="text-[16px] font-normal leading-7 tracking-[0.1px] text-nuki-preto sm:text-[17px] md:text-[18px] lg:text-[19px] xl:text-[20px] xl:leading-9">
+                Ficou interessado? Nos mande uma mensagem
+                <br />
+                por e-mail ou nos contate por telefone!
+              </p>
+              <div className="flex w-full items-center justify-between p-2.5">
+                <a
+                  href="mailto:nuki@email.com"
+                  className="flex items-center gap-2 text-nuki-preto transition-opacity hover:opacity-70"
+                >
+                  <EmailIcon className="size-5 shrink-0" />
+                  <span className="whitespace-nowrap text-[16px] font-extrabold leading-5 tracking-[0.1px] sm:text-[18px] xl:text-[20px]">
+                    contato@nukibr.com
+                  </span>
+                </a>
+                <span aria-hidden className="px-1 text-[20px] font-normal text-nuki-preto">
+                  |
                 </span>
-              </a>
-              <span aria-hidden className="px-1 text-[20px] font-normal text-nuki-preto">
-                |
-              </span>
-              <a
-                href="tel:0000000000"
-                className="flex items-center gap-2 text-nuki-preto transition-opacity hover:opacity-70"
-              >
-                <PhoneIcon className="size-5 shrink-0" />
-                <span className="whitespace-nowrap text-[16px] font-extrabold leading-5 tracking-[0.1px] sm:text-[18px] xl:text-[20px]">
-                  00 0000.0000
-                </span>
-              </a>
+                <a
+                  href="https://wa.me/551531994490"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Conversar com a Nuki pelo WhatsApp"
+                  className="flex items-center gap-2 text-nuki-preto transition-opacity hover:opacity-70"
+                >
+                  <PhoneIcon className="size-5 shrink-0" />
+                  <span className="whitespace-nowrap text-[16px] font-extrabold leading-5 tracking-[0.1px] sm:text-[18px] xl:text-[20px]">
+                    +55 15 3199-4490
+                  </span>
+                </a>
+              </div>
             </div>
+
+            <SolicitarDemoButton
+              className="flex items-center justify-center rounded-full bg-nuki-preto px-6 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-nuki-verde-02"
+            >
+              Solicitar demo
+            </SolicitarDemoButton>
           </div>
+        </section>
 
-          <SolicitarDemoButton
-            className="flex items-center justify-center rounded-full bg-nuki-preto px-6 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-nuki-verde-02"
-          >
-            Solicitar demo
-          </SolicitarDemoButton>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+        <Footer />
+      </main>
+    </>
   );
 }
 

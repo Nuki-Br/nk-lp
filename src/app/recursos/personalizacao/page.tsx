@@ -2,13 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { SolicitarDemoButton } from "@/components/demo-modal";
 import { Footer } from "@/components/footer";
+import { Topbar } from "@/components/topbar";
 import { LiberdadeAccordion } from "./LiberdadeAccordion";
 
 export default function RecursosPersonalizacaoPage() {
   return (
-    <main className="flex flex-col bg-nuki-branco">
-      <div className="w-full bg-nuki-branco">
-        <div className="mx-auto w-full max-w-[1440px] px-6 pt-4 sm:px-8 md:px-12 lg:px-16 xl:px-[108px]">
+    <>
+      <div className="bg-[#ececeb]">
+        <Topbar />
+      </div>
+      <main className="flex flex-col bg-nuki-branco">
+        <div className="w-full bg-[#ececeb]">
+        <div className="mx-auto w-full max-w-360 px-6 pt-4 sm:px-8 md:px-12 lg:px-16 xl:px-27">
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-[14px] font-semibold text-nuki-cinza-medio transition-colors hover:text-nuki-preto"
@@ -19,8 +24,8 @@ export default function RecursosPersonalizacaoPage() {
         </div>
       </div>
 
-      <section className="w-full bg-nuki-branco">
-        <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-3 px-6 pt-8 text-center sm:px-8 md:px-12 md:pt-12 lg:px-16 xl:px-[108px] xl:pt-16">
+      <section className="w-full bg-[#ececeb]">
+        <div className="mx-auto flex w-full max-w-360 flex-col items-center gap-3 px-6 pt-8 text-center sm:px-8 md:px-12 md:pt-12 lg:px-16 xl:px-[108px] xl:pt-16">
           <p className="text-[14px] font-extrabold leading-6 tracking-[0.1px] text-nuki-verde-08">
             RECURSO
           </p>
@@ -34,7 +39,7 @@ export default function RecursosPersonalizacaoPage() {
         </div>
       </section>
 
-      <section className="w-full bg-nuki-branco">
+      <section className="w-full bg-[#ececeb]">
         <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start gap-10 px-6 py-12 sm:px-8 sm:py-14 md:px-12 md:py-16 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:px-16 lg:py-20 xl:px-[108px] xl:py-[88px]">
           <div className="flex w-full flex-col gap-8 lg:flex-1">
             <h2 className="text-[28px] font-extrabold leading-8 tracking-[0.1px] text-nuki-preto sm:text-[32px] sm:leading-9 md:text-[36px] md:leading-10 lg:text-[42px] lg:leading-12 xl:text-[48px] xl:leading-[54px]">
@@ -153,101 +158,104 @@ export default function RecursosPersonalizacaoPage() {
         </div>
       </section>
 
-      <Footer />
-    </main>
+        <Footer />
+      </main>
+    </>
   );
 }
 
 function HeroAmbientesCozinhaMockup() {
   return (
-    <div className="relative w-full overflow-hidden rounded-[36px] bg-nuki-cinza-borda shadow-[0_4px_4px_rgba(0,0,0,0.25)] lg:flex-1 lg:max-w-[600px]">
+    <div className="relative w-full lg:flex-1 lg:max-w-[600px]">
       <div className="relative aspect-[600/766] w-full">
-        <Image
-          src="/recursos-personalizacao/hero-cozinha-foto.png"
-          alt=""
-          fill
-          sizes="(max-width: 1024px) 100vw, 600px"
-          className="object-cover"
-        />
-
-        <div className="absolute left-0 top-0 flex h-full w-[12.5%] flex-col items-center gap-3 rounded-tr-[36px] border-l border-nuki-cinza-borda bg-nuki-branco py-3">
-          <div className="flex w-full flex-col items-center gap-1 px-1">
-            <div className="h-[30px] w-[40px] rounded-md bg-[#d9d9d9]/40" />
-            <p className="text-center text-[8px] text-nuki-cinza-medio/40">Seu logo</p>
-          </div>
-          <div className="border-t border-nuki-cinza-borda" />
-          <div className="flex flex-col items-center gap-4 py-3">
-            <div className="flex flex-col items-center gap-1 px-2">
-              <img src="/recursos-personalizacao/ic-view-in-ar.svg" alt="" className="size-4" />
-              <p className="text-[9px] text-nuki-preto">1. Planta</p>
-            </div>
-            <div className="flex w-full flex-col items-center gap-1 bg-nuki-cinza-claro px-2 py-2 border-r border-nuki-cinza-borda">
-              <DashboardIcon className="size-4 text-nuki-preto" />
-              <p className="text-[9px] text-nuki-preto">2. Ambientes</p>
-            </div>
-            <div className="flex flex-col items-center gap-1 px-2">
-              <img src="/recursos-personalizacao/ic-checkroom.svg" alt="" className="size-4" />
-              <p className="text-[9px] text-nuki-preto">3. Resumo</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute left-[12.5%] top-0 flex h-[7%] w-[33%] items-center border-b border-r border-nuki-cinza-borda bg-nuki-branco px-3 py-2">
-          <div className="flex flex-col gap-0.5">
-            <p className="text-[8px] text-nuki-cinza-medio">Torre A - Unidade 22</p>
-            <div className="flex items-center gap-1">
-              <div className="h-2 w-[80px] rounded-full bg-[#d9d9d9]/40" />
-              <img src="/recursos-personalizacao/ic-logout.svg" alt="" className="size-3" />
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute left-[12.5%] top-[7%] flex h-[80%] w-[33%] flex-col gap-2 border-r border-nuki-cinza-borda bg-nuki-branco p-3">
-          <div className="flex items-center gap-1">
-            <p className="text-[9px] font-bold text-nuki-cinza">Selecione um ambiente</p>
-            <div className="size-3 rounded-full bg-nuki-cinza-borda" />
-          </div>
-
-          <MenuItem icon="/recursos-personalizacao/ic-weekend.svg" selected />
-          <Divider />
-          <MenuItem icon="/recursos-personalizacao/ic-kitchen.svg" highlighted expanded />
-          <Divider />
-          <MenuItem icon="/recursos-personalizacao/ic-grass.svg" />
-          <Divider />
-          <MenuItem icon="/recursos-personalizacao/ic-bed.svg" />
-          <Divider />
-          <MenuItem icon="/recursos-personalizacao/ic-shower.svg" />
-          <Divider />
-          <MenuItem icon="/recursos-personalizacao/ic-checkroom.svg" />
-          <Divider />
-          <MenuItem icon="/recursos-personalizacao/ic-coffee.svg" />
-
-          <div className="mt-auto flex items-center justify-between rounded-md bg-nuki-laranja-suave px-2 py-1">
-            <div className="flex items-center gap-1">
-              <div className="size-2.5 rounded-sm bg-nuki-laranja" />
-              <p className="text-[7px] text-[#d5653c]">Prazo de acesso</p>
-            </div>
-            <div className="h-2 w-[40px] rounded-full bg-[#ffd7c7]" />
-          </div>
-        </div>
-
-        <div className="absolute bottom-[6%] left-[12.5%] flex h-[8%] w-[33%] flex-col gap-1 border-r border-t border-nuki-cinza-borda bg-nuki-branco p-2">
-          <div className="flex items-center justify-between">
-            <p className="text-[8px] text-nuki-cinza-medio">Valor Total</p>
-            <div className="flex items-center gap-1">
-              <p className="text-[8px] font-bold text-[#141414]">R$</p>
-              <div className="h-1.5 w-[40px] rounded-full bg-[#d9d9d9]/40" />
-            </div>
-          </div>
-          <button className="rounded-full bg-[#141414] py-1 text-[9px] text-nuki-branco">
-            Finalizar
-          </button>
-        </div>
-
-        <div className="absolute right-3 top-3 flex h-[12%] w-[24%] items-center justify-center overflow-hidden rounded-2xl bg-nuki-branco shadow-md">
+        <div className="absolute inset-0 overflow-hidden rounded-[36px] bg-nuki-cinza-borda shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
           <Image
-            src="/recursos-personalizacao/hero-planta-arquitetonica.png"
+            src="/recursos-personalizacao/hero-cozinha-foto.png"
             alt=""
+            fill
+            sizes="(max-width: 1024px) 100vw, 600px"
+            className="object-cover"
+          />
+
+          <div className="absolute left-0 top-0 flex h-full w-[12.5%] flex-col items-center gap-3 rounded-l-[36px] border-l border-nuki-cinza-borda bg-nuki-branco py-3">
+            <div className="flex w-full flex-col items-center gap-1 px-1">
+              <div className="h-[30px] w-[40px] rounded-md bg-[#d9d9d9]/40" />
+              <p className="text-center text-[8px] text-nuki-cinza-medio/40">Seu logo</p>
+            </div>
+            <div className="border-t border-nuki-cinza-borda" />
+            <div className="flex flex-col items-center gap-4 py-3">
+              <div className="flex flex-col items-center gap-1 px-2">
+                <img src="/recursos-personalizacao/ic-view-in-ar.svg" alt="" className="size-4" />
+                <p className="text-[9px] text-nuki-preto">1. Planta</p>
+              </div>
+              <div className="flex w-full flex-col items-center gap-1 bg-nuki-cinza-claro px-2 py-2 border-r border-nuki-cinza-borda">
+                <DashboardIcon className="size-4 text-nuki-preto" />
+                <p className="text-[9px] text-nuki-preto">2. Ambientes</p>
+              </div>
+              <div className="flex flex-col items-center gap-1 px-2">
+                <ShoppingCartIcon className="size-4 text-nuki-preto" />
+                <p className="text-[9px] text-nuki-preto">3. Resumo</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute left-[12.5%] top-0 flex h-[7%] w-[33%] items-center border-b border-r border-nuki-cinza-borda bg-nuki-branco px-3 py-2">
+            <div className="flex flex-col gap-0.5">
+              <p className="text-[8px] text-nuki-cinza-medio">Torre A - Unidade 22</p>
+              <div className="flex items-center gap-1">
+                <div className="h-2 w-[80px] rounded-full bg-[#d9d9d9]/40" />
+                <img src="/recursos-personalizacao/ic-logout.svg" alt="" className="size-3" />
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute left-[12.5%] top-[7%] flex h-[80%] w-[33%] flex-col gap-2 border-r border-nuki-cinza-borda bg-nuki-branco p-3">
+            <div className="flex items-center gap-1">
+              <p className="text-[9px] font-bold text-nuki-cinza">Selecione um ambiente</p>
+              <div className="size-3 rounded-full bg-nuki-cinza-borda" />
+            </div>
+
+            <MenuItem icon="/recursos-personalizacao/ic-weekend.svg" selected />
+            <Divider />
+            <MenuItem icon="/recursos-personalizacao/ic-kitchen.svg" highlighted expanded />
+            <Divider />
+            <MenuItem icon="/recursos-personalizacao/ic-grass.svg" />
+            <Divider />
+            <MenuItem icon="/recursos-personalizacao/ic-bed.svg" />
+            <Divider />
+            <MenuItem icon="/recursos-personalizacao/ic-shower.svg" />
+            <Divider />
+            <MenuItem icon="/recursos-personalizacao/ic-checkroom.svg" />
+            <Divider />
+            <MenuItem icon="/recursos-personalizacao/ic-coffee.svg" />
+
+            <div className="mt-auto flex items-center justify-between rounded-md bg-nuki-laranja-suave px-2 py-1">
+              <div className="flex items-center gap-1">
+                <div className="size-2.5 rounded-sm bg-nuki-laranja" />
+                <p className="text-[7px] text-[#d5653c]">Prazo de acesso</p>
+              </div>
+              <div className="h-2 w-[40px] rounded-full bg-[#ffd7c7]" />
+            </div>
+          </div>
+
+          <div className="absolute bottom-[6%] left-[12.5%] flex h-[8%] w-[33%] flex-col gap-1 border-r border-t border-nuki-cinza-borda bg-nuki-branco p-2">
+            <div className="flex items-center justify-between">
+              <p className="text-[8px] text-nuki-cinza-medio">Valor Total</p>
+              <div className="flex items-center gap-1">
+                <p className="text-[8px] font-bold text-[#141414]">R$</p>
+                <div className="h-1.5 w-[40px] rounded-full bg-[#d9d9d9]/40" />
+              </div>
+            </div>
+            <button className="rounded-full bg-[#141414] py-1 text-[9px] text-nuki-branco">
+              Finalizar
+            </button>
+          </div>
+        </div>
+
+        <div className="absolute -right-6 -top-4 flex h-[24%] w-[36%] items-center justify-center overflow-hidden rounded-2xl bg-nuki-branco shadow-md">
+          <Image
+            src="/recursos-personalizacao/planta-baixa-lp.png"
+            alt="Planta baixa do empreendimento"
             width={120}
             height={120}
             className="size-full object-contain"
@@ -257,29 +265,35 @@ function HeroAmbientesCozinhaMockup() {
           </div>
         </div>
 
-        <div className="absolute bottom-[16%] right-3 flex w-[37%] flex-col rounded-t-3xl bg-nuki-branco shadow-md">
-          <div className="flex items-center gap-1.5 border-b border-nuki-cinza-borda px-3 py-2">
-            <MenuOpenIcon className="size-3 rotate-180" />
-            <p className="text-[9px] font-bold text-[#262626]">Composições</p>
-            <div className="size-3 rounded-full bg-nuki-cinza-borda" />
+        <div className="absolute -bottom-4 -right-4 flex w-[46%] flex-col overflow-hidden rounded-3xl bg-nuki-branco shadow-md">
+          <div className="flex items-center gap-1.5 border-b border-nuki-cinza-borda px-3 py-2.5">
+            <MenuOpenIcon className="size-3.5 rotate-180" />
+            <p className="text-[11px] font-bold text-[#262626]">Composições</p>
+            <div className="size-3.5 rounded-full bg-nuki-cinza-borda" />
           </div>
-          <div className="flex flex-col gap-2 p-2">
-            <CompositionCard active />
-            <CompositionCard />
+          <div className="flex max-h-[200px] flex-col gap-2 overflow-y-auto p-2.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-nuki-cinza-borda">
+            {composicoes.map((c) => (
+              <CompositionCard
+                key={c.name}
+                name={c.name}
+                imageSrc={c.imageSrc}
+                isPremium={c.isPremium}
+                active={c.active}
+              />
+            ))}
           </div>
-        </div>
-
-        <div className="absolute bottom-3 right-3 flex w-[37%] items-center justify-between border-l border-t border-nuki-cinza-borda bg-nuki-branco p-2">
-          <div className="flex flex-col gap-1">
-            <p className="text-[7px] text-nuki-cinza-medio">Total cozinha / A.S.</p>
-            <div className="flex items-center gap-1">
-              <p className="text-[8px] text-nuki-preto">R$</p>
-              <div className="h-1.5 w-[30px] rounded-full bg-[#d9d9d9]/40" />
+          <div className="flex items-center justify-between border-t border-nuki-cinza-borda p-2.5">
+            <div className="flex flex-col gap-1">
+              <p className="text-[9px] text-nuki-cinza-medio">Total cozinha / A.S.</p>
+              <div className="flex items-center gap-1">
+                <p className="text-[10px] text-nuki-preto">R$</p>
+                <div className="h-2 w-[36px] rounded-full bg-[#d9d9d9]/40" />
+              </div>
             </div>
+            <button className="rounded-full border border-nuki-cinza px-2.5 py-1.5 text-[9px] text-[#141414]">
+              Salvar escolhas
+            </button>
           </div>
-          <button className="rounded-full border border-nuki-cinza px-2 py-1 text-[7px] text-[#141414]">
-            Salvar escolhas
-          </button>
         </div>
       </div>
     </div>
@@ -323,40 +337,81 @@ function Divider() {
   return <div className="h-px w-full bg-nuki-cinza-divisor" />;
 }
 
-function CompositionCard({ active }: { active?: boolean }) {
+const composicoes: {
+  name: string;
+  imageSrc: string;
+  isPremium?: boolean;
+  active?: boolean;
+}[] = [
+    {
+      name: "Padrão",
+      imageSrc: "/recursos-personalizacao/composicao-bege.jpg",
+      active: true,
+    },
+    {
+      name: "Composição 01",
+      imageSrc: "/recursos-personalizacao/composicao-marmore.jpg",
+      isPremium: true,
+    },
+    {
+      name: "Composição 02",
+      imageSrc: "/recursos-personalizacao/composicao-marfim.jpg",
+      isPremium: true,
+    },
+    {
+      name: "Composição 03",
+      imageSrc: "/recursos-personalizacao/composicao-onix.jpg",
+      isPremium: true,
+    },
+    {
+      name: "Composição 04",
+      imageSrc: "/recursos-personalizacao/composicao-munich.jpg",
+      isPremium: true,
+    },
+  ];
+
+function CompositionCard({
+  name,
+  imageSrc,
+  isPremium,
+  active,
+}: {
+  name: string;
+  imageSrc: string;
+  isPremium?: boolean;
+  active?: boolean;
+}) {
   return (
     <div
       className={`flex gap-2 rounded-2xl p-2 ${active ? "bg-nuki-cinza-claro" : "border border-nuki-cinza-divisor"}`}
     >
-      <div className="relative size-12 shrink-0 overflow-hidden rounded-xl">
+      <div className="relative size-14 shrink-0 overflow-hidden rounded-xl">
         <Image
-          src="/recursos-personalizacao/hero-material-preview.png"
+          src={imageSrc}
           alt=""
           fill
-          sizes="48px"
+          sizes="56px"
           className="object-cover"
         />
       </div>
       <div className="flex flex-1 flex-col gap-1">
         <div className="flex items-center gap-1">
-          <p className="text-[8px] font-bold text-[#141414]">
-            {active ? "Padrão" : "Composição 01"}
-          </p>
-          {!active && (
-            <img src="/recursos-personalizacao/ic-premium.svg" alt="" className="size-2.5" />
+          <p className="text-[10px] font-bold text-[#141414]">{name}</p>
+          {isPremium && (
+            <img src="/recursos-personalizacao/ic-premium.svg" alt="" className="size-3" />
           )}
         </div>
         <div className="flex items-center gap-0.5">
-          <p className="text-[7px] text-nuki-cinza-medio">R$</p>
-          <div className="h-1.5 w-[28px] rounded-full bg-[#d9d9d9]/40" />
+          <p className="text-[9px] text-nuki-cinza-medio">R$</p>
+          <div className="h-2 w-[34px] rounded-full bg-[#d9d9d9]/40" />
         </div>
-        <div className="h-1.5 w-full rounded-full bg-[#d9d9d9]/40" />
-        <div className="h-1.5 w-full rounded-full bg-[#d9d9d9]/40" />
-        <div className="h-1.5 w-[36%] rounded-full bg-[#d9d9d9]/40" />
+        <div className="h-2 w-full rounded-full bg-[#d9d9d9]/40" />
+        <div className="h-2 w-full rounded-full bg-[#d9d9d9]/40" />
+        <div className="h-2 w-[36%] rounded-full bg-[#d9d9d9]/40" />
         {!active && (
           <div className="flex items-end gap-0.5 pt-0.5">
-            <p className="text-[7px] underline">Ver mais</p>
-            <ChevronDownIconSmall className="size-2" />
+            <p className="text-[9px] underline">Ver mais</p>
+            <ChevronDownIconSmall className="size-2.5" />
           </div>
         )}
       </div>
@@ -366,43 +421,50 @@ function CompositionCard({ active }: { active?: boolean }) {
 
 function BemVindoMockup() {
   return (
-    <div className="relative w-full max-w-[1100px] overflow-hidden rounded-[40px] bg-nuki-branco shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
-      <div className="flex h-12 items-center border-b border-nuki-cinza-borda px-4 sm:px-6">
-        <div className="flex w-[60px] flex-col gap-1">
-          <div className="h-3 w-10 rounded bg-[#d9d9d9]/40" />
-          <div className="flex items-center gap-1">
-            <p className="text-[8px] text-nuki-cinza-medio">Mariana Rodrigues</p>
-            <img src="/recursos-personalizacao/ic-logout.svg" alt="" className="size-3" />
+    <div className="relative w-full max-w-[1100px]">
+      <div
+        aria-hidden
+        className="absolute -inset-x-6 -bottom-6 top-[32%] rounded-[40px] bg-[#ececeb] blur-[4px] sm:-inset-x-10 sm:-bottom-8 md:-inset-x-16 md:-bottom-10"
+      />
+
+      <div className="relative overflow-hidden rounded-t-[40px] bg-[#fafafa] shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
+        <div className="flex h-12 items-center border-b border-nuki-cinza-borda px-4 sm:px-6">
+          <div className="flex w-[60px] flex-col gap-1">
+            <div className="h-3 w-10 rounded bg-[#d9d9d9]/40" />
+            <div className="flex items-center gap-1">
+              <p className="text-[8px] text-nuki-cinza-medio">Mariana Rodrigues</p>
+              <img src="/recursos-personalizacao/ic-logout.svg" alt="" className="size-3" />
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="flex flex-col gap-6 p-6 sm:p-8 md:p-12">
-        <div className="flex flex-col gap-2">
-          <h3 className="text-[20px] font-bold leading-tight text-[#0d0d0d] sm:text-[28px] md:text-[32px] xl:text-[36px]">
-            Bem vindo(a) novamente!
-          </h3>
-          <p className="text-[12px] text-nuki-cinza sm:text-[14px] md:text-[16px] xl:text-[18px]">
-            Selecione um apartamento para personalizar
-          </p>
-        </div>
-
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center gap-4 text-[12px] text-nuki-cinza-medio sm:text-[14px] md:text-[16px]">
-            <FilterPill icon="/recursos-personalizacao/ic-sort.svg" label="Ordenar" />
-            <FilterPill icon="/recursos-personalizacao/ic-filter.svg" label="Ano de lançamento" />
-            <FilterPill icon="/recursos-personalizacao/ic-filter.svg" label="Etapa" />
+        <div className="flex flex-col gap-6 p-6 sm:p-8 md:p-12">
+          <div className="flex flex-col gap-2">
+            <h3 className="text-[20px] font-bold leading-tight text-[#0d0d0d] sm:text-[28px] md:text-[32px] xl:text-[36px]">
+              Bem vindo(a) novamente!
+            </h3>
+            <p className="text-[12px] text-nuki-cinza sm:text-[14px] md:text-[16px] xl:text-[18px]">
+              Selecione um apartamento para personalizar
+            </p>
           </div>
-          <button className="flex shrink-0 items-center gap-2 rounded-full bg-nuki-verde-02 px-4 py-2 text-[12px] font-semibold text-nuki-branco transition-colors hover:bg-nuki-verde-03 sm:text-[14px] md:px-5 md:text-[16px]">
-            <img src="/recursos-personalizacao/ic-plus.svg" alt="" className="size-4" />
-            <span>Adicionar empreendimento</span>
-          </button>
-        </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <ValeVerdeCard status="cadastro" />
-          <ValeVerdeCard status="finalizado" />
-          <ValeVerdeCard status="personalizacao" />
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-4 text-[12px] text-nuki-cinza-medio sm:text-[14px] md:text-[16px]">
+              <FilterPill icon="/recursos-personalizacao/ic-sort.svg" label="Ordenar" />
+              <FilterPill icon="/recursos-personalizacao/ic-filter.svg" label="Ano de lançamento" />
+              <FilterPill icon="/recursos-personalizacao/ic-filter.svg" label="Etapa" />
+            </div>
+            <button className="flex shrink-0 items-center gap-2 rounded-full bg-nuki-verde-02 px-4 py-2 text-[12px] font-semibold text-nuki-branco transition-colors hover:bg-nuki-verde-03 sm:text-[14px] md:px-5 md:text-[16px]">
+              <img src="/recursos-personalizacao/ic-plus.svg" alt="" className="size-4" />
+              <span>Adicionar empreendimento</span>
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <ValeVerdeCard status="cadastro" />
+            <ValeVerdeCard status="finalizado" />
+            <ValeVerdeCard status="personalizacao" />
+          </div>
         </div>
       </div>
     </div>
@@ -480,17 +542,19 @@ function AmigavelMockup() {
         aria-hidden
         className="pointer-events-none absolute -left-8 -top-4 w-[60%] opacity-90"
       />
-      <div className="relative aspect-[600/520] w-full overflow-hidden rounded-[48px]">
-        <div className="absolute inset-0 bg-nuki-verde-08" />
-        <Image
-          src="/recursos-personalizacao/amigavel-floor-bg.png"
-          alt=""
-          fill
-          sizes="(max-width: 1024px) 100vw, 600px"
-          className="object-cover opacity-60"
-        />
+      <div className="relative aspect-[600/520] w-full">
+        <div className="absolute inset-0 overflow-hidden rounded-[48px]">
+          <div className="absolute inset-0 bg-nuki-verde-08" />
+          <Image
+            src="/recursos-personalizacao/amigavel-floor-bg.png"
+            alt=""
+            fill
+            sizes="(max-width: 1024px) 100vw, 600px"
+            className="object-cover opacity-60"
+          />
+        </div>
 
-        <div className="absolute left-[6%] top-[5%] flex w-[58%] flex-col rounded-3xl bg-nuki-branco shadow-md">
+        <div className="absolute -left-4 -top-4 flex w-[58%] flex-col rounded-3xl border border-nuki-cinza-borda bg-nuki-branco shadow-md">
           <div className="flex items-center gap-2 border-b border-nuki-cinza-borda px-6 py-4">
             <MenuOpenIcon className="size-4 rotate-180" />
             <p className="flex-1 text-[13px] font-bold text-[#262626] md:text-[16px]">
@@ -539,7 +603,7 @@ function AmigavelMockup() {
           <FileDownloadIcon className="size-5 text-nuki-branco md:size-6" />
         </div>
 
-        <div className="absolute bottom-[4%] right-[2%] flex w-[52%] flex-col overflow-hidden rounded-2xl shadow-md">
+        <div className="absolute -bottom-4 -right-4 flex w-[52%] flex-col overflow-hidden rounded-2xl shadow-md">
           <div className="flex items-center justify-between bg-[#000] px-4 py-2">
             <p className="text-[13px] font-bold text-nuki-branco md:text-[16px]">Atenção!</p>
             <img src="/recursos-personalizacao/ic-info-gray.svg" alt="" className="size-5" />
@@ -687,6 +751,14 @@ function DashboardIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
+    </svg>
+  );
+}
+
+function ShoppingCartIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
     </svg>
   );
 }

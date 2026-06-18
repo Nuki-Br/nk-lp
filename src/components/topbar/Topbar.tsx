@@ -10,7 +10,7 @@ const links: TopbarLink[] = [
       { label: "Controle e análise", href: "/recursos/controle-analise" },
     ],
   },
-  { label: "Sobre a Nuki", href: "#sobre" },
+  { label: "Sobre a Nuki", href: "/conheca-nossa-historia" },
   // { label: "Nuki Lab", href: "#lab" },
 ];
 
