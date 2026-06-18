@@ -166,7 +166,7 @@ export default function RecursosPersonalizacaoPage() {
 
 function HeroAmbientesCozinhaMockup() {
   return (
-    <div className="relative w-full lg:flex-1 lg:max-w-[600px]">
+    <div className="relative w-full max-lg:hidden lg:flex-1 lg:max-w-[600px]">
       <div className="relative aspect-[600/766] w-full">
         <div className="absolute inset-0 overflow-hidden rounded-[36px] bg-nuki-cinza-borda shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
           <Image
@@ -533,7 +533,7 @@ function ValeVerdeCard({ status }: { status: keyof typeof statusStyles }) {
 
 function AmigavelMockup() {
   return (
-    <div className="relative w-full lg:flex-1 lg:max-w-[600px]">
+    <div className="relative w-full max-lg:hidden lg:flex-1 lg:max-w-[600px]">
       <Image
         src="/recursos-personalizacao/amigavel-pearl.png"
         alt=""
@@ -642,7 +642,7 @@ function MenuRow({ icon, label }: { icon: string; label: string }) {
 
 function ControleDashboardMockup() {
   return (
-    <div className="relative w-full lg:flex-1 lg:max-w-175">
+    <div className="relative w-full max-lg:hidden lg:flex-1 lg:max-w-175">
       <div className="relative aspect-700/520 w-full">
 
 

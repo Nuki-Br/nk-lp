@@ -13,7 +13,7 @@ export function CarrosselLogos() {
           <span className="font-extrabold">Construtoras</span>
           <span className="font-normal"> que acreditam no nosso trabalho</span>
         </h3>
-        <div className="grid w-full max-w-295 grid-cols-2 items-center justify-items-center gap-x-6 gap-y-8 md:flex md:grid-cols-4 md:justify-between md:gap-0">
+        <div className="grid w-full max-w-295 grid-cols-2 items-center justify-items-center gap-x-6 gap-y-8 md:flex md:justify-between md:gap-0">
           {logos.map((logo) => (
             <img
               key={logo.name}
@@ -21,7 +21,7 @@ export function CarrosselLogos() {
               alt={logo.name}
               width={logo.width}
               height={logo.height}
-              className="h-auto max-w-full"
+              className="h-auto max-w-[120px] sm:max-w-[150px] md:max-w-full"
             />
           ))}
         </div>

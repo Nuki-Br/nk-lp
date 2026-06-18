@@ -42,7 +42,7 @@ export function Hero() {
               priority
             />
           </div>
-          <CompositionCard className="absolute bottom-[-24px] left-1/2 -translate-x-1/2 sm:left-auto sm:right-4 sm:translate-x-0" />
+          <CompositionCard className="absolute bottom-0 left-1/2 -translate-x-1/2 sm:bottom-[-24px] sm:left-auto sm:right-4 sm:translate-x-0" />
         </div>
 
         {/* Desktop right block (lg+): preserve original composition intact */}
@@ -142,7 +142,7 @@ function SideMenu({ className }: { className?: string }) {
 function CompositionCard({ className }: { className?: string }) {
   return (
     <div
-      className={`${className ?? ""} flex w-[270px] items-center gap-4 rounded-[20px] bg-nuki-preto px-4 py-3 drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]`}
+      className={`${className ?? ""} flex w-[270px] max-sm:w-[248px] items-center gap-4 rounded-[20px] bg-nuki-preto px-4 py-3 drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]`}
     >
       <div className="size-[82px] shrink-0 overflow-hidden rounded-[20px]">
         <Image
@@ -169,7 +169,7 @@ function CompositionCard({ className }: { className?: string }) {
         </p>
         <button
           type="button"
-          className="flex items-end gap-1 text-[12px] font-bold text-nuki-verde-02"
+          className="flex items-end gap-1 py-1.5 text-[12px] font-bold text-nuki-verde-02"
         >
           Ver mais
           <img

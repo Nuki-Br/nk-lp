@@ -42,12 +42,11 @@ export function RecursoControleAnalise() {
             src="/recurso-controle-analise/ambiente-banheiro.png"
             alt="Ambiente personalizável com análise de dados"
             fill
-            sizes="(max-width: 1440px) 50vw, 700px"
+            sizes="(max-width: 1024px) 100vw, (max-width: 1440px) 50vw, 700px"
             className="object-contain object-right"
-            priority
           />
 
-          <div className="absolute right-4 top-4 flex w-[190px] flex-col gap-3 rounded-2xl bg-nuki-branco p-4 shadow-[0_8px_24px_rgba(0,0,0,0.12)] md:w-[210px] lg:w-[230px]">
+          <div className="absolute right-4 top-4 flex w-[190px] flex-col gap-3 rounded-2xl bg-nuki-branco p-4 shadow-[0_8px_24px_rgba(0,0,0,0.12)] max-lg:hidden md:w-[210px] lg:w-[230px]">
             <div className="flex items-center justify-between gap-2">
               <p className="text-[14px] font-bold text-nuki-preto">Vale Verde</p>
               <div className="relative h-7 w-12 shrink-0">
@@ -78,7 +77,7 @@ export function RecursoControleAnalise() {
             </div>
           </div>
 
-          <div className="absolute bottom-4 left-4 w-60 max-sm:hidden lg:w-72.5">
+          <div className="absolute bottom-4 left-4 w-60 max-lg:hidden lg:w-72.5">
             <div
               role="presentation"
               aria-hidden

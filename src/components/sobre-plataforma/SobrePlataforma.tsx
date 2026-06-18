@@ -83,7 +83,7 @@ function TabNarrow({ tab, onSelect }: { tab: Tab; onSelect: () => void }) {
       type="button"
       onClick={onSelect}
       aria-pressed={false}
-      className="flex h-16 w-full shrink-0 cursor-pointer flex-row items-center justify-between gap-4 px-6 py-4 rounded-2xl bg-white/10 lg:h-full lg:w-[129px] lg:flex-col lg:justify-between lg:rounded-3xl lg:px-[48px] lg:py-[39px] transition-colors hover:bg-white/15"
+      className="flex h-16 max-sm:h-14 w-full shrink-0 cursor-pointer flex-row items-center justify-between gap-4 px-6 py-4 rounded-2xl bg-white/10 lg:h-full lg:w-[129px] lg:flex-col lg:justify-between lg:rounded-3xl lg:px-[48px] lg:py-[39px] transition-colors hover:bg-white/15"
     >
       <img
         src={tab.icon}
@@ -92,7 +92,7 @@ function TabNarrow({ tab, onSelect }: { tab: Tab; onSelect: () => void }) {
         height={32}
         className="size-8 shrink-0"
       />
-      <p className="text-[18px] font-normal text-nuki-branco text-center lg:text-[28px] lg:leading-[1.2] lg:whitespace-nowrap lg:[writing-mode:vertical-rl] lg:rotate-180">
+      <p className="text-[18px] max-md:text-[16px] font-normal text-nuki-branco text-center lg:text-[28px] lg:leading-[1.2] lg:whitespace-nowrap lg:[writing-mode:vertical-rl] lg:rotate-180">
         {tab.displayLabel ?? tab.label}
       </p>
     </button>
@@ -114,7 +114,7 @@ function TabExpanded({ tab }: { tab: Tab }) {
           height={32}
           className="size-8 shrink-0"
         />
-        <p className="text-[18px] font-normal text-nuki-branco text-center lg:mt-auto lg:text-left lg:text-[28px] lg:leading-[1.2] lg:[writing-mode:vertical-rl] lg:rotate-180">
+        <p className="text-[18px] max-md:text-[16px] font-normal text-nuki-branco text-center lg:mt-auto lg:text-left lg:text-[28px] lg:leading-[1.2] lg:[writing-mode:vertical-rl] lg:rotate-180">
           {tab.displayLabel ?? tab.label}
         </p>
       </div>

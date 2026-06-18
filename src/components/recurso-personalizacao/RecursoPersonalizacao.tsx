@@ -10,12 +10,11 @@ export function RecursoPersonalizacao() {
             src="/recurso-personalizacao/cozinha-jantar.png"
             alt="Cozinha personalizável"
             fill
-            sizes="(max-width: 1440px) 50vw, 700px"
+            sizes="(max-width: 1024px) 100vw, (max-width: 1440px) 50vw, 700px"
             className="object-contain object-left"
-            priority
           />
 
-          <div className="absolute left-1/2 top-3 -translate-x-1/2">
+          <div className="absolute left-1/2 top-3 -translate-x-1/2 max-lg:hidden">
             <div
               role="presentation"
               className="flex items-center gap-2 rounded-full bg-nuki-preto px-5 py-3 text-[14px] font-semibold text-nuki-branco whitespace-nowrap"
@@ -26,7 +25,7 @@ export function RecursoPersonalizacao() {
             </div>
           </div>
 
-          <div className="absolute bottom-4 right-24 flex w-[200px] flex-col gap-3 rounded-2xl bg-nuki-branco p-4 shadow-[0_8px_24px_rgba(0,0,0,0.12)] md:w-[230px] lg:w-[250px]">
+          <div className="absolute bottom-4 right-24 flex w-[200px] flex-col gap-3 rounded-2xl bg-nuki-branco p-4 shadow-[0_8px_24px_rgba(0,0,0,0.12)] max-lg:hidden md:w-[230px] lg:w-[250px]">
             <div className="flex items-start gap-3">
               <div className="relative size-18 shrink-0 overflow-hidden rounded-lg bg-nuki-cinza-claro">
                 <Image
