@@ -2,46 +2,46 @@ import { SolicitarDemoButton } from "@/components/demo-modal";
 
 export function FaleComAGente() {
   return (
-    <section className="relative flex items-center justify-center w-full min-h-screen overflow-hidden bg-nuki-preto">
+    <section className="relative flex items-center justify-center w-full min-h-[620px] overflow-hidden bg-nuki-preto">
       <img
         src="/fale-com-a-gente/nuki_quadradinho_pearl 4.svg"
         alt=""
         aria-hidden
-        className="pointer-events-none absolute -left-8 -bottom-32 w-[340px]"
+        className="pointer-events-none absolute -left-8 -bottom-44 w-[340px] max-md:hidden"
       />
       <img
         src="/fale-com-a-gente/decoracao-quadradinho-pearl.svg"
         alt=""
         aria-hidden
-        className="pointer-events-none absolute -right-16 -bottom-12 w-[340px]"
+        className="pointer-events-none absolute -right-16 -bottom-22 w-[340px] max-md:hidden"
       />
 
-      <div className=" mx-auto flex max-w-360 flex-col items-center justify-center gap-10 px-27 py-15">
-        <div className="flex w-110 flex-col items-center gap-8">
-          <h2 className="w-full text-center text-[42px] font-extrabold leading-[54px] tracking-[0.1px] text-nuki-branco">
+      <div className="mx-auto flex w-full max-w-360 flex-col items-center justify-center gap-10 px-6 py-12 sm:px-8 sm:py-14 md:px-12 md:py-16 lg:px-16 lg:py-20 xl:px-27 xl:py-15">
+        <div className="flex w-full max-w-110 flex-col items-center gap-8">
+          <h2 className="w-full text-center text-[28px] font-extrabold leading-9 tracking-[0.1px] text-nuki-branco sm:text-[32px] md:text-[36px] lg:text-[42px] lg:leading-[54px]">
             Fale com a gente!
           </h2>
 
-          <p className="w-full text-center text-[18px] font-normal leading-9 tracking-[0.1px] text-nuki-branco">
+          <p className="w-full text-center text-[16px] font-normal leading-7 tracking-[0.1px] text-nuki-branco sm:text-[18px] sm:leading-9">
             Ficou interessado? Nos mande uma mensagem
             <br />
             por e-mail ou nos contate por telefone!
           </p>
 
-          <div className="flex w-full items-center justify-between p-2.5">
+          <div className="flex w-full flex-col items-center gap-4 p-2.5 sm:flex-row sm:justify-between sm:gap-0">
             <a
               href="mailto:nuki@email.com"
-              className="flex items-start gap-2 text-nuki-branco transition-opacity hover:opacity-80"
+              className="flex items-start gap-2 text-nuki-branco transition-opacity hover:opacity-80 max-lg:min-h-[44px] max-lg:items-center max-lg:gap-3 max-lg:py-2"
             >
               <EmailIcon className="size-5 shrink-0" />
-              <span className="whitespace-nowrap text-[18px] font-extrabold leading-5 tracking-[0.1px]">
+              <span className="text-[16px] font-extrabold leading-5 tracking-[0.1px] sm:whitespace-nowrap sm:text-[18px]">
                 contato@nukibr.com
               </span>
             </a>
 
             <span
               aria-hidden
-              className="w-7 text-center text-[20px] font-normal leading-5 tracking-[0.1px] text-nuki-branco"
+              className="hidden w-7 text-center text-[20px] font-normal leading-5 tracking-[0.1px] text-nuki-branco sm:block"
             >
               |
             </span>
@@ -51,10 +51,10 @@ export function FaleComAGente() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Conversar com a Nuki pelo WhatsApp"
-              className="flex items-start gap-2 text-nuki-branco transition-opacity hover:opacity-80"
+              className="flex items-start gap-2 text-nuki-branco transition-opacity hover:opacity-80 max-lg:min-h-[44px] max-lg:items-center max-lg:gap-3 max-lg:py-2"
             >
               <PhoneIcon className="size-5 shrink-0" />
-              <span className="whitespace-nowrap text-[18px] font-extrabold leading-5 tracking-[0.1px]">
+              <span className="text-[16px] font-extrabold leading-5 tracking-[0.1px] sm:whitespace-nowrap sm:text-[18px]">
                 +55 15 3199-4490
               </span>
             </a>

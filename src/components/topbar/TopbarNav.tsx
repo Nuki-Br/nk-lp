@@ -20,6 +20,38 @@ export function TopbarNav({ links }: { links: TopbarLink[] }) {
   const [open, setOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openMobileSub, setOpenMobileSub] = useState<string | null>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+
+  // Mobile menu: scroll-lock + Esc-to-close + click-outside (mirrors DesktopDropdown).
+  useEffect(() => {
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpen(false);
+    }
+    function onPointerDown(event: MouseEvent) {
+      const target = event.target as Node;
+      if (
+        panelRef.current?.contains(target) ||
+        hamburgerRef.current?.contains(target)
+      ) {
+        return;
+      }
+      setOpen(false);
+    }
+
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("mousedown", onPointerDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("mousedown", onPointerDown);
+    };
+  }, [open]);
 
   return (
     <>
@@ -49,7 +81,7 @@ export function TopbarNav({ links }: { links: TopbarLink[] }) {
 
       <div className="hidden lg:flex items-center gap-6">
         <a
-          href="#login"
+          href="https://admin.nukibr.com/"
           className="flex h-12 items-center justify-center rounded-full border-2 border-nuki-preto px-6 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-nuki-preto hover:text-nuki-branco whitespace-nowrap"
         >
           Login
@@ -63,6 +95,7 @@ export function TopbarNav({ links }: { links: TopbarLink[] }) {
 
       {/* Mobile / tablet hamburger */}
       <button
+        ref={hamburgerRef}
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? "Fechar menu" : "Abrir menu"}
@@ -74,7 +107,7 @@ export function TopbarNav({ links }: { links: TopbarLink[] }) {
 
       {/* Mobile dropdown panel */}
       {open && (
-        <div className="lg:hidden absolute left-0 right-0 top-full z-40 mt-2 px-6">
+        <div ref={panelRef} className="lg:hidden absolute left-0 right-0 top-full z-40 mt-2 px-6">
           <div className="mx-auto w-full max-w-[1440px] rounded-3xl bg-nuki-branco p-6 shadow-[0_3px_3.2px_rgba(0,0,0,0.15)]">
             <nav className="flex flex-col gap-2">
               {links.map((link) =>
@@ -108,7 +141,7 @@ export function TopbarNav({ links }: { links: TopbarLink[] }) {
 
             <div className="mt-4 flex flex-col gap-3">
               <a
-                href="#login"
+                href="https://admin.nukibr.com/"
                 onClick={() => setOpen(false)}
                 className="flex h-12 w-full items-center justify-center rounded-full border-2 border-nuki-preto px-6 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-nuki-preto hover:text-nuki-branco whitespace-nowrap"
               >
@@ -252,7 +285,7 @@ function MobileSubMenu({
                 <Link
                   href={sub.href}
                   onClick={onNavigate}
-                  className={`flex items-center rounded-lg px-3 py-2 text-[15px] leading-5 text-nuki-preto transition-colors hover:bg-black/5 ${
+                  className={`flex items-center rounded-lg px-4 py-3 text-[16px] leading-5 text-nuki-preto transition-colors hover:bg-black/5 ${
                     active ? "font-bold" : "font-normal"
                   }`}
                 >

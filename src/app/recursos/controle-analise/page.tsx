@@ -37,7 +37,7 @@ export default function RecursosControleAnalisePage() {
 
       <section className="relative w-full bg-nuki-verde-03 overflow-hidden">
         <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-12 px-6 py-12 sm:px-8 sm:py-14 md:px-12 md:py-16 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:px-16 lg:py-20 xl:px-[108px] xl:py-[88px]">
-          <div className="relative w-full lg:flex-1 lg:max-w-[728px]">
+          <div className="relative w-full max-lg:hidden lg:flex-1 lg:max-w-[728px]">
             <HomeEmpreendimentoMockup />
           </div>
 
@@ -396,7 +396,7 @@ const tableRows: { status: keyof typeof statusTagStyles; label: string }[] = [
 
 function ClientesMockup() {
   return (
-    <div className="relative w-full lg:flex-1 lg:max-w-[604px]">
+    <div className="relative w-full max-lg:hidden lg:flex-1 lg:max-w-[604px]">
       <div className="relative w-full overflow-hidden rounded-[36px] bg-[#fafafa] shadow-[0_4px_2px_rgba(0,0,0,0.25)]">
         <div className="flex items-center justify-end gap-2 border-b border-nuki-cinza-divisor bg-nuki-branco px-4 py-2">
           <img src="/recursos-controle-analise/ic-info.svg" alt="" className="size-3" />
@@ -548,7 +548,7 @@ function GerencieTimeMockup() {
           {perfis.map((perfil) => (
             <div
               key={perfil.nome}
-              className="flex items-center justify-between gap-3 rounded-2xl border border-nuki-cinza-divisor bg-nuki-cinza-claro px-4 py-3"
+              className="flex items-center justify-between gap-3 rounded-2xl border border-nuki-cinza-divisor bg-nuki-cinza-claro px-4 py-3 max-md:flex-col max-md:items-start max-md:gap-2"
             >
               <div className="flex items-center gap-3">
                 <span className={`flex size-8 items-center justify-center rounded-full ${perfil.cor}`}>

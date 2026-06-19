@@ -62,7 +62,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="text-nuki-preto transition-colors hover:text-nuki-verde-02"
+                className="inline-flex items-center justify-center rounded-full text-nuki-preto transition-colors hover:text-nuki-verde-02 max-lg:size-11"
               >
                 <InstagramIcon className="size-[22.875px]" />
               </a>
@@ -71,14 +71,14 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="text-nuki-preto transition-colors hover:text-nuki-verde-02"
+                className="inline-flex items-center justify-center rounded-full text-nuki-preto transition-colors hover:text-nuki-verde-02 max-lg:size-11"
               >
                 <LinkedinIcon className="size-[22.875px]" />
               </a>
             </div>
           </div>
 
-          <SolicitarDemoButton className="rounded-full bg-nuki-preto px-6 py-[10px] text-[14px] font-bold text-nuki-branco transition-colors hover:bg-nuki-verde-02">
+          <SolicitarDemoButton className="rounded-full bg-nuki-preto px-6 py-3 text-[14px] font-bold text-nuki-branco transition-colors hover:bg-nuki-verde-02 lg:py-[10px]">
             Solicitar demo
           </SolicitarDemoButton>
         </div>

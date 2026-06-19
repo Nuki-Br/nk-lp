@@ -119,7 +119,7 @@ function FormStep({
         />
       </div>
 
-      <div className="flex flex-1 flex-col gap-6 overflow-y-auto px-6 py-6 sm:px-8 md:py-10 md:pl-12 md:pr-10">
+      <div className="flex flex-1 flex-col gap-6 overflow-y-auto px-6 py-6 max-md:py-4 sm:px-8 md:py-10 md:pl-12 md:pr-10">
         <div className="flex flex-col gap-2">
           <h2
             id="demo-modal-title"
@@ -176,11 +176,11 @@ function FormStep({
             required
           />
 
-          <label className="flex items-start gap-2 text-[14px] font-medium leading-snug text-nuki-cinza-medio">
+          <label className="flex items-start gap-3 text-[14px] font-medium leading-snug text-nuki-cinza-medio">
             <input
               type="checkbox"
               required
-              className="mt-0.5 size-4 shrink-0 rounded-[3px] border border-nuki-cinza-borda accent-nuki-verde-02"
+              className="mt-0.5 size-5 shrink-0 rounded-[3px] border border-nuki-cinza-borda accent-nuki-verde-02"
             />
             <span>
               Ao checar o box ao lado você está concordando com as{" "}
@@ -199,7 +199,7 @@ function FormStep({
             <button
               type="button"
               onClick={onClose}
-              className="flex items-center justify-center rounded-lg p-3 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-black/5"
+              className="flex items-center justify-center rounded-lg px-4 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-black/5"
             >
               Fechar
             </button>

@@ -49,7 +49,7 @@ export default function ConhecaNossaHistoriaPage() {
               Voltar
             </Link>
 
-            <h1 className="mt-6 text-center text-[28px] font-normal leading-tight tracking-[0.1px] text-nuki-branco sm:text-[32px] md:text-[36px] lg:text-[42px] xl:text-[48px] xl:leading-[54px]">
+            <h1 className="mt-6 text-center text-[24px] font-normal leading-tight tracking-[0.1px] text-nuki-branco sm:text-[32px] md:text-[36px] lg:text-[42px] xl:text-[48px] xl:leading-[54px]">
               Conheça nossa <span className="font-extrabold">história</span>
             </h1>
 
@@ -172,17 +172,17 @@ export default function ConhecaNossaHistoriaPage() {
                 <br />
                 por e-mail ou nos contate por telefone!
               </p>
-              <div className="flex w-full items-center justify-between p-2.5">
+              <div className="flex w-full flex-col items-center gap-4 p-2.5 sm:flex-row sm:justify-between sm:gap-0">
                 <a
                   href="mailto:nuki@email.com"
-                  className="flex items-center gap-2 text-nuki-preto transition-opacity hover:opacity-70"
+                  className="flex items-center gap-2 text-nuki-preto transition-opacity hover:opacity-70 max-lg:min-h-[44px] max-lg:gap-3 max-lg:py-2"
                 >
                   <EmailIcon className="size-5 shrink-0" />
                   <span className="whitespace-nowrap text-[16px] font-extrabold leading-5 tracking-[0.1px] sm:text-[18px] xl:text-[20px]">
                     contato@nukibr.com
                   </span>
                 </a>
-                <span aria-hidden className="px-1 text-[20px] font-normal text-nuki-preto">
+                <span aria-hidden className="hidden px-1 text-[20px] font-normal text-nuki-preto sm:inline">
                   |
                 </span>
                 <a
@@ -190,7 +190,7 @@ export default function ConhecaNossaHistoriaPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Conversar com a Nuki pelo WhatsApp"
-                  className="flex items-center gap-2 text-nuki-preto transition-opacity hover:opacity-70"
+                  className="flex items-center gap-2 text-nuki-preto transition-opacity hover:opacity-70 max-lg:min-h-[44px] max-lg:gap-3 max-lg:py-2"
                 >
                   <PhoneIcon className="size-5 shrink-0" />
                   <span className="whitespace-nowrap text-[16px] font-extrabold leading-5 tracking-[0.1px] sm:text-[18px] xl:text-[20px]">
@@ -201,7 +201,7 @@ export default function ConhecaNossaHistoriaPage() {
             </div>
 
             <SolicitarDemoButton
-              className="flex items-center justify-center rounded-full bg-nuki-preto px-6 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-nuki-verde-02"
+              className="flex w-full items-center justify-center rounded-full bg-nuki-preto px-6 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-nuki-verde-02 sm:w-auto"
             >
               Solicitar demo
             </SolicitarDemoButton>

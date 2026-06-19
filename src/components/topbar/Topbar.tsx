@@ -26,7 +26,7 @@ export function Topbar() {
               width={122}
               height={60}
               priority
-              className="h-[60px] w-[122px] object-contain"
+              className="h-[44px] w-[90px] object-contain sm:h-[52px] sm:w-[106px] lg:h-[60px] lg:w-[122px]"
             />
           </a>
 
