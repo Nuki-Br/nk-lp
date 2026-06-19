@@ -2,22 +2,22 @@ import { SolicitarDemoButton } from "@/components/demo-modal";
 
 export function FaleComAGente() {
   return (
-    <section className="relative flex items-center justify-center w-full min-h-screen overflow-hidden bg-nuki-preto">
+    <section className="relative flex items-center justify-center w-full min-h-[620px] overflow-hidden bg-nuki-preto">
       <img
         src="/fale-com-a-gente/nuki_quadradinho_pearl 4.svg"
         alt=""
         aria-hidden
-        className="pointer-events-none absolute -left-8 -bottom-32 w-[340px] max-md:hidden"
+        className="pointer-events-none absolute -left-8 -bottom-44 w-[340px] max-md:hidden"
       />
       <img
         src="/fale-com-a-gente/decoracao-quadradinho-pearl.svg"
         alt=""
         aria-hidden
-        className="pointer-events-none absolute -right-16 -bottom-12 w-[340px] max-md:hidden"
+        className="pointer-events-none absolute -right-16 -bottom-22 w-[340px] max-md:hidden"
       />
 
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center gap-10 px-6 py-12 sm:px-8 sm:py-14 md:px-12 md:py-16 lg:px-16 lg:py-20 xl:px-27 xl:py-15">
-        <div className="flex w-full max-w-[440px] flex-col items-center gap-8">
+      <div className="mx-auto flex w-full max-w-360 flex-col items-center justify-center gap-10 px-6 py-12 sm:px-8 sm:py-14 md:px-12 md:py-16 lg:px-16 lg:py-20 xl:px-27 xl:py-15">
+        <div className="flex w-full max-w-110 flex-col items-center gap-8">
           <h2 className="w-full text-center text-[28px] font-extrabold leading-9 tracking-[0.1px] text-nuki-branco sm:text-[32px] md:text-[36px] lg:text-[42px] lg:leading-[54px]">
             Fale com a gente!
           </h2>

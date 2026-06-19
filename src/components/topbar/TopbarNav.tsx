@@ -81,7 +81,7 @@ export function TopbarNav({ links }: { links: TopbarLink[] }) {
 
       <div className="hidden lg:flex items-center gap-6">
         <a
-          href="#login"
+          href="https://admin.nukibr.com/"
           className="flex h-12 items-center justify-center rounded-full border-2 border-nuki-preto px-6 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-nuki-preto hover:text-nuki-branco whitespace-nowrap"
         >
           Login
@@ -141,7 +141,7 @@ export function TopbarNav({ links }: { links: TopbarLink[] }) {
 
             <div className="mt-4 flex flex-col gap-3">
               <a
-                href="#login"
+                href="https://admin.nukibr.com/"
                 onClick={() => setOpen(false)}
                 className="flex h-12 w-full items-center justify-center rounded-full border-2 border-nuki-preto px-6 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-nuki-preto hover:text-nuki-branco whitespace-nowrap"
               >
