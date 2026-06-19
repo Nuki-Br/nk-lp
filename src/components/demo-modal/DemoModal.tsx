@@ -1,11 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { track } from "@vercel/analytics";
 import { useDemoModal } from "./DemoModalContext";
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+const RELAY_WEBHOOK_URL =
+  "https://hook.relay.app/api/v1/playbook/cmo95qy2900fy0qlyavsa8zkw/trigger/Lye0mu6B4I3f39-35eIjkQ";
+const NUKI_WHATSAPP = "551531994490";
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function DemoModal() {
   const { isOpen, step, email, close, submit } = useDemoModal();
@@ -107,6 +113,49 @@ function FormStep({
   onSubmit: (email: string) => void;
   onClose: () => void;
 }) {
+  const [emailError, setEmailError] = useState<string | null>(null);
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const name = String(data.get("demo-nome") ?? "").trim();
+    const email = String(data.get("demo-email") ?? "").trim();
+    const company = String(data.get("demo-empresa") ?? "").trim();
+
+    if (!EMAIL_RE.test(email)) {
+      setEmailError("Informe um e-mail válido (ex.: nome@empresa.com).");
+      return;
+    }
+    setEmailError(null);
+
+    const message = `Olá! Gostaria de agendar uma demonstração da plataforma Nuki.\n\nNome: ${name}\nEmpresa: ${company}\nE-mail: ${email}`;
+
+    // 1) Envia os dados para o relay.app (fire-and-forget)
+    fetch(RELAY_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        email,
+        company,
+        message,
+        source: "landing-page-demo-modal",
+        createdAt: new Date().toISOString(),
+      }),
+    }).catch(() => {});
+
+    // 2) Abre o WhatsApp com a mensagem personalizada (chamada síncrona no gesto do usuário)
+    window.open(
+      `https://wa.me/${NUKI_WHATSAPP}?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+
+    track("demo_requested", { company });
+
+    onSubmit(email);
+  }
+
   return (
     <>
       <div className="relative hidden shrink-0 bg-nuki-cinza-borda md:block md:w-[444px]">
@@ -126,38 +175,21 @@ function FormStep({
             className="text-[28px] leading-tight tracking-[0.1px] text-nuki-preto sm:text-[32px] md:text-[36px] md:leading-[42px]"
           >
             <span className="font-extrabold">Solicite</span>{" "}
-            <span className="font-normal">a versão demo!</span>
+            <span className="font-normal">uma demonstração</span>
           </h2>
           <p className="text-[14px] font-normal leading-6 tracking-[0.1px] text-nuki-preto sm:text-[15px] md:text-[16px] md:leading-7">
             Adoraríamos te mostrar como a Nuki funciona.
           </p>
         </div>
 
-        <form
-          className="flex flex-col gap-5"
-          onSubmit={(event) => {
-            event.preventDefault();
-            const data = new FormData(event.currentTarget);
-            const submittedEmail = String(data.get("demo-email") ?? "").trim();
-            onSubmit(submittedEmail);
-          }}
-        >
-          <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
-            <Field
-              id="demo-nome"
-              label="Nome"
-              placeholder="Entre seu nome"
-              autoComplete="given-name"
-              required
-            />
-            <Field
-              id="demo-sobrenome"
-              label="Sobrenome"
-              placeholder="Entre seu sobrenome"
-              autoComplete="family-name"
-              required
-            />
-          </div>
+        <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+          <Field
+            id="demo-nome"
+            label="Nome"
+            placeholder="Entre seu nome"
+            autoComplete="name"
+            required
+          />
 
           <Field
             id="demo-email"
@@ -166,6 +198,7 @@ function FormStep({
             placeholder="Entre seu e-mail"
             autoComplete="email"
             required
+            error={emailError}
           />
 
           <Field
@@ -249,6 +282,7 @@ function Field({
   type = "text",
   autoComplete,
   required = false,
+  error,
 }: {
   id: string;
   label: string;
@@ -256,10 +290,15 @@ function Field({
   type?: string;
   autoComplete?: string;
   required?: boolean;
+  error?: string | null;
 }) {
   return (
     <div className="flex flex-1 flex-col">
-      <div className="flex h-14 flex-col justify-center gap-1 rounded-lg border border-nuki-cinza-borda bg-nuki-branco px-3 py-2 transition-colors focus-within:border-nuki-verde-02">
+      <div
+        className={`flex h-14 flex-col justify-center gap-1 rounded-lg border bg-nuki-branco px-3 py-2 transition-colors focus-within:border-nuki-verde-02 ${
+          error ? "border-red-500" : "border-nuki-cinza-borda"
+        }`}
+      >
         <label htmlFor={id} className="text-[12px] leading-none text-nuki-cinza-12">
           {label}
         </label>
@@ -270,9 +309,13 @@ function Field({
           placeholder={placeholder}
           autoComplete={autoComplete}
           required={required}
+          aria-invalid={error ? true : undefined}
           className="w-full bg-transparent text-[14px] leading-none text-nuki-cinza-12 outline-none placeholder:text-nuki-cinza-7"
         />
       </div>
+      {error ? (
+        <p className="mt-1 text-[12px] leading-snug text-red-600">{error}</p>
+      ) : null}
     </div>
   );
 }

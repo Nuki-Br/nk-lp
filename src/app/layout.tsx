@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { DemoModalProvider } from "@/components/demo-modal";
 
 const manrope = Manrope({
@@ -26,6 +27,7 @@ export default function RootLayout({
         <DemoModalProvider>
           {children}
         </DemoModalProvider>
+        <Analytics />
       </body>
     </html>
   );
