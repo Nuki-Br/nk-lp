@@ -35,8 +35,8 @@ function Shot({ shot, eager }: { shot: JourneyShot; eager: boolean }) {
     <picture>
       <source
         type="image/webp"
-        srcSet={`/jornada/${base}-740.webp 740w, /jornada/${base}-1480.webp 1480w`}
-        sizes="(min-width:1544px) 740px, (min-width:821px) calc(50vw - 32px), 92vw"
+        srcSet={`/jornada/${base}-740.webp 740w, /jornada/${base}-1480.webp 1480w, /jornada/${base}-2220.webp 2220w`}
+        sizes="(min-width:1280px) 1100px, (min-width:821px) 60vw, 92vw"
       />
       <img
         className="device"
@@ -173,7 +173,8 @@ export function JourneyModule({ data }: { data: JourneyModuleData }) {
         {data.layout === "sticky-device" && <DeviceLayout data={data} />}
       </div>
 
-      {data.layout !== "sticky-device" && <BeatsLayout data={data} />}
+      {(data.layout === undefined || data.layout === "beats") && <BeatsLayout data={data} />}
+      {data.layout === "sticky-media" && <DeviceLayout data={data} />}
     </section>
   );
 }

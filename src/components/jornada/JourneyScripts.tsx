@@ -93,10 +93,13 @@ export function JourneyScripts() {
     document.querySelectorAll<HTMLElement>(".num").forEach((n) => nio.observe(n));
     cleanups.push(() => nio.disconnect());
 
-    // 4) Inspetor — celular sticky: troca a tela ativa conforme o passo cruza o centro.
-    const stepEls = document.querySelectorAll<HTMLElement>(".device-step");
-    if (stepEls.length) {
-      const screens = document.querySelectorAll<HTMLElement>(".device-screen");
+    // 4) Sticky (Inspetor/Planner/Personaliza): troca a tela ativa conforme o passo
+    //    cruza o centro. Escopado POR módulo (.device-grid) para os índices data-step/
+    //    data-screen (0/1/2, repetidos entre módulos) não vazarem de um módulo p/ outro.
+    document.querySelectorAll<HTMLElement>(".device-grid").forEach((grid) => {
+      const stepEls = grid.querySelectorAll<HTMLElement>(".device-step");
+      if (!stepEls.length) return;
+      const screens = grid.querySelectorAll<HTMLElement>(".device-screen");
       const stepIO = new IntersectionObserver(
         (es) => {
           es.forEach((e) => {
@@ -109,7 +112,7 @@ export function JourneyScripts() {
       );
       stepEls.forEach((s) => stepIO.observe(s));
       cleanups.push(() => stepIO.disconnect());
-    }
+    });
 
     // 5) Parallax leve (fallback): só quando não há scroll-driven animation nativa.
     const nativeTimeline = !!(

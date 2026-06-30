@@ -38,8 +38,10 @@ export type JourneyModuleData = {
    * "beats" (padrão): cada passo é uma linha texto | imagem lado a lado.
    * "sticky-device": um único celular fica fixo (sticky) ao lado e a tela
    * troca por passo — usado p/ telas em proporção de celular (Inspetor).
+   * "sticky-media": mesmo sticky, porém full-bleed e em proporção landscape —
+   * a imagem sangra até a borda e troca por passo (Planner/Personaliza).
    */
-  layout?: "beats" | "sticky-device";
+  layout?: "beats" | "sticky-device" | "sticky-media";
   beats: JourneyBeat[];
   highlights: JourneyHighlight[];
   saibaMaisHref: string;
@@ -57,6 +59,7 @@ export const journeyModules: JourneyModuleData[] = [
     num: "01",
     tag: "Fase 01 — Planejamento",
     title: "Planner",
+    layout: "sticky-media",
     saibaMaisHref: "/recursos/controle-analise",
     beats: [
       {
@@ -101,6 +104,7 @@ export const journeyModules: JourneyModuleData[] = [
     tag: "Fase 02 — Personalização",
     title: "Personaliza",
     reverse: true,
+    layout: "sticky-media",
     saibaMaisHref: "/recursos/personalizacao",
     beats: [
       {

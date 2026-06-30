@@ -282,7 +282,7 @@
   align-items: center;
   justify-content: center;
 }
-.jornada .device {
+.jornada #inspetor .device {
   position: relative;
   /* A tela é 9:16 (alta), então o tamanho é guiado pela ALTURA do viewport:
      preenche bem a coluna sem estourar a altura em telas mais baixas.
@@ -292,7 +292,7 @@
   aspect-ratio: 9 / 16;
 }
 /* glow teal sutil de marca atrás do aparelho */
-.jornada .device::before {
+.jornada #inspetor .device::before {
   content: "";
   position: absolute;
   inset: -12% -28%;
@@ -320,12 +320,52 @@
   height: 100%;
   object-fit: contain;
   object-position: center;
+}
+.jornada #inspetor .device-screen img.device {
   border-radius: 10px;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12)) drop-shadow(0 24px 48px rgba(0, 0, 0, 0.2));
 }
 /* tela inline de cada passo: escondida no desktop (o celular sticky cobre isso) */
 .jornada .phone-inline {
   display: none;
+}
+
+/* PLANNER/PERSONALIZA (layout sticky-media) — mesmo sticky cross-fade do Inspetor,
+   mas full-bleed e em proporção landscape (8:5). O .device-grid é renderizado fora
+   do .wrap, então espelha o padding edge/gutter do .beat: texto alinhado à coluna
+   da marca, imagem sangrando até a borda do viewport. */
+.jornada #planner .device-grid,
+.jornada #personaliza .device-grid {
+  grid-template-columns: minmax(300px, 460px) 1fr;
+  column-gap: clamp(24px, 3vw, 72px);
+  padding-left: var(--jr-edge);
+  padding-right: var(--jr-gutter);
+}
+/* Personaliza (reverse): imagem na coluna 1 sangrando à esquerda, texto à direita. */
+.jornada #personaliza .device-grid {
+  grid-template-columns: 1fr minmax(300px, 460px);
+  padding-left: var(--jr-gutter);
+  padding-right: var(--jr-edge);
+}
+.jornada .module.reverse .device-steps { order: 2; }
+.jornada .module.reverse .device-col { order: 1; }
+/* Quadro sticky landscape: guiado pela LARGURA (preenche a coluna 1fr até um teto),
+   8:5, centralizado vertical pela flexbox do .device-col. */
+.jornada #planner .device,
+.jornada #personaliza .device {
+  width: min(100%, 1100px);
+  aspect-ratio: 8 / 5;
+}
+/* Telas landscape: sombra de card desktop (igual ao .shot) + mantém o float
+   (não é herdado, pois .device-screen não é .shot). */
+.jornada #planner .device-screen img.device,
+.jornada #personaliza .device-screen img.device {
+  border-radius: 10px;
+  filter:
+    drop-shadow(0 1px 3px rgba(0, 0, 0, 0.04))
+    drop-shadow(0 6px 16px rgba(0, 0, 0, 0.08))
+    drop-shadow(0 24px 48px rgba(0, 0, 0, 0.08));
+  animation: float 6.5s ease-in-out infinite;
 }
 
 /* Parallax do número de fundo: timeline nativa (compositor, fora da main thread).
@@ -453,6 +493,13 @@
     grid-template-columns: 1fr;
     gap: 24px;
   }
+  /* Planner/Personaliza (sticky-media): zera o padding edge/gutter no empilhado. */
+  .jornada #planner .device-grid,
+  .jornada #personaliza .device-grid {
+    grid-template-columns: 1fr;
+    padding-left: var(--jr-pad);
+    padding-right: var(--jr-pad);
+  }
   .jornada .device-step {
     min-height: auto;
     margin-bottom: 40px;
@@ -495,5 +542,6 @@
   }
   .jornada .scrolldot { animation: none; }
   .jornada .shot img.device { animation: none; }
+  .jornada .device-screen img.device { animation: none; }
   .jornada .device-screen { transition: none; }
 }
