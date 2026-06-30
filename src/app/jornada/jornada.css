@@ -30,9 +30,9 @@
   z-index: 1;
 }
 
-/* HERO */
+/* HERO (faixa de transição entre o Hero global e o primeiro módulo) */
 .jornada .hero {
-  min-height: 92vh;
+  min-height: 40vh;
   display: flex;
   flex-direction: column;
   align-items: center;

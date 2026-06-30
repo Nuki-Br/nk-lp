@@ -128,16 +128,6 @@ export const journeyModules: JourneyModuleData[] = [
         },
       },
       {
-        title: "Visualiza no ambiente",
-        description:
-          "As opções aparecem no layout da unidade, com clareza do que está sendo escolhido.",
-        shot: {
-          base: "personaliza-ambiente",
-          kind: "desktop",
-          alt: "Tela do Personaliza: opções de acabamento aplicadas no layout da unidade",
-        },
-      },
-      {
         title: "Formaliza com aditivo digital",
         description:
           "Escolha aprovada vira aditivo com assinatura eletrônica — tudo puxando o que o Planner já produziu.",

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Topbar } from "@/components/topbar";
 import { Footer } from "@/components/footer";
+import { Hero } from "@/components/hero";
+import { CarrosselLogos } from "@/components/carrossel-logos";
 import {
   JourneyHero,
   JourneyModule,
@@ -40,11 +42,13 @@ export default function JornadaPage() {
       <Topbar />
       <JourneyProgressNav />
       <main className="flex flex-1 flex-col">
+        <Hero />
         <JourneyHero />
         {journeyModules.map((data) => (
           <JourneyModule key={data.id} data={data} />
         ))}
         <JourneyOutro />
+        <CarrosselLogos backgroundClassName="bg-nuki-preto" />
       </main>
       <Footer />
       <JourneyScripts />
