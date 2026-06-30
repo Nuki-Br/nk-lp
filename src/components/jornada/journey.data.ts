@@ -108,6 +108,16 @@ export const journeyModules: JourneyModuleData[] = [
     saibaMaisHref: "/recursos/personalizacao",
     beats: [
       {
+        title: "Começa pela planta ideal",
+        description:
+          "O cliente filtra por preferência — quartos, suítes, varanda, cozinha — e já escolhe a tipologia que combina com o estilo de vida dele.",
+        shot: {
+          base: "personaliza-planta",
+          kind: "desktop",
+          alt: "Tela do Personaliza: filtros de preferência e cards de tipologia para o cliente escolher a planta ideal",
+        },
+      },
+      {
         title: "O cliente escolhe vendo o impacto",
         description:
           "Cada acabamento com o impacto técnico e financeiro aparecendo na hora da escolha.",
@@ -135,6 +145,16 @@ export const journeyModules: JourneyModuleData[] = [
           base: "personaliza-adtivo",
           kind: "desktop",
           alt: "Tela do Personaliza: aditivo digital gerado a partir da escolha, com assinatura eletrônica",
+        },
+      },
+      {
+        title: "Personalização vira receita visível",
+        description:
+          "Acompanhe ticket médio, conversão do funil e receita por empreendimento em tempo real. O que o cliente escolhe vira número na diretoria.",
+        shot: {
+          base: "personaliza-dashboard",
+          kind: "desktop",
+          alt: "Dashboard da construtora: receita líquida, ticket médio, funil de personalização e performance por empreendimento",
         },
       },
     ],

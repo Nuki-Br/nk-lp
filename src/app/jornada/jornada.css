@@ -70,13 +70,15 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--color-nuki-preto, #000);
-  color: var(--color-nuki-branco, #fff);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  color: var(--color-nuki-cinza, #434343);
+  transition: color 0.2s;
   animation: bob 2s ease-in-out infinite;
+}
+.jornada .scrolldot:hover {
+  color: var(--color-nuki-verde-02, #047676);
 }
 @keyframes bob {
   0%, 100% { transform: translateY(0); }

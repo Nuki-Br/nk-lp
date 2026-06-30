@@ -15,8 +15,8 @@ function Shot({ shot, eager }: { shot: JourneyShot; eager: boolean }) {
       <picture>
         <source
           type="image/webp"
-          srcSet={`/jornada/${base}-320.webp 320w, /jornada/${base}-640.webp 640w`}
-          sizes="(min-width:1143px) 320px, (min-width:821px) 28vw, 60vw"
+          srcSet={`/jornada/${base}-320.webp 320w, /jornada/${base}-640.webp 640w, /jornada/${base}-960.webp 960w`}
+          sizes="(min-width:821px) 420px, 300px"
         />
         <img
           className="device"
