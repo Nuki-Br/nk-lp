@@ -5,9 +5,16 @@ const logos = [
   { name: "Mampei", file: "/carrossel-logos/mampei-logo.png", width: 200, height: 30 },
 ];
 
-export function CarrosselLogos() {
+type CarrosselLogosProps = {
+  /** Classe Tailwind do fundo da seção. Default mantém o tom histórico (verde-08). */
+  backgroundClassName?: string;
+};
+
+export function CarrosselLogos({
+  backgroundClassName = "bg-nuki-verde-08",
+}: CarrosselLogosProps = {}) {
   return (
-    <section className="w-full bg-nuki-verde-08">
+    <section className={`w-full ${backgroundClassName}`}>
       <div className="mx-auto flex w-full max-w-360 flex-col items-center gap-10 px-6 pt-6 pb-12 sm:gap-12 sm:px-8 sm:pb-14 md:gap-14 md:px-12 md:pb-16 lg:px-16 lg:pb-20 xl:gap-16 xl:px-[108px] xl:pb-[88px]">
         <h3 className="text-center text-[20px] leading-7 tracking-[0.1px] text-nuki-branco sm:text-[21px] md:text-[22px] lg:text-[23px] xl:text-[24px] xl:leading-8">
           <span className="font-extrabold">Construtoras</span>

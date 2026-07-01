@@ -1,33 +1,57 @@
-import { CarrosselLogos } from "@/components/carrossel-logos";
-import { FaleComAGente } from "@/components/fale-com-a-gente";
+import type { Metadata } from "next";
+import { Topbar } from "@/components/topbar";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
-import { NavegandoNaPlataforma } from "@/components/navegando-na-plataforma";
-// import { NukiLab } from "@/components/nuki-lab";
-import { RecursoControleAnalise } from "@/components/recurso-controle-analise";
-import { RecursoPersonalizacao } from "@/components/recurso-personalizacao";
-import { SobreANuki } from "@/components/sobre-a-nuki";
-import { SobrePlataforma } from "@/components/sobre-plataforma";
-import { SuaIdentidade } from "@/components/sua-identidade";
-import { Topbar } from "@/components/topbar";
+import { CarrosselLogos } from "@/components/carrossel-logos";
+import {
+  JourneyHero,
+  JourneyModule,
+  JourneyOutro,
+  JourneyProgressNav,
+  JourneyScripts,
+  journeyModules,
+} from "@/components/jornada";
+import "./jornada.css";
 
-export default function Home() {
+export const metadata: Metadata = {
+  metadataBase: new URL("https://nukibr.com"),
+  title: "Nuki — A jornada, do custo à entrega",
+  description:
+    "Software de personalização para construtoras e incorporadoras: do memorial de incorporação à vistoria de entrega, num só fluxo — Planner, Personaliza e Inspetor.",
+  openGraph: {
+    type: "website",
+    siteName: "Nuki",
+    locale: "pt_BR",
+    title: "Nuki — A jornada, do custo à entrega",
+    description:
+      "Do memorial de incorporação à vistoria de entrega, num só fluxo: Planner, Personaliza e Inspetor.",
+    images: [
+      {
+        url: "/jornada/og-cover.png",
+        width: 1200,
+        height: 630,
+        alt: "Nuki — A jornada, do custo à entrega",
+      },
+    ],
+  },
+};
+
+export default function JornadaPage() {
   return (
-    <>
+    <div className="jornada flex min-h-screen flex-col">
       <Topbar />
+      <JourneyProgressNav />
       <main className="flex flex-1 flex-col">
         <Hero />
-        <SobrePlataforma />
-        <CarrosselLogos />
-        <NavegandoNaPlataforma />
-        <RecursoPersonalizacao />
-        <RecursoControleAnalise />
-        <SuaIdentidade />
-        {/* <NukiLab /> */}
-        <SobreANuki />
-        <FaleComAGente />
-        <Footer />
+        <JourneyHero />
+        {journeyModules.map((data) => (
+          <JourneyModule key={data.id} data={data} />
+        ))}
+        <JourneyOutro />
+        <CarrosselLogos backgroundClassName="bg-nuki-preto" />
       </main>
-    </>
+      <Footer />
+      <JourneyScripts />
+    </div>
   );
 }
