@@ -2,7 +2,7 @@ import { SolicitarDemoButton } from "@/components/demo-modal";
 
 export function FaleComAGente() {
   return (
-    <section className="relative flex items-center justify-center w-full min-h-[620px] overflow-hidden bg-nuki-preto">
+    <section className="relative flex items-center justify-center w-full min-h-[480px] overflow-hidden bg-nuki-preto md:min-h-[560px] lg:min-h-[620px]">
       <img
         src="/fale-com-a-gente/nuki_quadradinho_pearl 4.svg"
         alt=""
