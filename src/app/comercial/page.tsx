@@ -8,6 +8,7 @@ import {
   Diferenciais,
   PublicoAlvo,
   Cases,
+  Calculadora,
   CTA,
   ComercialProgressNav,
   ComercialScripts,
@@ -50,6 +51,7 @@ export default function ComercialPage() {
         <Diferenciais />
         <PublicoAlvo />
         <Cases />
+        <Calculadora />
         <CTA />
       </main>
       <Footer />
