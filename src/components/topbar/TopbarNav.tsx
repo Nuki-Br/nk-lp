@@ -71,7 +71,7 @@ export function TopbarNav({ links }: { links: TopbarLink[] }) {
             <a
               key={link.label}
               href={link.href}
-              className="flex items-center rounded-lg px-3 py-3 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-black/5"
+              className="flex items-center rounded-lg px-3 py-3 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-verde-02"
             >
               {link.label}
             </a>
@@ -82,12 +82,12 @@ export function TopbarNav({ links }: { links: TopbarLink[] }) {
       <div className="hidden lg:flex items-center gap-6">
         <a
           href="https://admin.nukibr.com/"
-          className="flex h-12 items-center justify-center rounded-full border-2 border-nuki-preto px-6 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-nuki-preto hover:text-nuki-branco whitespace-nowrap"
+          className="flex h-12 items-center justify-center rounded-full border-2 border-nuki-preto px-6 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-nuki-preto hover:text-nuki-branco focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-verde-02 whitespace-nowrap"
         >
           Login
         </a>
         <SolicitarDemoButton
-          className="flex items-center justify-center rounded-full bg-nuki-preto px-6 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-nuki-verde-02 whitespace-nowrap"
+          className="flex items-center justify-center rounded-full bg-nuki-preto px-6 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-nuki-verde-02 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-branco whitespace-nowrap"
         >
           Solicitar demo
         </SolicitarDemoButton>
@@ -100,7 +100,7 @@ export function TopbarNav({ links }: { links: TopbarLink[] }) {
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? "Fechar menu" : "Abrir menu"}
         aria-expanded={open}
-        className="lg:hidden flex h-12 w-12 items-center justify-center rounded-lg text-nuki-preto transition-colors hover:bg-black/5"
+        className="lg:hidden flex h-12 w-12 items-center justify-center rounded-lg text-nuki-preto transition-colors hover:bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-verde-02"
       >
         {open ? <CloseIcon className="size-6" /> : <BurgerIcon className="size-6" />}
       </button>
@@ -108,7 +108,7 @@ export function TopbarNav({ links }: { links: TopbarLink[] }) {
       {/* Mobile dropdown panel */}
       {open && (
         <div ref={panelRef} className="lg:hidden absolute left-0 right-0 top-full z-40 mt-2 px-6">
-          <div className="mx-auto w-full max-w-[1440px] rounded-3xl bg-nuki-branco p-6 shadow-[0_3px_3.2px_rgba(0,0,0,0.15)]">
+          <div className="mx-auto max-h-[calc(100dvh-96px)] w-full max-w-[1440px] overflow-y-auto overscroll-contain rounded-3xl bg-nuki-branco p-6 shadow-[0_3px_3.2px_rgba(0,0,0,0.15)]">
             <nav className="flex flex-col gap-2">
               {links.map((link) =>
                 link.children ? (
@@ -131,7 +131,7 @@ export function TopbarNav({ links }: { links: TopbarLink[] }) {
                     key={link.label}
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="flex items-center rounded-lg px-3 py-3 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-black/5"
+                    className="flex items-center rounded-lg px-3 py-3 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-verde-02"
                   >
                     {link.label}
                   </a>
@@ -143,13 +143,13 @@ export function TopbarNav({ links }: { links: TopbarLink[] }) {
               <a
                 href="https://admin.nukibr.com/"
                 onClick={() => setOpen(false)}
-                className="flex h-12 w-full items-center justify-center rounded-full border-2 border-nuki-preto px-6 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-nuki-preto hover:text-nuki-branco whitespace-nowrap"
+                className="flex h-12 w-full items-center justify-center rounded-full border-2 border-nuki-preto px-6 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-nuki-preto hover:text-nuki-branco focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-verde-02 whitespace-nowrap"
               >
                 Login
               </a>
               <SolicitarDemoButton
                 onClick={() => setOpen(false)}
-                className="flex w-full items-center justify-center rounded-full bg-nuki-preto px-6 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-nuki-verde-02 whitespace-nowrap"
+                className="flex w-full items-center justify-center rounded-full bg-nuki-preto px-6 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-nuki-verde-02 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-branco whitespace-nowrap"
               >
                 Solicitar demo
               </SolicitarDemoButton>
@@ -203,7 +203,7 @@ function DesktopDropdown({
         onClick={() => setOpen(!isOpen)}
         aria-haspopup="menu"
         aria-expanded={isOpen}
-        className="flex items-center rounded-lg px-3 py-3 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-black/5"
+        className="flex items-center rounded-lg px-3 py-3 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-verde-02"
       >
         {link.label}
         <ChevronDown
@@ -227,7 +227,7 @@ function DesktopDropdown({
                     href={sub.href}
                     role="menuitem"
                     onClick={() => setOpen(false)}
-                    className={`flex items-center rounded-[20px] px-1 py-2 text-[14px] leading-5 text-nuki-branco transition-colors hover:bg-white/10 ${
+                    className={`flex items-center rounded-[20px] px-1 py-2 text-[14px] leading-5 text-nuki-branco transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-branco ${
                       active ? "font-bold" : "font-normal"
                     }`}
                   >
@@ -266,7 +266,7 @@ function MobileSubMenu({
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="flex items-center justify-between rounded-lg px-3 py-3 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-black/5"
+        className="flex items-center justify-between rounded-lg px-3 py-3 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-verde-02"
       >
         {link.label}
         <ChevronDown
@@ -285,7 +285,7 @@ function MobileSubMenu({
                 <Link
                   href={sub.href}
                   onClick={onNavigate}
-                  className={`flex items-center rounded-lg px-4 py-3 text-[16px] leading-5 text-nuki-preto transition-colors hover:bg-black/5 ${
+                  className={`flex items-center rounded-lg px-4 py-3 text-[16px] leading-5 text-nuki-preto transition-colors hover:bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-verde-02 ${
                     active ? "font-bold" : "font-normal"
                   }`}
                 >

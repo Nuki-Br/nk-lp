@@ -43,7 +43,7 @@ export default function ConhecaNossaHistoriaPage() {
           <div className="relative mx-auto w-full max-w-[1440px] px-6 pb-16 pt-4 sm:px-8 sm:pb-20 md:px-12 md:pb-24 lg:px-16 lg:pb-28 xl:px-[108px] xl:pb-[120px]">
             <Link
               href="/"
-              className="inline-flex h-10 items-center gap-2 rounded-full px-4 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-white/10"
+              className="inline-flex h-11 items-center gap-2 rounded-full px-4 text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-branco sm:h-10"
             >
               <ChevronLeftIcon className="size-5" />
               Voltar
@@ -169,7 +169,7 @@ export default function ConhecaNossaHistoriaPage() {
               </h2>
               <p className="text-[16px] font-normal leading-7 tracking-[0.1px] text-nuki-preto sm:text-[17px] md:text-[18px] lg:text-[19px] xl:text-[20px] xl:leading-9">
                 Ficou interessado? Nos mande uma mensagem
-                <br />
+                <br className="hidden lg:inline" />
                 por e-mail ou nos contate por telefone!
               </p>
               <div className="flex w-full flex-col items-center gap-4 p-2.5 sm:flex-row sm:justify-between sm:gap-0">

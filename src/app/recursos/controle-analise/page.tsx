@@ -16,7 +16,7 @@ export default function RecursosControleAnalisePage() {
           <div className="mx-auto w-full max-w-[1440px] px-6 pt-4 sm:px-8 md:px-12 lg:px-16 xl:px-[108px]">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-[14px] font-semibold text-nuki-branco/70 transition-colors hover:text-nuki-branco"
+              className="-mx-2 inline-flex min-h-[44px] items-center gap-2 px-2 py-2 text-[14px] font-semibold text-nuki-branco/70 transition-colors hover:text-nuki-branco focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-branco"
             >
               <ChevronLeftIcon className="size-4" />
               Início
@@ -64,7 +64,7 @@ export default function RecursosControleAnalisePage() {
 
       <section className="w-full bg-nuki-verde-03">
         <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-6 px-6 py-16 text-center sm:px-8 sm:py-20 md:px-12 md:py-24 lg:px-16 lg:py-28 xl:px-[108px] xl:py-32">
-          <h2 className="max-w-[900px] text-[32px] leading-10 tracking-[0.1px] text-nuki-branco sm:text-[38px] sm:leading-12 md:text-[44px] md:leading-[54px] lg:text-[48px] lg:leading-[54px] xl:text-[48px] xl:leading-[54px]">
+          <h2 className="max-w-[900px] text-[28px] leading-9 tracking-[0.1px] text-nuki-branco sm:text-[32px] sm:leading-10 md:text-[38px] md:leading-[46px] lg:text-[48px] lg:leading-[54px] xl:text-[48px] xl:leading-[54px]">
             <span className="font-normal">Simplifique a </span>
             <span className="font-extrabold">emissão de contratos</span>
           </h2>
@@ -81,7 +81,7 @@ export default function RecursosControleAnalisePage() {
           <div className="flex w-full flex-col gap-10 lg:w-[415px] lg:shrink-0">
             <h2 className="text-[28px] font-extrabold leading-8 tracking-[0.1px] text-nuki-preto sm:text-[32px] sm:leading-9 md:text-[36px] md:leading-10 lg:text-[28px] lg:leading-[42px] xl:text-[32px] xl:leading-[54px]">
               Visão 360 dos seus
-              <br />
+              <br className="hidden lg:block" />
               clientes
             </h2>
             <p className="text-[16px] font-light leading-7 tracking-[0.1px] text-nuki-preto sm:text-[17px] md:text-[18px] lg:text-[19px] xl:text-[20px] xl:leading-9">
@@ -156,9 +156,12 @@ export default function RecursosControleAnalisePage() {
                 sizes="(max-width: 1024px) 100vw, 700px"
                 className="object-cover"
               />
-              <button className="absolute left-1/2 top-4 -translate-x-1/2 rounded-full bg-nuki-preto px-5 py-2 text-[12px] font-semibold text-nuki-branco sm:text-[14px]">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute left-1/2 top-4 -translate-x-1/2 rounded-full bg-nuki-preto px-5 py-2 text-[12px] font-semibold text-nuki-branco sm:text-[14px]"
+              >
                 Opções de plantas
-              </button>
+              </span>
             </div>
           </div>
 

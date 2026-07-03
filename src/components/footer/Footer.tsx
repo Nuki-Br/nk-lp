@@ -25,7 +25,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/recursos/personalizacao"
-                    className="transition-colors hover:text-nuki-preto"
+                    className="inline-block py-2 transition-colors hover:text-nuki-preto focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-verde-02"
                   >
                     Personalização
                   </Link>
@@ -33,7 +33,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/recursos/controle-analise"
-                    className="transition-colors hover:text-nuki-preto"
+                    className="inline-block py-2 transition-colors hover:text-nuki-preto focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-verde-02"
                   >
                     Controle e análise
                   </Link>
@@ -44,7 +44,7 @@ export function Footer() {
             <nav aria-label="Institucional" className="flex flex-col gap-3">
               <Link
                 href="/conheca-nossa-historia"
-                className="text-[12px] font-extrabold leading-6 tracking-[0.15px] text-nuki-preto transition-colors hover:text-nuki-verde-02"
+                className="inline-block py-2 text-[12px] font-extrabold leading-6 tracking-[0.15px] text-nuki-preto transition-colors hover:text-nuki-verde-02 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-verde-02"
               >
                 Sobre a Nuki
               </Link>
@@ -62,7 +62,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="inline-flex items-center justify-center rounded-full text-nuki-preto transition-colors hover:text-nuki-verde-02 max-lg:size-11"
+                className="inline-flex items-center justify-center rounded-full text-nuki-preto transition-colors hover:bg-black/5 hover:text-nuki-verde-02 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-verde-02 max-lg:size-11"
               >
                 <InstagramIcon className="size-[22.875px]" />
               </a>
@@ -71,14 +71,14 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="inline-flex items-center justify-center rounded-full text-nuki-preto transition-colors hover:text-nuki-verde-02 max-lg:size-11"
+                className="inline-flex items-center justify-center rounded-full text-nuki-preto transition-colors hover:bg-black/5 hover:text-nuki-verde-02 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-verde-02 max-lg:size-11"
               >
                 <LinkedinIcon className="size-[22.875px]" />
               </a>
             </div>
           </div>
 
-          <SolicitarDemoButton className="rounded-full bg-nuki-preto px-6 py-3 text-[14px] font-bold text-nuki-branco transition-colors hover:bg-nuki-verde-02 lg:py-[10px]">
+          <SolicitarDemoButton className="w-full rounded-full bg-nuki-preto px-6 py-3 text-center text-[14px] font-bold text-nuki-branco transition-colors hover:bg-nuki-verde-02 md:w-auto lg:py-[10px]">
             Solicitar demo
           </SolicitarDemoButton>
         </div>

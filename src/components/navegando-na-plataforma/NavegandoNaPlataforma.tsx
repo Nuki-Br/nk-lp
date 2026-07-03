@@ -66,7 +66,7 @@ function Card({
   description: string;
 }) {
   return (
-    <div className="flex min-h-[260px] flex-1 flex-col justify-between rounded-3xl bg-nuki-branco p-6 md:min-h-[300px] lg:h-[348px]">
+    <div className="flex flex-1 flex-col justify-between rounded-3xl bg-nuki-branco p-6 md:min-h-[300px] lg:h-[348px]">
       <div className="flex w-full items-center justify-between">
         <span className="text-[22px] font-extrabold tracking-[0.1px] text-nuki-preto sm:text-[24px] md:text-[28px] lg:text-[30px] xl:text-[32px] xl:leading-9">
           {number}

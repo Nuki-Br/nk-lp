@@ -16,7 +16,7 @@ export default function RecursosPersonalizacaoPage() {
         <div className="mx-auto w-full max-w-360 px-6 pt-4 sm:px-8 md:px-12 lg:px-16 xl:px-27">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-[14px] font-semibold text-nuki-cinza-medio transition-colors hover:text-nuki-preto"
+            className="-mx-2 inline-flex min-h-[44px] items-center gap-2 px-2 py-2 text-[14px] font-semibold text-nuki-cinza-medio transition-colors hover:text-nuki-preto focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nuki-verde-02"
           >
             <ChevronLeftIcon className="size-4" />
             Início
@@ -73,7 +73,7 @@ export default function RecursosPersonalizacaoPage() {
             </SolicitarDemoButton>
           </div>
 
-          <h3 className="text-[28px] font-extrabold leading-8 tracking-[0.1px] text-nuki-preto sm:text-[32px] sm:leading-9 md:text-[36px] md:leading-10 lg:flex-1 lg:text-[32px] lg:leading-[44px] xl:text-[36px] xl:leading-[48px]">
+          <h3 className="text-[20px] font-medium leading-6 tracking-[0.1px] text-nuki-cinza sm:text-[22px] sm:leading-7 md:text-[24px] md:leading-8 lg:flex-1 lg:text-[32px] lg:font-extrabold lg:leading-[44px] lg:text-nuki-preto xl:text-[36px] xl:leading-[48px]">
             Aproveite uma tecnologia avançada sem os custos e complexidades.
           </h3>
         </div>
@@ -421,7 +421,7 @@ function CompositionCard({
 
 function BemVindoMockup() {
   return (
-    <div className="relative w-full max-w-[1100px]">
+    <div aria-hidden="true" className="relative w-full max-w-[1100px]">
       <div
         aria-hidden
         className="absolute -inset-x-6 -bottom-6 top-[32%] rounded-[40px] bg-[#ececeb] blur-[4px] sm:-inset-x-10 sm:-bottom-8 md:-inset-x-16 md:-bottom-10"

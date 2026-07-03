@@ -96,6 +96,27 @@ export function DemoModal() {
             : "relative flex max-h-[90vh] w-full max-w-[728px] flex-col overflow-hidden rounded-[32px] bg-nuki-branco shadow-[0_25px_60px_rgba(0,0,0,0.35)] outline-none md:rounded-[48px]"
         }
       >
+        <button
+          type="button"
+          onClick={close}
+          aria-label="Fechar"
+          className="absolute top-4 right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full text-nuki-preto transition-colors hover:bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-nuki-verde-02"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M6 6L18 18M18 6L6 18"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
+        </button>
         {step === "form" ? (
           <FormStep onSubmit={submit} onClose={close} />
         ) : (
@@ -169,10 +190,10 @@ function FormStep({
       </div>
 
       <div className="flex flex-1 flex-col gap-6 overflow-y-auto px-6 py-6 max-md:py-4 sm:px-8 md:py-10 md:pl-12 md:pr-10">
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 pr-14 md:pr-0">
           <h2
             id="demo-modal-title"
-            className="text-[28px] leading-tight tracking-[0.1px] text-nuki-preto sm:text-[32px] md:text-[36px] md:leading-[42px]"
+            className="text-balance text-[28px] leading-tight tracking-[0.1px] text-nuki-preto sm:text-[32px] md:text-[36px] md:leading-[42px]"
           >
             <span className="font-extrabold">Solicite</span>{" "}
             <span className="font-normal">uma demonstração</span>
@@ -222,17 +243,17 @@ function FormStep({
             </span>
           </label>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <button
               type="submit"
-              className="flex items-center justify-center rounded-full bg-nuki-preto px-6 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-nuki-verde-02"
+              className="flex w-full items-center justify-center rounded-full bg-nuki-preto px-6 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-branco transition-colors hover:bg-nuki-verde-02 sm:w-auto"
             >
               Solicitar demo
             </button>
             <button
               type="button"
               onClick={onClose}
-              className="flex items-center justify-center rounded-lg px-4 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-black/5"
+              className="flex w-full items-center justify-center rounded-lg px-4 py-[14px] text-[16px] font-bold leading-5 tracking-[0.1px] text-nuki-preto transition-colors hover:bg-black/5 sm:w-auto"
             >
               Fechar
             </button>
@@ -252,10 +273,10 @@ function SuccessStep({
 }) {
   const displayEmail = email || "seu e-mail";
   return (
-    <div className="flex flex-col items-center gap-8 px-6 py-10 text-center sm:px-12 sm:py-14 md:px-20 md:py-16">
+    <div className="flex flex-col items-center gap-8 px-6 pt-16 pb-10 text-center sm:px-12 sm:py-14 md:px-20 md:py-16">
       <h2
         id="demo-modal-title"
-        className="text-[28px] font-extrabold leading-tight tracking-[0.1px] text-nuki-preto sm:text-[36px] md:text-[48px] md:leading-[54px]"
+        className="text-balance text-[28px] font-extrabold leading-tight tracking-[0.1px] text-nuki-preto sm:text-[36px] md:text-[48px] md:leading-[54px]"
       >
         Versão demo solicitada!
       </h2>
@@ -310,7 +331,7 @@ function Field({
           autoComplete={autoComplete}
           required={required}
           aria-invalid={error ? true : undefined}
-          className="w-full bg-transparent text-[14px] leading-none text-nuki-cinza-12 outline-none placeholder:text-nuki-cinza-7"
+          className="w-full bg-transparent text-[16px] leading-none text-nuki-cinza-12 outline-none placeholder:text-nuki-cinza-7"
         />
       </div>
       {error ? (
