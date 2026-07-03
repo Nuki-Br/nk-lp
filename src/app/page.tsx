@@ -44,8 +44,8 @@ export default function JornadaPage() {
       <main className="flex flex-1 flex-col">
         <Hero />
         <JourneyHero />
-        {journeyModules.map((data) => (
-          <JourneyModule key={data.id} data={data} />
+        {journeyModules.map((data, i) => (
+          <JourneyModule key={data.id} data={data} moduleIndex={i} />
         ))}
         <JourneyOutro />
         <CarrosselLogos backgroundClassName="bg-nuki-preto" />

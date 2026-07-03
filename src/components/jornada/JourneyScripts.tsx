@@ -12,6 +12,8 @@ import { useEffect } from "react";
 export function JourneyScripts() {
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const mobileMm = window.matchMedia("(max-width:820px)");
+    const isMobile = mobileMm.matches;
     const cleanups: Array<() => void> = [];
 
     // Smooth scroll só enquanto a jornada está montada (restaurado no unmount).
@@ -22,15 +24,18 @@ export function JourneyScripts() {
       html.style.scrollBehavior = prevScrollBehavior;
     });
 
-    // 1) Reveal com stagger por grupo.
+    // 1) Reveal com stagger por grupo (cap absoluto p/ grupos densos como Personaliza).
     const timeouts: number[] = [];
+    const stepMs = isMobile ? 50 : 100;
+    const capMs = 300;
     const revIO = new IntersectionObserver(
       (es) => {
         es.forEach((e) => {
           if (!e.isIntersecting) return;
           const items = e.target.querySelectorAll<HTMLElement>(".reveal");
           items.forEach((el, i) => {
-            const t = window.setTimeout(() => el.classList.add("in"), reduce ? 0 : i * 100);
+            const delay = reduce ? 0 : Math.min(i * stepMs, capMs);
+            const t = window.setTimeout(() => el.classList.add("in"), delay);
             timeouts.push(t);
           });
           revIO.unobserve(e.target);
@@ -44,21 +49,24 @@ export function JourneyScripts() {
       timeouts.forEach((t) => clearTimeout(t));
     });
 
-    // 2) Indicador de progresso lateral.
-    const navIO = new IntersectionObserver(
-      (es) => {
-        es.forEach((e) => {
-          if (!e.isIntersecting) return;
-          const id = (e.target as HTMLElement).id;
-          document.querySelectorAll(".progress a").forEach((a) => {
-            a.classList.toggle("on", (a as HTMLElement).dataset.t === id);
+    // 2) Indicador de progresso lateral (desktop only — .progress e .device-screen
+    //    são display:none em <=820px, então o observer é dispensável no mobile).
+    if (!isMobile) {
+      const navIO = new IntersectionObserver(
+        (es) => {
+          es.forEach((e) => {
+            if (!e.isIntersecting) return;
+            const id = (e.target as HTMLElement).id;
+            document.querySelectorAll(".progress a").forEach((a) => {
+              a.classList.toggle("on", (a as HTMLElement).dataset.t === id);
+            });
           });
-        });
-      },
-      { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
-    );
-    document.querySelectorAll(".module").forEach((m) => navIO.observe(m));
-    cleanups.push(() => navIO.disconnect());
+        },
+        { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
+      );
+      document.querySelectorAll(".module").forEach((m) => navIO.observe(m));
+      cleanups.push(() => navIO.disconnect());
+    }
 
     // 3) Números contando.
     const easeOut = (p: number) => 1 - Math.pow(1 - p, 3);
@@ -96,23 +104,26 @@ export function JourneyScripts() {
     // 4) Sticky (Inspetor/Planner/Personaliza): troca a tela ativa conforme o passo
     //    cruza o centro. Escopado POR módulo (.device-grid) para os índices data-step/
     //    data-screen (0/1/2, repetidos entre módulos) não vazarem de um módulo p/ outro.
-    document.querySelectorAll<HTMLElement>(".device-grid").forEach((grid) => {
-      const stepEls = grid.querySelectorAll<HTMLElement>(".device-step");
-      if (!stepEls.length) return;
-      const screens = grid.querySelectorAll<HTMLElement>(".device-screen");
-      const stepIO = new IntersectionObserver(
-        (es) => {
-          es.forEach((e) => {
-            if (!e.isIntersecting) return;
-            const idx = (e.target as HTMLElement).dataset.step;
-            screens.forEach((s) => s.classList.toggle("show", s.dataset.screen === idx));
-          });
-        },
-        { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
-      );
-      stepEls.forEach((s) => stepIO.observe(s));
-      cleanups.push(() => stepIO.disconnect());
-    });
+    //    No mobile as .device-screen ficam display:none — o observer é desnecessário.
+    if (!isMobile) {
+      document.querySelectorAll<HTMLElement>(".device-grid").forEach((grid) => {
+        const stepEls = grid.querySelectorAll<HTMLElement>(".device-step");
+        if (!stepEls.length) return;
+        const screens = grid.querySelectorAll<HTMLElement>(".device-screen");
+        const stepIO = new IntersectionObserver(
+          (es) => {
+            es.forEach((e) => {
+              if (!e.isIntersecting) return;
+              const idx = (e.target as HTMLElement).dataset.step;
+              screens.forEach((s) => s.classList.toggle("show", s.dataset.screen === idx));
+            });
+          },
+          { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
+        );
+        stepEls.forEach((s) => stepIO.observe(s));
+        cleanups.push(() => stepIO.disconnect());
+      });
+    }
 
     // 5) Parallax leve (fallback): só quando não há scroll-driven animation nativa.
     const nativeTimeline = !!(

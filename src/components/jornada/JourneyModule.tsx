@@ -9,6 +9,7 @@ import type {
 function Shot({ shot, eager }: { shot: JourneyShot; eager: boolean }) {
   const { base, kind, alt } = shot;
   const loading = eager ? undefined : "lazy";
+  const fetchPriority = eager ? "high" : "low";
 
   if (kind === "phone") {
     return (
@@ -26,6 +27,7 @@ function Shot({ shot, eager }: { shot: JourneyShot; eager: boolean }) {
           alt={alt}
           loading={loading}
           decoding="async"
+          fetchPriority={fetchPriority}
         />
       </picture>
     );
@@ -46,6 +48,7 @@ function Shot({ shot, eager }: { shot: JourneyShot; eager: boolean }) {
         alt={alt}
         loading={loading}
         decoding="async"
+        fetchPriority={fetchPriority}
       />
     </picture>
   );
@@ -97,7 +100,13 @@ function StepText({
 /** Layout padrão: cada passo é uma linha texto | imagem lado a lado. Renderizado
     full-width (fora do .wrap) para a imagem poder sangrar até a borda do viewport;
     o texto é realinhado à coluna da marca via padding no CSS. */
-function BeatsLayout({ data }: { data: JourneyModuleData }) {
+function BeatsLayout({
+  data,
+  moduleIndex,
+}: {
+  data: JourneyModuleData;
+  moduleIndex: number;
+}) {
   return (
     <div className="beats">
       {data.beats.map((beat, i) => (
@@ -109,7 +118,7 @@ function BeatsLayout({ data }: { data: JourneyModuleData }) {
             href={data.saibaMaisHref}
           />
           <figure className="shot reveal">
-            <Shot shot={beat.shot} eager={i === 0} />
+            <Shot shot={beat.shot} eager={i === 0 && moduleIndex === 0} />
           </figure>
         </div>
       ))}
@@ -120,7 +129,13 @@ function BeatsLayout({ data }: { data: JourneyModuleData }) {
 /** Layout "vitrine de app": passos rolam à esquerda; um celular fica sticky à
     direita e a tela troca por passo (cross-fade, dirigido pelo JourneyScripts).
     No mobile (<=820px) o celular sticky some e cada passo mostra a tela inline. */
-function DeviceLayout({ data }: { data: JourneyModuleData }) {
+function DeviceLayout({
+  data,
+  moduleIndex,
+}: {
+  data: JourneyModuleData;
+  moduleIndex: number;
+}) {
   return (
     <div className="device-grid">
       <div className="device-steps">
@@ -148,7 +163,7 @@ function DeviceLayout({ data }: { data: JourneyModuleData }) {
                 data-screen={i}
                 key={beat.shot.base}
               >
-                <Shot shot={beat.shot} eager={i === 0} />
+                <Shot shot={beat.shot} eager={i === 0 && moduleIndex === 0} />
               </figure>
             ))}
           </div>
@@ -158,7 +173,13 @@ function DeviceLayout({ data }: { data: JourneyModuleData }) {
   );
 }
 
-export function JourneyModule({ data }: { data: JourneyModuleData }) {
+export function JourneyModule({
+  data,
+  moduleIndex = 0,
+}: {
+  data: JourneyModuleData;
+  moduleIndex?: number;
+}) {
   return (
     <section className={`module${data.reverse ? " alt reverse" : ""}`} id={data.id}>
       <span className="bgnum" data-parallax="-70" aria-hidden="true">
@@ -170,11 +191,13 @@ export function JourneyModule({ data }: { data: JourneyModuleData }) {
           <h2 className="reveal">{data.title}</h2>
         </div>
 
-        {data.layout === "sticky-device" && <DeviceLayout data={data} />}
+        {data.layout === "sticky-device" && <DeviceLayout data={data} moduleIndex={moduleIndex} />}
       </div>
 
-      {(data.layout === undefined || data.layout === "beats") && <BeatsLayout data={data} />}
-      {data.layout === "sticky-media" && <DeviceLayout data={data} />}
+      {(data.layout === undefined || data.layout === "beats") && (
+        <BeatsLayout data={data} moduleIndex={moduleIndex} />
+      )}
+      {data.layout === "sticky-media" && <DeviceLayout data={data} moduleIndex={moduleIndex} />}
     </section>
   );
 }

@@ -14,7 +14,7 @@ export function Hero() {
     <section className="w-full bg-nuki-cinza-claro">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-6 py-12 sm:px-8 sm:py-14 md:px-12 md:py-16 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:px-16 lg:py-20 xl:pl-[108px] xl:pr-[99px] xl:py-[88px]">
         <div className="flex w-full flex-col items-start justify-center gap-8 lg:w-[416px] lg:shrink-0">
-          <h1 className="text-[36px] font-extrabold leading-10 tracking-[0.1px] text-nuki-preto sm:text-[44px] sm:leading-12 md:text-[52px] md:leading-14 lg:text-[60px] lg:leading-[60px] xl:text-[64px] xl:leading-[64px]">
+          <h1 className="text-[36px] font-extrabold leading-[44px] tracking-[0.1px] text-nuki-preto sm:text-[44px] sm:leading-[52px] md:text-[52px] md:leading-[60px] lg:text-[60px] lg:leading-[60px] xl:text-[64px] xl:leading-[64px]">
             Planeje, personalize e entregue.
           </h1>
           <p className="text-[16px] leading-7 tracking-[0.2px] text-nuki-cinza sm:text-[17px] md:text-[18px] lg:text-[19px] xl:text-[20px] xl:leading-9">
@@ -41,7 +41,7 @@ export function Hero() {
               priority
             />
           </div>
-          <CompositionCard className="absolute bottom-0 left-1/2 -translate-x-1/2 sm:bottom-[-24px] sm:left-auto sm:right-4 sm:translate-x-0" />
+          <CompositionCard className="absolute bottom-[-24px] left-1/2 -translate-x-1/2 sm:left-auto sm:right-4 sm:translate-x-0" />
         </div>
 
         {/* Desktop right block (lg+): preserve original composition intact */}
