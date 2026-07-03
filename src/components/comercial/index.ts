@@ -5,6 +5,7 @@ export { Modulos } from "./Modulos";
 export { Diferenciais } from "./Diferenciais";
 export { PublicoAlvo } from "./PublicoAlvo";
 export { Cases } from "./Cases";
+export { Calculadora } from "./Calculadora";
 export { CTA } from "./CTA";
 export { ComercialProgressNav } from "./ComercialProgressNav";
 export { ComercialScripts } from "./ComercialScripts";
