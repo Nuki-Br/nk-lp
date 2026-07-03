@@ -1,0 +1,11 @@
+export { Capa } from "./Capa";
+export { Problema } from "./Problema";
+export { OQueEANuki } from "./OQueEANuki";
+export { Modulos } from "./Modulos";
+export { Diferenciais } from "./Diferenciais";
+export { PublicoAlvo } from "./PublicoAlvo";
+export { Cases } from "./Cases";
+export { CTA } from "./CTA";
+export { ComercialProgressNav } from "./ComercialProgressNav";
+export { ComercialScripts } from "./ComercialScripts";
+export { comercialNav } from "./comercial.data";
