@@ -163,101 +163,87 @@ export const fitList = [
    Calculadora "Estime o setup"
 
    Hierarquia: empreendimento → metragens (1-3) → variações (1-3).
-   Cada metragem tem sua própria composição de unidade e seus eixos
-   de mudança entre variações. As contagens por ambiente NÃO são fixas —
-   escalam com "opções por componente" oferecidas pela construtora,
-   separadas para áreas secas (menos personalização) e molhadas
-   (mais componentes: piso, parede, bancada, cuba, torneira, louça...).
+   Cada metragem tem uma lista de ambientes editável. Por default vem
+   com Quartos + Banheiros; o user adiciona ambientes custom via
+   "+ Adicionar ambiente" (nome + classificação seca/molhada).
 
-   Números base do orçamento Tecer/Manawa (R01, 27/06/2026) assumindo
-   ~3 opções por componente. Sala 10, Cozinha 19, Banho 23 etc. são o
-   ponto de referência — escalam linearmente conforme o catálogo cresce.
+   Cálculo por ambiente:
+     imgs = ambiente.quantidade × ambiente.componentes × opcoes[classe]
+   Onde opcoes[classe] vem dos inputs globais de "Opções por componente"
+   separados em secas vs molhadas.
+
+   Referência histórica dos números do orçamento Tecer/Manawa (R01, 27/06/2026)
+   quando as unidades assumiam 3 opções por componente:
+     Sala 10 · Dorm 10 · Escrit 10 · Cozinha 19 · Lavabo 20 · Banho 23
+     Lavanderia 17 · Varanda 18
+   Não é mais fonte primária — serve só de sanity check pros defaults.
    ============================================================ */
 
-export const TECER_BASE = {
-  sala: 10,
-  dormitorio: 10,
-  escritorio: 10,
-  cozinha: 19,
-  lavabo: 20,
-  banho: 23,
-  lavanderia: 17,
-  varanda: 18,
-} as const;
+/** Classe do ambiente decide qual multiplicador de opções usar. Áreas
+    molhadas (banho, cozinha, lavanderia) oferecem mais superfícies
+    personalizáveis do que secas (quartos, sala). */
+export type AmbienteClasse = "seca" | "molhada";
 
-export type AmbienteTipo = keyof typeof TECER_BASE;
-
-/** Áreas secas x molhadas — cada uma escala com seu próprio input de
-    "opções por componente", porque na prática banho/cozinha oferecem
-    muito mais surfaces de personalização do que sala/dormitório. */
-export const AMBIENTES_SECAS = new Set<AmbienteTipo>(["sala", "dormitorio", "escritorio"]);
-export const AMBIENTES_MOLHADAS = new Set<AmbienteTipo>([
-  "cozinha",
-  "lavabo",
-  "banho",
-  "lavanderia",
-  "varanda",
-]);
-
-/** Categoria de "peso" visual dos ambientes — 3 tiers só, pra visualização
-    ler à distância sem virar um degradê contínuo difícil de decodificar. */
+/** Categoria de "peso" visual do tile — 3 tiers só, pra ler à distância
+    sem virar um degradê contínuo difícil de decodificar. */
 export type AmbientePeso = "leve" | "medio" | "pesado";
-export const AMBIENTE_PESO: Record<AmbienteTipo, AmbientePeso> = {
-  sala: "leve",
-  dormitorio: "leve",
-  escritorio: "leve",
-  lavanderia: "medio",
-  varanda: "medio",
-  cozinha: "medio",
-  lavabo: "medio",
-  banho: "pesado",
+
+/** Configuração de um ambiente dentro de uma metragem. */
+export type AmbienteConfig = {
+  /** único por metragem: "quartos"/"banheiros" pros defaults, "custom-N" pros criados pelo user */
+  id: string;
+  nome: string;
+  classe: AmbienteClasse;
+  peso: AmbientePeso;
+  quantidade: number;
+  componentes: number;
+  /** true = não pode ser removido nem tem nome/classe editáveis (defaults Quartos/Banheiros) */
+  locked?: boolean;
 };
 
-/** Baseline de opções/componente que gera os números do orçamento Tecer.
-    scaleSecas = opcoesSecas / OPCOES_BASELINE, mesmo pra molhadas. */
-export const OPCOES_BASELINE = 3;
-
-/** Rótulo curto de cada tipo de ambiente, usado tanto no card de composição
-    quanto na lista de "ambientes impactados". Formas no singular porque cada
-    marca de impacto representa 1 unidade daquele tipo re-renderizada. */
-export const AMBIENTE_LABEL: Record<AmbienteTipo, string> = {
-  sala: "Sala",
-  dormitorio: "Quarto",
-  escritorio: "Escritório",
-  cozinha: "Cozinha",
-  lavabo: "Lavabo",
-  banho: "Banheiro",
-  lavanderia: "Lavanderia",
-  varanda: "Varanda",
-};
-
-/** Ordem estável em que os ambientes aparecem nos controles de impacto. */
-export const AMBIENTE_ORDEM: AmbienteTipo[] = [
-  "sala",
-  "cozinha",
-  "lavanderia",
-  "varanda",
-  "lavabo",
-  "escritorio",
-  "dormitorio",
-  "banho",
-];
-
-/** Ambientes impactados pelas variações extras da metragem. Cada tipo marcado
-    contribui com 1 unidade × img(tipo) por variação extra. Modelo simples que
-    cobre "cozinha aberta", "1 quarto que vira escritório", "banho reformulado"
-    sem precisar de bundles fixos. */
-export type ImpactoAmbientes = Partial<Record<AmbienteTipo, boolean>>;
+/** Ambientes impactados pelas variações extras da metragem — keyed pelo
+    ambient.id. Cada id marcado contribui com 1 unidade × img por variação
+    extra. Modelo simples que cobre "cozinha aberta", "1 quarto que vira
+    escritório", "banho reformulado" sem bundles fixos. */
+export type ImpactoAmbientes = Record<string, boolean>;
 
 export const emptyImpacto = (): ImpactoAmbientes => ({});
+
+/** Ambientes com que toda metragem começa. Só Quartos + Banheiros — o
+    resto o user adiciona via "+ Adicionar ambiente" digitando nome e
+    escolhendo seca/molhada. */
+export const buildDefaultAmbientes = (): AmbienteConfig[] => [
+  {
+    id: "quartos",
+    nome: "Quartos",
+    classe: "seca",
+    peso: "leve",
+    quantidade: 2,
+    componentes: 3,
+    locked: true,
+  },
+  {
+    id: "banheiros",
+    nome: "Banheiros",
+    classe: "molhada",
+    peso: "pesado",
+    quantidade: 1,
+    componentes: 8,
+    locked: true,
+  },
+];
+
+/** Defaults aplicados a ambientes custom criados via "+ Adicionar". */
+export const CUSTOM_AMBIENTE_DEFAULTS = {
+  peso: "medio" as AmbientePeso,
+  quantidade: 1,
+  componentes: 4,
+};
 
 export type MetragemState = {
   /** id estável pra React keys; muda por metragem, nunca reindex por posição */
   id: number;
-  dormitorios: number;
-  banheiros: number;
-  lavabo: boolean;
-  escritorio: boolean;
+  ambientes: AmbienteConfig[];
   variacoes: number;
   impactoAmbientes: ImpactoAmbientes;
 };
@@ -269,28 +255,16 @@ export const CALC_DEFAULTS = {
   metragensIniciais: (): MetragemState[] => [
     {
       id: 1,
-      dormitorios: 2,
-      banheiros: 1,
-      lavabo: false,
-      escritorio: false,
+      ambientes: buildDefaultAmbientes(),
       variacoes: 1,
       impactoAmbientes: emptyImpacto(),
-    },
-    {
-      id: 2,
-      dormitorios: 3,
-      banheiros: 2,
-      lavabo: true,
-      escritorio: false,
-      variacoes: 2,
-      impactoAmbientes: { sala: true, cozinha: true, lavanderia: true, varanda: true },
     },
   ],
 };
 
 export const CALC_RANGES = {
-  dormitorios: { min: 1, max: 5 },
-  banheiros: { min: 1, max: 4 },
+  quantidade: { min: 0, max: 5 },
+  componentes: { min: 1, max: 15 },
   variacoes: { min: 1, max: 3 },
   metragens: { min: 1, max: 3 },
   opcoesSecas: { min: 1, max: 6 },
@@ -301,7 +275,10 @@ export const CALC_RANGES = {
 export type Plano = {
   n: string;
   itens: string[];
+  /** Rótulo de exibição formatado (ex: "R$ 889/mês") */
   preco: string;
+  /** Valor mensal cru pra cálculos (soma × meses no simulador do CTA) */
+  precoMes: number;
   destaque?: boolean;
 };
 
@@ -310,16 +287,19 @@ export const planos: Plano[] = [
     n: "Plano 01",
     itens: ["Planner", "Infraestrutura", "Suporte"],
     preco: "R$ 889/mês",
+    precoMes: 889,
   },
   {
     n: "Plano 02",
     itens: ["Planner", "Personaliza", "Infraestrutura", "Suporte"],
     preco: "R$ 1.155/mês",
+    precoMes: 1155,
   },
   {
     n: "Plano 03",
     itens: ["Planner", "Personaliza", "Inspetor", "Infraestrutura", "Suporte"],
     preco: "R$ 1.450/mês",
+    precoMes: 1450,
     destaque: true,
   },
 ];

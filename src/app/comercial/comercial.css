@@ -528,6 +528,246 @@
   background: rgba(4, 118, 118, 0.04);
 }
 
+/* -------- Composição da metragem (8 ambient-rows editáveis) -------- */
+/* Cada linha = um tipo de ambiente com dois mini-steppers (unidades e
+   componentes). Quando quantidade = 0, a linha ganha classe .zerada e dima
+   sutilmente pra sinalizar "não compõe a base" sem sumir do painel. */
+.comercial .calc-ambient-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.comercial .calc-ambient-rows-head {
+  margin: 0 0 8px;
+}
+.comercial .calc-ambient-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px 32px 10px 4px; /* padding-right fixo reserva o slot do × em TODAS as rows (locked incluídas) — mantém alinhamento uniforme das rows custom vs default */
+  border-bottom: 1px solid var(--color-nuki-cinza-divisor, #f0f0f0);
+  transition: opacity 0.2s;
+  position: relative;
+}
+.comercial .calc-ambient-row:last-child {
+  border-bottom: 0;
+}
+.comercial .calc-ambient-row.zerada .calc-ambient-row-name,
+.comercial .calc-ambient-row.zerada .calc-micro-label {
+  opacity: 0.55;
+}
+.comercial .calc-ambient-row-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-nuki-preto, #000);
+  letter-spacing: 0.02em;
+}
+.comercial .calc-ambient-row-fields {
+  display: flex;
+  gap: 16px;
+  flex: none;
+}
+.comercial .calc-micro-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+.comercial .calc-micro-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-nuki-cinza-medio, #595959);
+}
+/* Steppers dentro das ambient-rows ficam mais compactos que os globais */
+.comercial .calc-ambient-row .calc-stepper {
+  height: 38px;
+}
+.comercial .calc-ambient-row .calc-stepper-btn {
+  width: 34px;
+  font-size: 18px;
+}
+.comercial .calc-ambient-row .calc-stepper-value {
+  min-width: 30px;
+  font-size: 15px;
+  line-height: 36px;
+}
+
+@media (max-width: 640px) {
+  .comercial .calc-ambient-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .comercial .calc-ambient-row-fields {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* Classificação (só nas rows custom) — pill discreta EMBAIXO do nome
+   pra não competir com o slot dos steppers à direita. */
+.comercial .calc-ambient-row-name {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.comercial .calc-ambient-row-classe {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-nuki-cinza-medio, #595959);
+  background: var(--color-nuki-cinza-divisor, #f0f0f0);
+  padding: 3px 8px;
+  border-radius: 999px;
+  line-height: 1;
+}
+
+/* Botão × pra remover ambient custom — absolute positioned pra não
+   participar do flex das rows (senão as rows custom ficariam mais
+   estreitas que as locked). O slot é reservado pelo padding-right do .row. */
+.comercial .calc-ambient-remove {
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 0;
+  background: transparent;
+  color: var(--color-nuki-cinza-medio, #595959);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.55;
+  transition:
+    background 0.2s,
+    opacity 0.2s,
+    color 0.2s;
+}
+.comercial .calc-ambient-remove:hover {
+  opacity: 1;
+  background: rgba(232, 113, 63, 0.12);
+  color: var(--color-nuki-laranja, #e8713f);
+}
+@media (max-width: 640px) {
+  /* No mobile a row empilha (name em cima, fields embaixo) — ancoro o × no
+     topo pra não flutuar no meio do gap vertical entre name e fields. */
+  .comercial .calc-ambient-remove {
+    top: 12px;
+    transform: none;
+  }
+}
+
+/* -------- Adicionar ambiente (botão + form inline) -------- */
+/* Botão default (fechado) — CTA tracejado abaixo das rows */
+.comercial .calc-add-ambient-btn {
+  margin-top: 8px;
+  width: 100%;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px dashed var(--color-nuki-cinza-borda, #d9d9d9);
+  background: transparent;
+  color: var(--color-nuki-cinza-medio, #595959);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    background 0.2s;
+}
+.comercial .calc-add-ambient-btn:hover {
+  border-color: var(--color-nuki-verde-02, #047676);
+  color: var(--color-nuki-verde-02, #047676);
+  background: rgba(4, 118, 118, 0.04);
+}
+
+/* Form aberto — input + classe pills + ações, empilhados */
+.comercial .calc-add-ambient-form {
+  margin-top: 8px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--color-nuki-verde-02, #047676);
+  background: rgba(4, 118, 118, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.comercial .calc-add-ambient-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid var(--color-nuki-cinza-divisor, #f0f0f0);
+  background: var(--color-nuki-branco, #fff);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-nuki-preto, #000);
+  outline: 0;
+  transition: border-color 0.2s;
+}
+.comercial .calc-add-ambient-input:focus {
+  border-color: var(--color-nuki-verde-02, #047676);
+}
+.comercial .calc-add-ambient-input::placeholder {
+  color: var(--color-nuki-cinza-7, #8c8c8c);
+  font-weight: 500;
+}
+.comercial .calc-add-ambient-classe {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.comercial .calc-add-ambient-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.comercial .calc-add-ambient-confirm,
+.comercial .calc-add-ambient-cancel {
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 10px;
+  border: 0;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    opacity 0.2s;
+}
+.comercial .calc-add-ambient-confirm {
+  background: var(--color-nuki-preto, #000);
+  color: var(--color-nuki-branco, #fff);
+}
+.comercial .calc-add-ambient-confirm:hover:not(:disabled) {
+  background: var(--color-nuki-verde-02, #047676);
+}
+.comercial .calc-add-ambient-confirm:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.comercial .calc-add-ambient-cancel {
+  background: transparent;
+  color: var(--color-nuki-cinza-medio, #595959);
+}
+.comercial .calc-add-ambient-cancel:hover {
+  color: var(--color-nuki-preto, #000);
+}
+
 /* -------- Ambientes impactados nas variações (checkbox grid compacto) -------- */
 .comercial .calc-axes {
   padding-top: 12px;
@@ -791,6 +1031,15 @@
     border-color 0.25s,
     background 0.25s;
   animation: metragem-in 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  cursor: pointer;
+}
+.comercial .metragem-group:not(.ativa):hover {
+  border-color: var(--color-nuki-cinza-borda, #d9d9d9);
+  background: rgba(4, 118, 118, 0.03);
+}
+.comercial .metragem-group:focus-visible {
+  outline: 2px solid var(--color-nuki-verde-02, #047676);
+  outline-offset: 3px;
 }
 @keyframes metragem-in {
   from {
@@ -1065,21 +1314,53 @@
   }
 }
 
-/* ===== CASES — placeholder ===== */
+/* ===== CASES — grid de logos das construtoras parceiras ===== */
+/* Adaptação elegante do CarrosselLogos da home pra tom da /comercial:
+   em vez de faixa dark compacta, cada logo ganha seu próprio card com
+   respiro, borda cinza-divisor e radius 20px (padrão dos demais cards
+   da apresentação). Hover suave em cima da opacidade default de 0.75. */
 .comercial .cases {
   background: var(--color-nuki-branco, #fff);
 }
-.comercial .cases .placeholder {
+.comercial .cases-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+@media (max-width: 900px) {
+  .comercial .cases-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* Os PNGs dos logos têm arte BRANCA com fundo transparente (foram feitos
+   pro fundo verde-08 dark do CarrosselLogos da home). Se o card fosse branco,
+   os logos ficariam invisíveis. Uso o mesmo verde-08 aqui — mantém coerência
+   de marca com a home e resolve o contraste sem precisar de outros assets. */
+.comercial .cases-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 40vh;
-  border: 2px dashed var(--color-nuki-cinza-borda, #d9d9d9);
+  padding: 36px 28px;
+  background: var(--color-nuki-verde-08, #025259);
+  border: 1px solid var(--color-nuki-verde-08, #025259);
   border-radius: 20px;
-  color: var(--color-nuki-cinza-medio, #595959);
-  font-size: 15px;
-  text-align: center;
-  padding: 32px;
+  min-height: 140px;
+  transition:
+    background 0.25s,
+    border-color 0.25s,
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+.comercial .cases-card:hover {
+  background: var(--color-nuki-verde-03, #00363a);
+  border-color: var(--color-nuki-verde-03, #00363a);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(2, 82, 89, 0.24);
+}
+.comercial .cases-card img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
 }
 
 /* ===== CTA — 3 planos + demo ===== */
@@ -1181,6 +1462,153 @@
 }
 .comercial .cta .demo {
   margin-left: auto;
+}
+
+/* -------- Simulador de meses dentro de cada card de plano -------- */
+/* Bloco embaixo do preço com: label, stepper (variant dark), subtotal live.
+   Steppers herdam .calc-stepper e sobrescrevem cores pra caber no fundo
+   escuro do card. Subtotal fica muted em 0 e verde-suave quando > 0. */
+.comercial .cta .cta-plano-simulador {
+  margin-top: 4px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+.comercial .cta .cta-plano-simulador-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+.comercial .cta .cta-plano-simulador-sub {
+  font-size: 18px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.32);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  transition: color 0.25s;
+}
+.comercial .cta .cta-plano-simulador-sub.on {
+  color: var(--color-nuki-verde-suave, #e6fafa);
+}
+/* Stepper variant dark quando dentro do card do plano */
+.comercial .cta .cta-plano-simulador .calc-stepper {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+  height: 40px;
+}
+.comercial .cta .cta-plano-simulador .calc-stepper-btn {
+  color: var(--color-nuki-branco, #fff);
+}
+.comercial .cta .cta-plano-simulador .calc-stepper-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+.comercial .cta .cta-plano-simulador .calc-stepper-btn:disabled {
+  color: rgba(255, 255, 255, 0.22);
+}
+.comercial .cta .cta-plano-simulador .calc-stepper-value {
+  color: var(--color-nuki-branco, #fff);
+  border-color: rgba(255, 255, 255, 0.14);
+  line-height: 38px;
+}
+
+/* -------- Total consolidado (imagens + plataforma) -------- */
+/* Frame preto elevado entre a nota e os contatos, com borda tênue pra
+   separar do fundo preto da seção sem virar mais um card genérico.
+   Mesma linguagem tipográfica do output da Calculadora (numeros grandes,
+   tabular-nums). */
+.comercial .cta-consolidado {
+  margin: 2vh 0 6vh;
+  padding: 32px;
+  background: var(--color-nuki-preto, #000);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  color: var(--color-nuki-branco, #fff);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.32);
+}
+.comercial .cta-consolidado-head {
+  margin-bottom: 24px;
+}
+.comercial .cta-consolidado-tag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-nuki-verde-suave, #e6fafa);
+}
+.comercial .cta-consolidado-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+.comercial .cta-consolidado-line {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.comercial .cta-consolidado-line-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+.comercial .cta-consolidado-line-value {
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 800;
+  color: var(--color-nuki-branco, #fff);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.comercial .cta-consolidado-line-hint {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+}
+.comercial .cta-consolidado-total {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+  padding-left: 24px;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  min-width: 220px;
+}
+.comercial .cta-consolidado-total-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-nuki-verde-suave, #e6fafa);
+}
+.comercial .cta-consolidado-total-value {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 800;
+  color: var(--color-nuki-branco, #fff);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+@media (max-width: 720px) {
+  .comercial .cta-consolidado-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .comercial .cta-consolidado-total {
+    padding-left: 0;
+    padding-top: 20px;
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    align-items: flex-start;
+    min-width: 0;
+  }
 }
 
 /* ===== BOTÃO VOLTAR ===== */
