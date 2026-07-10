@@ -7,6 +7,7 @@ export { PublicoAlvo } from "./PublicoAlvo";
 export { Cases } from "./Cases";
 export { Calculadora } from "./Calculadora";
 export { CTA } from "./CTA";
+export { CalculadoraProvider } from "./CalculadoraContext";
 export { ComercialProgressNav } from "./ComercialProgressNav";
 export { ComercialScripts } from "./ComercialScripts";
 export { comercialNav } from "./comercial.data";

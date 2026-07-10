@@ -10,6 +10,7 @@ import {
   Cases,
   Calculadora,
   CTA,
+  CalculadoraProvider,
   ComercialProgressNav,
   ComercialScripts,
 } from "@/components/comercial";
@@ -51,8 +52,13 @@ export default function ComercialPage() {
         <Diferenciais />
         <PublicoAlvo />
         <Cases />
-        <Calculadora />
-        <CTA />
+        {/* Provider engloba Calculadora + CTA — permite ao CTA ler o total
+            de imagens/custo publicado pela Calculadora e compor o "Total
+            consolidado" sem prop drilling entre seções irmãs. */}
+        <CalculadoraProvider>
+          <Calculadora />
+          <CTA />
+        </CalculadoraProvider>
       </main>
       <Footer />
       <ComercialScripts />

@@ -1,7 +1,36 @@
+"use client";
+
+import { useState } from "react";
 import { SolicitarDemoButton } from "@/components/demo-modal";
 import { planos } from "./comercial.data";
+import { Stepper, useCountUp, currency } from "./calc-shared";
+import { useCalculadoraTotals } from "./CalculadoraContext";
+
+const MESES_MAX = 24;
 
 export function CTA() {
+  /* Meses por plano — array paralelo ao `planos`, começa em 0 (user preenche).
+     Cada mês num tier é cobrado pelo preço INTEIRO daquele plano (Plano 02 já
+     inclui Planner, Plano 03 já inclui os anteriores — sem preço aditivo). */
+  const [meses, setMeses] = useState<number[]>(() => planos.map(() => 0));
+
+  const { totals } = useCalculadoraTotals();
+
+  const custoPlataforma = meses.reduce(
+    (acc, m, i) => acc + m * planos[i].precoMes,
+    0,
+  );
+  const totalMeses = meses.reduce((a, b) => a + b, 0);
+  const totalGeral = totals.custoImagens + custoPlataforma;
+
+  const custoPlataformaDisplay = useCountUp(custoPlataforma);
+  const totalGeralDisplay = useCountUp(totalGeral);
+  const custoImagensDisplay = useCountUp(totals.custoImagens);
+
+  const updateMeses = (idx: number, v: number) => {
+    setMeses((prev) => prev.map((m, i) => (i === idx ? v : m)));
+  };
+
   return (
     <section className="cm-section cta" id="cta" data-tone="dark" data-reveal-group="">
       <div className="cm-wrap">
@@ -11,30 +40,81 @@ export function CTA() {
             Um plano para <em>cada fase</em> do seu empreendimento.
           </h2>
           <p className="lead reveal">
-            Fee mensal por empreendimento ativo. Módulos combinados conforme sua operação.
+            Fee mensal por empreendimento ativo. Simule quantos meses o empreendimento fica em cada tier — a Nuki cobra por período em cada plano.
           </p>
         </div>
 
         <div className="planos">
-          {planos.map((p) => (
-            <article className={`plano reveal${p.destaque ? " destaque" : ""}`} key={p.n}>
-              <span className="n">{p.n}</span>
-              <ul>
-                {p.itens.map((i) => (
-                  <li key={i}>{i}</li>
-                ))}
-              </ul>
-              <div className="preco">
-                {p.preco}
-                <span className="un">por empreendimento</span>
-              </div>
-            </article>
-          ))}
+          {planos.map((p, i) => {
+            const subtotal = meses[i] * p.precoMes;
+            return (
+              <article className={`plano reveal${p.destaque ? " destaque" : ""}`} key={p.n}>
+                <span className="n">{p.n}</span>
+                <ul>
+                  {p.itens.map((it) => (
+                    <li key={it}>{it}</li>
+                  ))}
+                </ul>
+                <div className="preco">
+                  {p.preco}
+                  <span className="un">por empreendimento</span>
+                </div>
+                <div className="cta-plano-simulador">
+                  <span className="cta-plano-simulador-label">Meses neste plano</span>
+                  <Stepper
+                    value={meses[i]}
+                    min={0}
+                    max={MESES_MAX}
+                    onChange={(v) => updateMeses(i, v)}
+                    ariaLabel={`Meses no ${p.n}`}
+                  />
+                  <span className={`cta-plano-simulador-sub${meses[i] > 0 ? " on" : ""}`}>
+                    {meses[i] > 0 ? currency(subtotal) : "—"}
+                  </span>
+                </div>
+              </article>
+            );
+          })}
         </div>
 
         <p className="nota reveal">
           A contratação e desenvolvimento das imagens é realizada à parte com parceiros homologados pela Nuki.
         </p>
+
+        {/* ============ TOTAL CONSOLIDADO ============ */}
+        <div className="cta-consolidado reveal" aria-label="Total estimado do empreendimento">
+          <div className="cta-consolidado-head">
+            <span className="cta-consolidado-tag">Total estimado do empreendimento</span>
+          </div>
+          <div className="cta-consolidado-grid">
+            <div className="cta-consolidado-line">
+              <span className="cta-consolidado-line-label">Setup de imagens</span>
+              <span className="cta-consolidado-line-value">
+                {currency(custoImagensDisplay)}
+              </span>
+              <span className="cta-consolidado-line-hint">
+                {totals.imagensTotal.toLocaleString("pt-BR")} imagens · parceiro homologado
+              </span>
+            </div>
+            <div className="cta-consolidado-line">
+              <span className="cta-consolidado-line-label">Plataforma</span>
+              <span className="cta-consolidado-line-value">
+                {currency(custoPlataformaDisplay)}
+              </span>
+              <span className="cta-consolidado-line-hint">
+                {totalMeses === 0
+                  ? "configure os meses acima"
+                  : `${totalMeses} ${totalMeses === 1 ? "mês" : "meses"} de operação Nuki`}
+              </span>
+            </div>
+            <div className="cta-consolidado-total">
+              <span className="cta-consolidado-total-label">Total</span>
+              <span className="cta-consolidado-total-value">
+                {currency(totalGeralDisplay)}
+              </span>
+            </div>
+          </div>
+        </div>
 
         <div className="contatos reveal">
           <a href="mailto:contato@nukibr.com">contato@nukibr.com</a>
