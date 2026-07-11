@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { comercialNav } from "./comercial.data";
 
 /**
  * Scripts da apresentação /comercial.
@@ -72,9 +71,20 @@ export function ComercialScripts() {
     document.querySelectorAll(".cm-section, .module").forEach((s) => navIO.observe(s));
     cleanups.push(() => navIO.disconnect());
 
-    // 3) Navegação por teclado — comercialNav dá a ordem oficial das partes.
-    const partIds = comercialNav.map((n) => n.id);
-    const currentPartIndex = () => {
+    // 3) Navegação por teclado — deriva a lista walkable do DOM em runtime
+    // (todos os `.cm-section` com id, na ordem em que aparecem). Isso permite
+    // que seções como `#planner-demo` (que NÃO existem em comercialNav) sejam
+    // navegáveis por seta ← → mas continuem invisíveis no progress-nav lateral.
+    // comercialNav segue sendo a fonte da verdade só do progress-nav.
+    const getWalkableIds = (): string[] => {
+      const nodes = document.querySelectorAll<HTMLElement>(".cm-section, .module");
+      const ids: string[] = [];
+      nodes.forEach((el) => {
+        if (el.id) ids.push(el.id);
+      });
+      return ids;
+    };
+    const currentPartIndex = (partIds: string[]) => {
       const mid = window.innerHeight / 2;
       let closest = 0;
       let closestDist = Infinity;
@@ -91,7 +101,7 @@ export function ComercialScripts() {
       });
       return closest;
     };
-    const goToPart = (i: number) => {
+    const goToPart = (i: number, partIds: string[]) => {
       const clamped = Math.max(0, Math.min(partIds.length - 1, i));
       const el = document.getElementById(partIds[clamped]);
       if (!el) return;
@@ -107,25 +117,92 @@ export function ComercialScripts() {
         el.isContentEditable
       );
     };
+
+    // Demo lock — quando um `.modulo-demo-slide` fica ≥ 70% no viewport, o
+    // usuário só pode sair via botão × ou tecla ESC. Setas, espaço, PageUp/Down,
+    // Home/End e scroll (via `html.demo-locked` no CSS) ficam bloqueados. Isso
+    // evita "sair sem querer" enquanto o prospect explora o produto real.
+    const demoLockState: { active: boolean; backTarget: string | null } = {
+      active: false,
+      backTarget: null,
+    };
+    const exitDemoLock = () => {
+      if (!demoLockState.backTarget) return;
+      const el = document.getElementById(demoLockState.backTarget);
+      if (!el) return;
+      el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    };
+    const demoIO = new IntersectionObserver(
+      (es) => {
+        es.forEach((e) => {
+          const target = (e.target as HTMLElement).dataset.backTarget || null;
+          if (e.isIntersecting && e.intersectionRatio >= 0.7) {
+            demoLockState.active = true;
+            demoLockState.backTarget = target;
+            document.documentElement.classList.add("demo-locked");
+          } else if (e.intersectionRatio < 0.3) {
+            // Desativa só se este era o demo ativo — evita conflito quando
+            // (no futuro) mais de um demo existir na página.
+            if (demoLockState.backTarget === target || !e.isIntersecting) {
+              demoLockState.active = false;
+              demoLockState.backTarget = null;
+              document.documentElement.classList.remove("demo-locked");
+            }
+          }
+        });
+      },
+      { threshold: [0, 0.3, 0.7, 1] },
+    );
+    document.querySelectorAll(".modulo-demo-slide").forEach((s) => demoIO.observe(s));
+    cleanups.push(() => {
+      demoIO.disconnect();
+      document.documentElement.classList.remove("demo-locked");
+    });
+
+    // Bridge de ESC vindo de DENTRO do iframe do Planner. O HTML injeta um
+    // keydown listener com { capture: true } que faz postMessage({type:'nuki-demo:esc'})
+    // pro parent. Isso resolve o "ESC não funciona quando foco está no iframe"
+    // sem precisar de auto-scroll pro parent ou tricks de blur.
+    const onMessage = (e: MessageEvent) => {
+      if (!e.data || typeof e.data !== "object") return;
+      if (e.data.type === "nuki-demo:esc" && demoLockState.active) {
+        exitDemoLock();
+      }
+    };
+    window.addEventListener("message", onMessage);
+    cleanups.push(() => window.removeEventListener("message", onMessage));
+
     const onKey = (e: KeyboardEvent) => {
       if (isTypingTarget(e.target)) return;
-      const cur = currentPartIndex();
+
+      // Bonus quando demo está em foco: ESC também volta pro descritivo (além
+      // dos botões e da seta esquerda). Não bloqueia mais setas — nav global
+      // funciona normalmente inclusive dentro do demo. O scroll lock (via
+      // html.demo-locked no CSS) segue prevenindo saída por wheel/touch.
+      if (demoLockState.active && e.key === "Escape") {
+        e.preventDefault();
+        exitDemoLock();
+        return;
+      }
+
+      const partIds = getWalkableIds();
+      const cur = currentPartIndex(partIds);
       if (e.key === "ArrowRight" || e.key === "PageDown" || (e.key === " " && !e.shiftKey)) {
         e.preventDefault();
-        goToPart(cur + 1);
+        goToPart(cur + 1, partIds);
       } else if (
         e.key === "ArrowLeft" ||
         e.key === "PageUp" ||
         (e.key === " " && e.shiftKey)
       ) {
         e.preventDefault();
-        goToPart(cur - 1);
+        goToPart(cur - 1, partIds);
       } else if (e.key === "Home") {
         e.preventDefault();
-        goToPart(0);
+        goToPart(0, partIds);
       } else if (e.key === "End") {
         e.preventDefault();
-        goToPart(partIds.length - 1);
+        goToPart(partIds.length - 1, partIds);
       }
     };
     window.addEventListener("keydown", onKey);

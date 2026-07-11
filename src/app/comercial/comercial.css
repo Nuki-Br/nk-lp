@@ -33,6 +33,15 @@
   scroll-margin-top: 0;
 }
 
+/* Variant fullscreen — usado por seções que hospedam iframe (ex: demo dos
+   módulos). Elimina padding/flex-center do container base, deixando o
+   conteúdo interno ocupar viewport inteiro sem margens forçadas. */
+.comercial .cm-section.is-fullscreen {
+  padding: 0;
+  min-height: 100vh;
+  display: block;
+}
+
 /* ===== CAPA ===== */
 .comercial .capa {
   background: var(--color-nuki-preto, #000);
@@ -218,6 +227,481 @@
 }
 .comercial .fluxo .arrow {
   display: none;
+}
+
+/* ===== MÓDULOS — slide com tabs internos =====
+   Cada módulo (Planner · Personaliza · Inspetor) vira uma slide estática
+   no padrão comercial: layout 2-col (copy + shot), tabs verticais dos
+   beats à esquerda, screenshot grande à direita com cross-fade ao trocar
+   de tab. Nada scroll-driven. Variantes .is-desktop / .is-phone controlam
+   o aspect ratio do shot (landscape 8:5 vs celular 9:16 centralizado). */
+.comercial .modulo-slide {
+  background: var(--color-nuki-branco, #fff);
+}
+.comercial .modulo-slide-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .comercial .modulo-slide-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+.comercial .modulo-slide-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.comercial .modulo-slide-copy .tag {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-nuki-verde-02, #047676);
+  margin: 0;
+}
+.comercial .modulo-slide-copy h2 {
+  font-weight: 800;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.05;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.comercial .modulo-slide-copy .lead {
+  font-size: 15px;
+  color: var(--color-nuki-cinza, #434343);
+  line-height: 1.55;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Tabs verticais — uma por beat */
+.comercial .modulo-slide-tabs {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.comercial .modulo-slide-tab {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px 18px;
+  background: var(--color-nuki-branco, #fff);
+  border: 1px solid var(--color-nuki-cinza-divisor, #f0f0f0);
+  border-radius: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    transform 0.15s;
+}
+.comercial .modulo-slide-tab:hover {
+  border-color: var(--color-nuki-cinza-borda, #d9d9d9);
+}
+.comercial .modulo-slide-tab.on {
+  border-color: var(--color-nuki-verde-02, #047676);
+  background: rgba(4, 118, 118, 0.04);
+}
+.comercial .modulo-slide-tab-num {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--color-nuki-cinza-medio, #595959);
+  margin-bottom: 4px;
+}
+.comercial .modulo-slide-tab.on .modulo-slide-tab-num {
+  color: var(--color-nuki-verde-02, #047676);
+}
+.comercial .modulo-slide-tab-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-nuki-preto, #000);
+  line-height: 1.35;
+}
+
+/* Descrição do beat ativo */
+.comercial .modulo-slide-detail {
+  margin-top: 4px;
+  min-height: 60px;
+}
+.comercial .modulo-slide-detail-desc {
+  font-size: 14px;
+  color: var(--color-nuki-cinza, #434343);
+  line-height: 1.55;
+  margin: 0;
+  animation: modulo-detail-in 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@keyframes modulo-detail-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Highlights (2 stat cards horizontais) */
+.comercial .modulo-slide-highlights {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-nuki-cinza-divisor, #f0f0f0);
+}
+.comercial .modulo-slide-hl {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.comercial .modulo-slide-hl-num {
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 800;
+  color: var(--color-nuki-preto, #000);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.comercial .modulo-slide-hl-lbl {
+  font-size: 11px;
+  color: var(--color-nuki-cinza-medio, #595959);
+  max-width: 150px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Link "Saiba mais" */
+/* CTA "▷ Explorar o {módulo}" — substitui o "Saiba mais" quando o módulo tem
+   demoUrl. Grande, preto, glyph ▷ com hover verde-02. Click faz scroll pro
+   `#{id}-demo` (segundo slide fullscreen do mesmo módulo). */
+.comercial .modulo-slide-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-nuki-preto, #000);
+  color: var(--color-nuki-branco, #fff);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+}
+.comercial .modulo-slide-cta:hover {
+  background: var(--color-nuki-verde-02, #047676);
+  transform: translateY(-1px);
+}
+.comercial .modulo-slide-cta-glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 11px;
+  padding-left: 2px;
+  line-height: 1;
+}
+
+.comercial .modulo-slide-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--color-nuki-preto, #000);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.comercial .modulo-slide-link:hover {
+  color: var(--color-nuki-verde-02, #047676);
+}
+
+/* -------- Coluna direita: stage do cross-fade -------- */
+.comercial .modulo-slide-shot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.comercial .modulo-slide-shot-stage {
+  position: relative;
+  width: 100%;
+}
+.comercial .modulo-slide.is-desktop .modulo-slide-shot-stage {
+  aspect-ratio: 8 / 5;
+  max-width: 900px;
+}
+.comercial .modulo-slide.is-phone .modulo-slide-shot-stage {
+  aspect-ratio: 9 / 16;
+  max-width: 300px;
+  margin: 0 auto;
+}
+/* Glow verde-02 sutil atrás do phone (igual ao do jornada, escopado) */
+.comercial .modulo-slide.is-phone .modulo-slide-shot-stage::before {
+  content: "";
+  position: absolute;
+  inset: -12% -28%;
+  z-index: 0;
+  background: radial-gradient(closest-side, rgba(4, 118, 118, 0.1), transparent 70%);
+  pointer-events: none;
+}
+.comercial .modulo-slide-shot-slot {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  display: block;
+  transition: opacity 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+  z-index: 1;
+}
+.comercial .modulo-slide-shot-slot.on {
+  opacity: 1;
+}
+.comercial .modulo-slide-shot-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 10px;
+}
+.comercial .modulo-slide.is-desktop .modulo-slide-shot-slot img {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 6px 16px rgba(0, 0, 0, 0.08),
+    0 24px 48px rgba(0, 0, 0, 0.08);
+}
+.comercial .modulo-slide.is-phone .modulo-slide-shot-slot img {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12))
+    drop-shadow(0 24px 48px rgba(0, 0, 0, 0.2));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comercial .modulo-slide-shot-slot {
+    transition: none;
+  }
+  .comercial .modulo-slide-detail-desc {
+    animation: none;
+  }
+}
+
+/* -------- Módulo demo slide (iframe fullscreen) --------
+   Renderizado logo após o descritivo quando data.demoUrl existe.
+   Estrutura: barra fininha topo (44px, tom claro) + iframe ocupando o resto.
+   Modo mobile: iframe some, fallback "abrir em nova aba" aparece.
+
+   Aesthetic: bar branca + borda cinza-divisor + sombra tênue, casa com a UI
+   light do Planner sem competir. Substitui a versão anterior preta que ficava
+   dura demais entre o resto da apresentação e o produto. */
+.comercial .modulo-demo-slide {
+  background: var(--color-nuki-cinza-claro, #f7f7f7);
+  color: var(--color-nuki-preto, #000);
+}
+.comercial .modulo-demo-bar {
+  position: relative;
+  z-index: 2;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 20px;
+  background: var(--color-nuki-branco, #fff);
+  border-bottom: 1px solid var(--color-nuki-cinza-divisor, #f0f0f0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+.comercial .modulo-demo-bar-title {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--color-nuki-cinza-medio, #595959);
+}
+.comercial .modulo-demo-bar-title strong {
+  font-weight: 800;
+  color: var(--color-nuki-preto, #000);
+  letter-spacing: 0.01em;
+}
+.comercial .modulo-demo-bar-sep {
+  opacity: 0.4;
+}
+.comercial .modulo-demo-bar-suffix {
+  color: var(--color-nuki-verde-02, #047676);
+  font-weight: 600;
+  font-size: 12px;
+}
+.comercial .modulo-demo-bar-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--color-nuki-cinza-divisor, #f0f0f0);
+  border-radius: 999px;
+  background: var(--color-nuki-branco, #fff);
+  color: var(--color-nuki-cinza-medio, #595959);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+.comercial .modulo-demo-bar-nav:hover {
+  background: var(--color-nuki-cinza-claro, #f7f7f7);
+  border-color: var(--color-nuki-cinza-borda, #d9d9d9);
+  color: var(--color-nuki-preto, #000);
+}
+.comercial .modulo-demo-bar-nav span {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.comercial .modulo-demo-stage {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 44px);
+  background: var(--color-nuki-cinza-claro, #f7f7f7);
+  overflow: hidden;
+}
+
+/* Demo lock — quando um `.modulo-demo-slide` está em foco (≥ 70% visível), o
+   ComercialScripts adiciona `.demo-locked` na html e bloqueia o scroll da
+   apresentação. Só × ou ESC saem. Não afeta o scroll DENTRO do iframe (outro
+   documento). */
+html.demo-locked,
+html.demo-locked body {
+  overflow: hidden;
+}
+.comercial .modulo-demo-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+}
+
+/* Skeleton overlay — visível até o iframe disparar onLoad */
+.comercial .modulo-demo-skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: var(--color-nuki-cinza-claro, #f7f7f7);
+  pointer-events: none;
+  animation: modulo-demo-skeleton-fade 0.4s ease-out reverse;
+}
+.comercial .modulo-demo-skeleton-pulse {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(4, 118, 118, 0.28),
+    rgba(4, 118, 118, 0.06) 60%,
+    transparent 80%
+  );
+  animation: modulo-demo-pulse 1.4s ease-in-out infinite;
+}
+.comercial .modulo-demo-skeleton-text {
+  font-size: 13px;
+  color: var(--color-nuki-cinza-medio, #595959);
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+@keyframes modulo-demo-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+@keyframes modulo-demo-skeleton-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fallback mobile — HTML do Planner é fixo em 1280px+; abaixo disso mostra CTA */
+.comercial .modulo-demo-mobile {
+  display: none;
+}
+@media (max-width: 900px) {
+  .comercial .modulo-demo-frame,
+  .comercial .modulo-demo-skeleton {
+    display: none;
+  }
+  .comercial .modulo-demo-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 48px 24px;
+    max-width: 480px;
+    margin: 0 auto;
+    position: absolute;
+    inset: 0;
+    justify-content: center;
+  }
+  .comercial .modulo-demo-mobile-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--color-nuki-preto, #000);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .comercial .modulo-demo-mobile-body {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-nuki-cinza-medio, #595959);
+    margin: 0;
+  }
+  .comercial .modulo-demo-mobile-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    background: var(--color-nuki-preto, #000);
+    color: var(--color-nuki-branco, #fff);
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    margin-top: 8px;
+  }
+  .comercial .modulo-demo-mobile-link:hover {
+    background: var(--color-nuki-verde-02, #047676);
+  }
 }
 
 /* ===== DIFERENCIAIS — grid 3x2 ===== */
