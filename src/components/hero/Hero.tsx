@@ -5,7 +5,10 @@ export function Hero() {
   return (
     <section className="w-full bg-nuki-cinza-claro">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-6 py-12 sm:px-8 sm:py-14 md:px-12 md:py-16 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:px-16 lg:py-20 xl:pl-[108px] xl:pr-[99px] xl:py-[88px]">
-        <div className="flex w-full flex-col items-start justify-center gap-8 lg:w-[416px] lg:shrink-0">
+        <div className="flex w-full flex-col items-start justify-center gap-6 lg:w-[416px] lg:shrink-0">
+          <span className="rounded-full bg-nuki-verde-suave px-4 py-1.5 text-[13px] font-bold uppercase tracking-[0.6px] text-nuki-verde-02">
+            Software para construtoras e incorporadoras
+          </span>
           <h1 className="text-[36px] font-extrabold leading-[44px] tracking-[0.1px] text-nuki-preto sm:text-[44px] sm:leading-[52px] md:text-[52px] md:leading-[60px] lg:text-[60px] lg:leading-[60px] xl:text-[64px] xl:leading-[64px]">
             Planeje, personalize e entregue.
           </h1>
