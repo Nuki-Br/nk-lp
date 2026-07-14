@@ -1823,6 +1823,96 @@ html.demo-locked body {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
+.comercial .cta .plano .preco .preco-antigo {
+  display: block;
+  font-weight: 600;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: line-through;
+  margin-bottom: 2px;
+}
+.comercial .cta .plano .preco .preco-valor {
+  display: block;
+}
+.comercial .cta .plano .preco .preco-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--color-nuki-verde-02, #047676);
+  color: var(--color-nuki-branco, #fff);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  vertical-align: middle;
+}
+
+/* -------- Toggle de ciclo de cobrança (Mensal / Trimestral / …) -------- */
+.comercial .cta .ciclo-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 4vh;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.comercial .cta .ciclo-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.comercial .cta .ciclo-toggle-btn:hover {
+  color: var(--color-nuki-branco, #fff);
+}
+.comercial .cta .ciclo-toggle-btn.on {
+  background: var(--color-nuki-branco, #fff);
+  color: var(--color-nuki-preto, #1a1a1a);
+}
+.comercial .cta .ciclo-toggle-off {
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--color-nuki-verde-02, #047676);
+  color: var(--color-nuki-branco, #fff);
+  font-weight: 700;
+  font-size: 11px;
+}
+.comercial .cta .ciclo-toggle-btn.on .ciclo-toggle-off {
+  background: var(--color-nuki-verde-02, #047676);
+}
+/* Mobile: o pill único quebra feio em 2 linhas — vira grid 2×2 full-width com
+   cantos arredondados (retângulo, não pílula) e botões centralizados. */
+@media (max-width: 560px) {
+  .comercial .cta .ciclo-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+    border-radius: 16px;
+    padding: 6px;
+  }
+  .comercial .cta .ciclo-toggle-btn {
+    justify-content: center;
+    padding: 12px 10px;
+    border-radius: 11px;
+    font-size: 15px;
+  }
+}
 .comercial .cta .nota {
   font-size: 13px;
   color: rgba(255, 255, 255, 0.55);
@@ -2081,3 +2171,92 @@ html.demo-locked body {
   font-size: 11px;
 }
 @media (max-width: 820px) { .comercial .cm-hint { display: none; } }
+
+/* ============================================================
+   Portão de senha (/comercial) — ComercialGate
+   ============================================================ */
+.comercial-gate {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--color-nuki-preto, #0d0d0d);
+  color: var(--color-nuki-branco, #fff);
+}
+.comercial-gate-card {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 40px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.comercial-gate-tag {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-nuki-verde-suave, #e6fafa);
+}
+.comercial-gate-title {
+  font-size: clamp(24px, 4vw, 30px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0;
+}
+.comercial-gate-lead {
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 6px;
+}
+.comercial-gate-label {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+}
+.comercial-gate-input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-nuki-branco, #fff);
+  font: inherit;
+  font-size: 16px;
+  transition: border-color 0.18s ease;
+}
+.comercial-gate-input:focus {
+  outline: none;
+  border-color: var(--color-nuki-verde-suave, #e6fafa);
+}
+.comercial-gate-input.has-error {
+  border-color: #ff6b6b;
+}
+.comercial-gate-error {
+  margin: 0;
+  font-size: 13px;
+  color: #ff8a8a;
+}
+.comercial-gate-btn {
+  margin-top: 6px;
+  padding: 14px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-nuki-branco, #fff);
+  color: var(--color-nuki-preto, #0d0d0d);
+  font: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+.comercial-gate-btn:hover {
+  background: var(--color-nuki-verde-suave, #e6fafa);
+}

@@ -2,11 +2,15 @@
 
 import { useState } from "react";
 import { SolicitarDemoButton } from "@/components/demo-modal";
-import { planos } from "./comercial.data";
+import { planos, ciclosCobranca } from "./comercial.data";
 import { Stepper, useCountUp, currency } from "./calc-shared";
 import { useCalculadoraTotals } from "./CalculadoraContext";
 
 const MESES_MAX = 24;
+
+/** Preço mensal do plano já com o desconto do ciclo aplicado, arredondado. */
+const precoComDesconto = (precoMes: number, desconto: number) =>
+  Math.round(precoMes * (1 - desconto));
 
 export function CTA() {
   /* Meses por plano — array paralelo ao `planos`, começa em 0 (user preenche).
@@ -14,10 +18,14 @@ export function CTA() {
      inclui Planner, Plano 03 já inclui os anteriores — sem preço aditivo). */
   const [meses, setMeses] = useState<number[]>(() => planos.map(() => 0));
 
+  /* Ciclo de cobrança selecionado — o desconto reduz o preço mensal exibido e
+     alimenta o simulador + total consolidado. Default: Mensal (0%). */
+  const [ciclo, setCiclo] = useState(ciclosCobranca[0]);
+
   const { totals } = useCalculadoraTotals();
 
   const custoPlataforma = meses.reduce(
-    (acc, m, i) => acc + m * planos[i].precoMes,
+    (acc, m, i) => acc + m * precoComDesconto(planos[i].precoMes, ciclo.desconto),
     0,
   );
   const totalMeses = meses.reduce((a, b) => a + b, 0);
@@ -44,9 +52,28 @@ export function CTA() {
           </p>
         </div>
 
+        <div className="ciclo-toggle reveal" role="tablist" aria-label="Ciclo de cobrança">
+          {ciclosCobranca.map((c) => (
+            <button
+              key={c.id}
+              type="button"
+              role="tab"
+              aria-selected={c.id === ciclo.id}
+              className={`ciclo-toggle-btn${c.id === ciclo.id ? " on" : ""}`}
+              onClick={() => setCiclo(c)}
+            >
+              {c.label}
+              {c.desconto > 0 && (
+                <span className="ciclo-toggle-off">−{Math.round(c.desconto * 100)}%</span>
+              )}
+            </button>
+          ))}
+        </div>
+
         <div className="planos">
           {planos.map((p, i) => {
-            const subtotal = meses[i] * p.precoMes;
+            const precoMesFinal = precoComDesconto(p.precoMes, ciclo.desconto);
+            const subtotal = meses[i] * precoMesFinal;
             return (
               <article className={`plano reveal${p.destaque ? " destaque" : ""}`} key={p.n}>
                 <span className="n">{p.n}</span>
@@ -56,8 +83,18 @@ export function CTA() {
                   ))}
                 </ul>
                 <div className="preco">
-                  {p.preco}
-                  <span className="un">por empreendimento</span>
+                  {ciclo.desconto > 0 && (
+                    <span className="preco-antigo">{currency(p.precoMes)}</span>
+                  )}
+                  <span className="preco-valor">{currency(precoMesFinal)}/mês</span>
+                  <span className="un">
+                    por empreendimento
+                    {ciclo.desconto > 0 && (
+                      <span className="preco-badge">
+                        −{Math.round(ciclo.desconto * 100)}%
+                      </span>
+                    )}
+                  </span>
                 </div>
                 <div className="cta-plano-simulador">
                   <span className="cta-plano-simulador-label">Meses neste plano</span>

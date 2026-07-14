@@ -301,6 +301,16 @@ export type Plano = {
   destaque?: boolean;
 };
 
+/** Ciclo de cobrança — desconto aplicado sobre o preço mensal de cada plano. */
+export type CicloCobranca = { id: string; label: string; desconto: number };
+
+export const ciclosCobranca: CicloCobranca[] = [
+  { id: "mensal", label: "Mensal", desconto: 0 },
+  { id: "trimestral", label: "Trimestral", desconto: 0.03 },
+  { id: "semestral", label: "Semestral", desconto: 0.05 },
+  { id: "anual", label: "Anual", desconto: 0.1 },
+];
+
 export const planos: Plano[] = [
   {
     n: "Plano 01",
