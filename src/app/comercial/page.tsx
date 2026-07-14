@@ -43,6 +43,10 @@ export const metadata: Metadata = {
 export default function ComercialPage() {
   return (
     <div className="jornada comercial flex min-h-screen flex-col">
+      {/* Prefetch da demo do Planner — baixa em background enquanto o user rola
+          pelas primeiras seções. Quando chega em #planner-demo, o iframe já
+          carrega quase instantâneo. */}
+      <link rel="prefetch" href="/demos/planner/index.html" as="document" />
       <ComercialProgressNav />
       <main className="flex flex-1 flex-col">
         <Capa />

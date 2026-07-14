@@ -240,6 +240,23 @@ export const CUSTOM_AMBIENTE_DEFAULTS = {
   componentes: 4,
 };
 
+/** Presets rápidos exibidos como chips no "+ Adicionar ambiente". Clicar num
+    chip adiciona o ambient com nome + classe pré-preenchidos + defaults de
+    peso/quantidade/componentes (via CUSTOM_AMBIENTE_DEFAULTS) — user pode
+    editar depois nos controles do tile. Bate com a lista histórica de
+    referência: Sala/Cozinha/Lavabo/Lavanderia/Varanda. Cobre 3 molhadas +
+    2 secas — as combinações mais comuns em apto residencial. */
+export const AMBIENTE_PRESETS: readonly {
+  readonly nome: string;
+  readonly classe: AmbienteClasse;
+}[] = [
+  { nome: "Sala", classe: "seca" },
+  { nome: "Lavabo", classe: "molhada" },
+  { nome: "Cozinha", classe: "molhada" },
+  { nome: "Lavanderia", classe: "molhada" },
+  { nome: "Varanda", classe: "seca" },
+];
+
 export type MetragemState = {
   /** id estável pra React keys; muda por metragem, nunca reindex por posição */
   id: number;
@@ -251,7 +268,9 @@ export type MetragemState = {
 export const CALC_DEFAULTS = {
   opcoesSecas: 3,
   opcoesMolhadas: 3,
-  precoPorImagem: 25,
+  /** Valor por imagem em R$. Não é editável na UI do cliente — só via painel
+      escondido (Ctrl+Alt+K). Ver Calculadora.tsx. */
+  precoPorImagem: 28,
   metragensIniciais: (): MetragemState[] => [
     {
       id: 1,

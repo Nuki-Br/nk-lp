@@ -4,12 +4,11 @@ import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { CarrosselLogos } from "@/components/carrossel-logos";
 import {
+  HomeModulos,
   JourneyHero,
-  JourneyModule,
   JourneyOutro,
   JourneyProgressNav,
   JourneyScripts,
-  journeyModules,
 } from "@/components/jornada";
 import "./jornada.css";
 
@@ -44,9 +43,7 @@ export default function JornadaPage() {
       <main className="flex flex-1 flex-col">
         <Hero />
         <JourneyHero />
-        {journeyModules.map((data, i) => (
-          <JourneyModule key={data.id} data={data} moduleIndex={i} />
-        ))}
+        <HomeModulos />
         <JourneyOutro />
         <CarrosselLogos backgroundClassName="bg-nuki-preto" />
       </main>
