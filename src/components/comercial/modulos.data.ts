@@ -34,7 +34,12 @@ export type ModuloData = {
   /** id da âncora (#planner/#personaliza/#inspetor) — casa com comercialNav */
   id: string;
   tag: string;
-  title: string;
+  /** Título dividido em prefixo de peso normal + palavra principal em extrabold
+      — assinatura tipográfica Nuki (`Conheça o **Planner**`), espelha o padrão
+      dos H2 do /antiga (SobreANuki, SuaIdentidade, SobrePlataforma). `strong` é
+      também a palavra usada isoladamente pelos consumidores (CTA "Explorar o
+      {strong}", aria-labels, alt-texts) — mantém strings curtas e naturais. */
+  title: { pre: string; strong: string };
   /** intro curta que aparece no topo da coluna esquerda */
   descricao: string;
   beats: ModuloBeat[];
@@ -45,13 +50,19 @@ export type ModuloData = {
       mais" por um CTA "▷ Explorar o {title}" que ancora em `#{id}-demo`.
       Sem demoUrl → módulo mantém apenas o slide descritivo. */
   demoUrl?: string;
+  /** Opcional. ID do vídeo YouTube (11 chars) ou URL completa. Quando setado, a
+      coluna direita do descritivo hospeda o vídeo explicativo em vez do cross-fade
+      de screenshots. Ativação real via `<YouTubeEmbed>` do `@next/third-parties/google`
+      — pacote ainda não instalado (todos módulos com `videoUrl` undefined nesta
+      iteração). Ver `ModuloSlide.tsx` para o snippet de ativação. */
+  videoUrl?: string;
 };
 
 export const modulos: ModuloData[] = [
   {
     id: "planner",
     tag: "Fase 01 — Planejamento",
-    title: "Planner",
+    title: { pre: "Conheça o", strong: "Planner" },
     descricao:
       "Estrutura o memorial de personalização antes da venda começar. Do catálogo de materiais à formação de custo — tudo na plataforma, com colaboração da construtora sem perder a rastreabilidade.",
     saibaMaisHref: "/recursos/controle-analise",
@@ -96,7 +107,7 @@ export const modulos: ModuloData[] = [
   {
     id: "personaliza",
     tag: "Fase 02 — Personalização",
-    title: "Personaliza",
+    title: { pre: "Descubra o", strong: "Personaliza" },
     descricao:
       "O cliente escolhe seus acabamentos com clareza sobre impacto técnico e financeiro. Aditivos digitais, revisão técnica e dashboards de receita — tudo puxando o que o Planner já produziu.",
     saibaMaisHref: "/recursos/personalizacao",
@@ -150,7 +161,7 @@ export const modulos: ModuloData[] = [
   {
     id: "inspetor",
     tag: "Fase 03 — Entrega",
-    title: "Inspetor",
+    title: { pre: "Entenda o", strong: "Inspetor" },
     descricao:
       "Vistoria em obra sai do papel e ganha rastreabilidade. Checklist automático das escolhas do cliente, fotos, conformidade e relatório pronto no fim da inspeção.",
     saibaMaisHref: "/recursos/controle-analise",

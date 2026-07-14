@@ -18,9 +18,9 @@ import { modulos } from "./modulos.data";
 export function Modulos() {
   return (
     <>
-      {modulos.map((data) => (
+      {modulos.map((data, index) => (
         <Fragment key={data.id}>
-          <ModuloSlide data={data} />
+          <ModuloSlide data={data} index={index} />
           {data.demoUrl && <ModuloDemoSlide data={data} />}
         </Fragment>
       ))}

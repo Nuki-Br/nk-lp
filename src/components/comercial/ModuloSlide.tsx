@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import type { ModuloData, ModuloShot } from "./modulos.data";
 
@@ -23,7 +24,21 @@ const AUTO_ADVANCE_MS = 5000;
  * inteira. `prefers-reduced-motion` desliga o auto-advance (user controla via
  * click). Nada scroll-driven — a slide é 100% estática.
  */
-export function ModuloSlide({ data }: { data: ModuloData }) {
+/**
+ * `onOpenDemo` — se presente, o click no CTA "Explorar" chama a callback em vez
+ * de fazer scroll pro `#{id}-demo`. Usado na home, onde a demo abre em modal
+ * fullscreen em vez de slide adjacente. Ausente = comportamento default do
+ * /comercial (scroll pro slide de demo).
+ */
+export function ModuloSlide({
+  data,
+  index,
+  onOpenDemo,
+}: {
+  data: ModuloData;
+  index: number;
+  onOpenDemo?: () => void;
+}) {
   const [beatAtivo, setBeatAtivo] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -53,18 +68,38 @@ export function ModuloSlide({ data }: { data: ModuloData }) {
       onFocus={() => setIsPaused(true)}
       onBlur={() => setIsPaused(false)}
     >
+      {/* Numeral gigante "01/02/03" de fundo — herda estilo base de
+          `.jornada .bgnum` (jornada.css:95-105) já importado. Parallax nativo
+          via animation-timeline: view() ou fallback JS do ComercialScripts. */}
+      <span className="bgnum" data-parallax="-70" aria-hidden="true">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      {/* Pearl decorativa — mesma linguagem do /antiga (SobreANuki, FaleComAGente).
+          Off-canvas parcial, borrada, transparente — assinatura de marca sem
+          competir com o produto. */}
+      <Image
+        src="/sobre-a-nuki/nuki_quadradinho_pearl 5.svg"
+        alt=""
+        width={240}
+        height={240}
+        className="modulo-slide-pearl"
+        aria-hidden="true"
+      />
       <div className="cm-wrap">
         <div className="modulo-slide-grid">
           {/* -------- Coluna esquerda: cópia + tabs + highlights -------- */}
           <div className="modulo-slide-copy">
             <p className="tag reveal">{data.tag}</p>
-            <h2 className="reveal">{data.title}</h2>
+            <h2 className="reveal">
+              <span className="modulo-slide-h2-pre">{data.title.pre}</span>{" "}
+              <strong>{data.title.strong}</strong>
+            </h2>
             <p className="lead reveal">{data.descricao}</p>
 
             <ul
               className="modulo-slide-tabs reveal"
               role="tablist"
-              aria-label={`Recursos do ${data.title}`}
+              aria-label={`Recursos do ${data.title.strong}`}
             >
               {data.beats.map((b, i) => (
                 <li key={b.shot.base} role="presentation">
@@ -114,6 +149,10 @@ export function ModuloSlide({ data }: { data: ModuloData }) {
                 type="button"
                 className="modulo-slide-cta reveal"
                 onClick={() => {
+                  if (onOpenDemo) {
+                    onOpenDemo();
+                    return;
+                  }
                   document
                     .getElementById(`${data.id}-demo`)
                     ?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -122,7 +161,7 @@ export function ModuloSlide({ data }: { data: ModuloData }) {
                 <span className="modulo-slide-cta-glyph" aria-hidden="true">
                   ▷
                 </span>
-                Explorar o {data.title}
+                Explorar o {data.title.strong}
               </button>
             ) : (
               <Link className="modulo-slide-link reveal" href={data.saibaMaisHref}>
@@ -131,7 +170,22 @@ export function ModuloSlide({ data }: { data: ModuloData }) {
             )}
           </div>
 
-          {/* -------- Coluna direita: screenshot com cross-fade -------- */}
+          {/* -------- Coluna direita: mídia (vídeo quando disponível, cross-fade
+              de screenshots como fallback) --------
+
+              TODO — ativação do vídeo YouTube quando o primeiro material chegar:
+              1. `npm install @next/third-parties@latest` (antes verificar API na
+                 versão instalada do Next em `node_modules/next/dist/docs/`)
+              2. `import { YouTubeEmbed } from "@next/third-parties/google";`
+              3. Substituir o bloco `{data.videoUrl ? (...) : (...)}` abaixo por:
+                   {data.videoUrl ? (
+                     <div className="modulo-slide-video">
+                       <YouTubeEmbed videoid={data.videoUrl} params="rel=0" />
+                     </div>
+                   ) : (...)}
+              4. Setar `videoUrl` no módulo alvo em `modulos.data.ts`.
+              Enquanto `videoUrl` estiver undefined pra um módulo, o cross-fade
+              de screenshots roda normalmente. */}
           <div className="modulo-slide-shot">
             <div className="modulo-slide-shot-stage">
               {data.beats.map((b, i) => (

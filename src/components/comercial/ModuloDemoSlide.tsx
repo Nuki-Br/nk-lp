@@ -58,14 +58,14 @@ export function ModuloDemoSlide({ data }: { data: ModuloData }) {
           type="button"
           className="modulo-demo-bar-nav"
           onClick={() => navigate(-1)}
-          aria-label={`Voltar para ${data.title}`}
+          aria-label={`Voltar para ${data.title.strong}`}
           title="Voltar (←)"
         >
           <span aria-hidden="true">←</span> Voltar
         </button>
 
         <span className="modulo-demo-bar-title">
-          <strong>{data.title}</strong>
+          <strong>{data.title.strong}</strong>
           <span className="modulo-demo-bar-sep">·</span>
           <span className="modulo-demo-bar-suffix">Demo interativa</span>
         </span>
@@ -86,7 +86,7 @@ export function ModuloDemoSlide({ data }: { data: ModuloData }) {
         <iframe
           className="modulo-demo-frame"
           src={data.demoUrl}
-          title={`${data.title} — demo interativa`}
+          title={`${data.title.strong} — demo interativa`}
           loading="lazy"
           onLoad={() => setLoaded(true)}
         />
@@ -102,7 +102,7 @@ export function ModuloDemoSlide({ data }: { data: ModuloData }) {
         <div className="modulo-demo-mobile" role="note">
           <p className="modulo-demo-mobile-title">Demo funciona melhor no desktop</p>
           <p className="modulo-demo-mobile-body">
-            O {data.title} foi feito pra tela larga. No celular, abra em uma nova aba pra explorar com espaço.
+            O {data.title.strong} foi feito pra tela larga. No celular, abra em uma nova aba pra explorar com espaço.
           </p>
           <a
             className="modulo-demo-mobile-link"

@@ -1,3 +1,4 @@
+export { HomeModulos } from "./HomeModulos";
 export { JourneyHero } from "./JourneyHero";
 export { JourneyModule } from "./JourneyModule";
 export { JourneyOutro } from "./JourneyOutro";
