@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   buildDefaultAmbientes,
   emptyImpacto,
+  AMBIENTE_PRESETS,
   CALC_DEFAULTS,
   CALC_RANGES,
   CUSTOM_AMBIENTE_DEFAULTS,
@@ -116,7 +117,14 @@ function calcularMetragem(
 
 /* ============ COMPONENTE PRINCIPAL ============ */
 
-type AddingState = { nome: string; classe: AmbienteClasse } | null;
+/** UI de "+ Adicionar ambiente" tem 3 estados:
+    - null: botão colapsado
+    - picker: mostra os 5 chips de preset + "Personalizado"
+    - custom: mostra o form de nome + classe (fluxo antigo) */
+type AddingState =
+  | null
+  | { mode: "picker" }
+  | { mode: "custom"; nome: string; classe: AmbienteClasse };
 
 export function Calculadora() {
   const [opcoesSecas, setOpcoesSecas] = useState(CALC_DEFAULTS.opcoesSecas);
@@ -127,8 +135,28 @@ export function Calculadora() {
   );
   const [metragemAtiva, setMetragemAtiva] = useState(0);
   const [addingAmbiente, setAddingAmbiente] = useState<AddingState>(null);
+  /** Painel escondido de config da apresentação. Toggle via Ctrl+Alt+K,
+      fecha com ESC. Nunca visível ao cliente sem o atalho. */
+  const [adminOpen, setAdminOpen] = useState(false);
   const nextIdRef = useRef(metragens.length + 1);
   const nextCustomIdRef = useRef(1);
+
+  /* Listener global do atalho do painel escondido. Ctrl+Alt+K toggle, ESC
+     fecha (só quando aberto — não intercepta ESC de outros contextos). */
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.altKey && (e.key === "k" || e.key === "K")) {
+        e.preventDefault();
+        setAdminOpen((v) => !v);
+        return;
+      }
+      if (e.key === "Escape" && adminOpen) {
+        setAdminOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [adminOpen]);
 
   const metragensCalc = metragens.map((m) => ({ m, calc: calcularMetragem(m, opcoesSecas, opcoesMolhadas) }));
   const imagensTotal = metragensCalc.reduce((a, { calc }) => a + calc.total, 0);
@@ -192,15 +220,18 @@ export function Calculadora() {
     );
   };
 
-  const confirmAddAmbiente = () => {
-    if (!addingAmbiente) return;
-    const nome = addingAmbiente.nome.trim();
-    if (!nome) return;
+  /** Cria e insere um AmbienteConfig na metragem ativa a partir de
+      {nome, classe} — usado tanto pelos presets quanto pelo custom form.
+      Peso/quantidade/componentes vêm dos defaults; user edita nos controles
+      do tile depois. */
+  const addAmbient = (nome: string, classe: AmbienteClasse) => {
+    const trimmed = nome.trim();
+    if (!trimmed) return;
     const id = `custom-${nextCustomIdRef.current++}`;
     const novo: AmbienteConfig = {
       id,
-      nome,
-      classe: addingAmbiente.classe,
+      nome: trimmed,
+      classe,
       peso: CUSTOM_AMBIENTE_DEFAULTS.peso,
       quantidade: CUSTOM_AMBIENTE_DEFAULTS.quantidade,
       componentes: CUSTOM_AMBIENTE_DEFAULTS.componentes,
@@ -211,6 +242,11 @@ export function Calculadora() {
       ),
     );
     setAddingAmbiente(null);
+  };
+
+  const confirmAddAmbiente = () => {
+    if (addingAmbiente?.mode !== "custom") return;
+    addAmbient(addingAmbiente.nome, addingAmbiente.classe);
   };
 
   const toggleImpacto = (id: string) => {
@@ -254,6 +290,49 @@ export function Calculadora() {
   /* ============ JSX ============ */
 
   return (
+    <>
+      {adminOpen && (
+        <div
+          className="calc-admin-panel"
+          role="dialog"
+          aria-label="Configuração da apresentação"
+        >
+          <div className="calc-admin-header">
+            <span className="calc-admin-title">Config apresentação</span>
+            <button
+              type="button"
+              className="calc-admin-close"
+              onClick={() => setAdminOpen(false)}
+              aria-label="Fechar"
+            >
+              ×
+            </button>
+          </div>
+          <div className="calc-admin-field">
+            <label className="calc-admin-label" htmlFor="calc-admin-vpi">
+              Valor por imagem (R$)
+            </label>
+            <input
+              id="calc-admin-vpi"
+              type="number"
+              min={CALC_RANGES.precoPorImagem.min}
+              max={CALC_RANGES.precoPorImagem.max}
+              step={1}
+              value={precoPorImagem}
+              onChange={(e) =>
+                setPrecoPorImagem(
+                  clamp(
+                    parseInt(e.target.value, 10) || 1,
+                    CALC_RANGES.precoPorImagem.min,
+                    CALC_RANGES.precoPorImagem.max,
+                  ),
+                )
+              }
+            />
+          </div>
+          <p className="calc-admin-hint">Ctrl+Alt+K abre/fecha · ESC fecha</p>
+        </div>
+      )}
     <section className="cm-section calculadora" id="calculadora" data-reveal-group="">
       <div className="cm-wrap">
         <div className="cm-head">
@@ -291,29 +370,6 @@ export function Calculadora() {
                   onChange={setOpcoesMolhadas}
                   ariaLabel="Opções por componente em áreas molhadas"
                 />
-              </div>
-              <div className="calc-field">
-                <label className="calc-label calc-label-sm">Valor por imagem</label>
-                <div className="calc-money">
-                  <span className="calc-money-prefix">R$</span>
-                  <input
-                    type="number"
-                    min={CALC_RANGES.precoPorImagem.min}
-                    max={CALC_RANGES.precoPorImagem.max}
-                    step={1}
-                    value={precoPorImagem}
-                    onChange={(e) =>
-                      setPrecoPorImagem(
-                        clamp(
-                          parseInt(e.target.value, 10) || 1,
-                          CALC_RANGES.precoPorImagem.min,
-                          CALC_RANGES.precoPorImagem.max,
-                        ),
-                      )
-                    }
-                    aria-label="Valor por imagem em reais"
-                  />
-                </div>
               </div>
             </div>
 
@@ -377,9 +433,15 @@ export function Calculadora() {
 
                   <AddAmbienteControl
                     state={addingAmbiente}
-                    onOpen={() => setAddingAmbiente({ nome: "", classe: "molhada" })}
+                    onOpen={() => setAddingAmbiente({ mode: "picker" })}
+                    onSelectPreset={(preset) => addAmbient(preset.nome, preset.classe)}
+                    onSelectCustom={() =>
+                      setAddingAmbiente({ mode: "custom", nome: "", classe: "molhada" })
+                    }
                     onChange={(patch) =>
-                      setAddingAmbiente((prev) => (prev ? { ...prev, ...patch } : prev))
+                      setAddingAmbiente((prev) =>
+                        prev?.mode === "custom" ? { ...prev, ...patch } : prev,
+                      )
                     }
                     onConfirm={confirmAddAmbiente}
                     onCancel={() => setAddingAmbiente(null)}
@@ -473,7 +535,7 @@ export function Calculadora() {
             </aside>
 
             <p className="calc-note">
-              {metragens.length} {metragens.length === 1 ? "metragem" : "metragens"} · escala {opcoesSecas}/{opcoesMolhadas} opções por componente (secas/molhadas) · R$ {precoPorImagem} por imagem.
+              {metragens.length} {metragens.length === 1 ? "metragem" : "metragens"} · escala {opcoesSecas}/{opcoesMolhadas} opções por componente (secas/molhadas).
               {ativaCalc && (
                 <>
                   {" "}
@@ -486,6 +548,7 @@ export function Calculadora() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 
@@ -553,12 +616,16 @@ function AmbientRow({
 function AddAmbienteControl({
   state,
   onOpen,
+  onSelectPreset,
+  onSelectCustom,
   onChange,
   onConfirm,
   onCancel,
 }: {
   state: AddingState;
   onOpen: () => void;
+  onSelectPreset: (preset: (typeof AMBIENTE_PRESETS)[number]) => void;
+  onSelectCustom: () => void;
   onChange: (patch: Partial<{ nome: string; classe: AmbienteClasse }>) => void;
   onConfirm: () => void;
   onCancel: () => void;
@@ -570,9 +637,46 @@ function AddAmbienteControl({
       </button>
     );
   }
+
+  /* Passo 1: picker com os 5 presets + opção "Personalizado" que abre o
+     form de nome livre. Clicar num preset já adiciona o ambient. */
+  if (state.mode === "picker") {
+    return (
+      <div className="calc-add-ambient-picker" role="group" aria-label="Escolher ambiente">
+        <p className="calc-add-ambient-picker-label">Escolha um ambiente:</p>
+        <div className="calc-add-ambient-preset-list">
+          {AMBIENTE_PRESETS.map((preset) => (
+            <button
+              key={preset.nome}
+              type="button"
+              className={`calc-add-ambient-preset calc-add-ambient-preset-${preset.classe}`}
+              onClick={() => onSelectPreset(preset)}
+            >
+              <span className="calc-add-ambient-preset-nome">{preset.nome}</span>
+              <span className="calc-add-ambient-preset-classe">
+                {preset.classe === "seca" ? "seca" : "molhada"}
+              </span>
+            </button>
+          ))}
+          <button
+            type="button"
+            className="calc-add-ambient-preset calc-add-ambient-preset-custom"
+            onClick={onSelectCustom}
+          >
+            <span className="calc-add-ambient-preset-nome">+ Personalizado</span>
+          </button>
+        </div>
+        <button type="button" className="calc-add-ambient-cancel" onClick={onCancel}>
+          Cancelar
+        </button>
+      </div>
+    );
+  }
+
+  /* Passo 2 (só se user escolheu "Personalizado"): form de nome + classe. */
   const canConfirm = state.nome.trim().length > 0;
   return (
-    <div className="calc-add-ambient-form" role="group" aria-label="Adicionar ambiente">
+    <div className="calc-add-ambient-form" role="group" aria-label="Adicionar ambiente personalizado">
       <input
         type="text"
         className="calc-add-ambient-input"

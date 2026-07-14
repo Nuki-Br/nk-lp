@@ -1,16 +1,28 @@
-import { JourneyModule, journeyModules } from "@/components/jornada";
+import { Fragment } from "react";
+import { ModuloSlide } from "./ModuloSlide";
+import { ModuloDemoSlide } from "./ModuloDemoSlide";
+import { modulos } from "./modulos.data";
 
 /**
- * Renderiza os 3 módulos (Planner, Personaliza, Inspetor) reusando o
- * JourneyModule da home. Cada módulo já é uma seção com id (#planner,
- * #personaliza, #inspetor) e vira uma "parte" da apresentação — o progress
- * nav do /comercial ancora direto nesses ids.
+ * Renderiza os 3 módulos (Planner, Personaliza, Inspetor) como slides estáticos
+ * no padrão da apresentação comercial. Cada módulo pode emitir até DOIS slides:
+ *   1. Descritivo (`#planner`, `#personaliza`, `#inspetor`) — sempre presente
+ *   2. Demo interativa (`#planner-demo`, etc) — emitido só se `data.demoUrl` existe
+ *
+ * O progress-nav lateral só ancora nos ids "topic" (comercialNav intacto).
+ * Os slides de demo passam despercebidos pelo observer da nav mas são navegáveis
+ * via setas ← → globais (o ComercialScripts deriva a lista walkable do DOM).
+ *
+ * Home continua com JourneyModule intocado — a linguagem scrollytelling fica lá.
  */
 export function Modulos() {
   return (
     <>
-      {journeyModules.map((data) => (
-        <JourneyModule key={data.id} data={data} />
+      {modulos.map((data, index) => (
+        <Fragment key={data.id}>
+          <ModuloSlide data={data} index={index} />
+          {data.demoUrl && <ModuloDemoSlide data={data} />}
+        </Fragment>
       ))}
     </>
   );

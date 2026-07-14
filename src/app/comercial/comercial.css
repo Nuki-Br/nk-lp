@@ -33,6 +33,15 @@
   scroll-margin-top: 0;
 }
 
+/* Variant fullscreen — usado por seções que hospedam iframe (ex: demo dos
+   módulos). Elimina padding/flex-center do container base, deixando o
+   conteúdo interno ocupar viewport inteiro sem margens forçadas. */
+.comercial .cm-section.is-fullscreen {
+  padding: 0;
+  min-height: 100vh;
+  display: block;
+}
+
 /* ===== CAPA ===== */
 .comercial .capa {
   background: var(--color-nuki-preto, #000);
@@ -218,6 +227,216 @@
 }
 .comercial .fluxo .arrow {
   display: none;
+}
+
+/* ===== MÓDULOS — slide com tabs internos =====
+   Os estilos base do `.modulo-slide` foram movidos pra jornada.css (escopado
+   em `.jornada`) pra ficarem acessíveis tanto na home (só `.jornada`) quanto
+   aqui (`.jornada .comercial`). Este arquivo só carrega o layout do slide de
+   demo inline (`.modulo-demo-slide` mais adiante) — home usa modal em vez
+   desse slide adjacente. */
+/* -------- Módulo demo slide (iframe fullscreen) --------
+   Renderizado logo após o descritivo quando data.demoUrl existe.
+   Estrutura: barra fininha topo (44px, tom claro) + iframe ocupando o resto.
+   Modo mobile: iframe some, fallback "abrir em nova aba" aparece.
+
+   Aesthetic: bar branca + borda cinza-divisor + sombra tênue, casa com a UI
+   light do Planner sem competir. Substitui a versão anterior preta que ficava
+   dura demais entre o resto da apresentação e o produto. */
+.comercial .modulo-demo-slide {
+  background: var(--color-nuki-cinza-claro, #f7f7f7);
+  color: var(--color-nuki-preto, #000);
+}
+.comercial .modulo-demo-bar {
+  position: relative;
+  z-index: 2;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 20px;
+  background: var(--color-nuki-branco, #fff);
+  border-bottom: 1px solid var(--color-nuki-cinza-divisor, #f0f0f0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+.comercial .modulo-demo-bar-title {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--color-nuki-cinza-medio, #595959);
+}
+.comercial .modulo-demo-bar-title strong {
+  font-weight: 800;
+  color: var(--color-nuki-preto, #000);
+  letter-spacing: 0.01em;
+}
+.comercial .modulo-demo-bar-sep {
+  opacity: 0.4;
+}
+.comercial .modulo-demo-bar-suffix {
+  color: var(--color-nuki-verde-02, #047676);
+  font-weight: 600;
+  font-size: 12px;
+}
+.comercial .modulo-demo-bar-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--color-nuki-cinza-divisor, #f0f0f0);
+  border-radius: 999px;
+  background: var(--color-nuki-branco, #fff);
+  color: var(--color-nuki-cinza-medio, #595959);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+.comercial .modulo-demo-bar-nav:hover {
+  background: var(--color-nuki-cinza-claro, #f7f7f7);
+  border-color: var(--color-nuki-cinza-borda, #d9d9d9);
+  color: var(--color-nuki-preto, #000);
+}
+.comercial .modulo-demo-bar-nav span {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.comercial .modulo-demo-stage {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 44px);
+  background: var(--color-nuki-cinza-claro, #f7f7f7);
+  overflow: hidden;
+}
+
+/* Demo lock — quando um `.modulo-demo-slide` está em foco (≥ 70% visível), o
+   ComercialScripts adiciona `.demo-locked` na html e bloqueia o scroll da
+   apresentação. Só × ou ESC saem. Não afeta o scroll DENTRO do iframe (outro
+   documento). */
+html.demo-locked,
+html.demo-locked body {
+  overflow: hidden;
+}
+.comercial .modulo-demo-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+}
+
+/* Skeleton overlay — visível até o iframe disparar onLoad */
+.comercial .modulo-demo-skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: var(--color-nuki-cinza-claro, #f7f7f7);
+  pointer-events: none;
+  animation: modulo-demo-skeleton-fade 0.4s ease-out reverse;
+}
+.comercial .modulo-demo-skeleton-pulse {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(4, 118, 118, 0.28),
+    rgba(4, 118, 118, 0.06) 60%,
+    transparent 80%
+  );
+  animation: modulo-demo-pulse 1.4s ease-in-out infinite;
+}
+.comercial .modulo-demo-skeleton-text {
+  font-size: 13px;
+  color: var(--color-nuki-cinza-medio, #595959);
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+@keyframes modulo-demo-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+@keyframes modulo-demo-skeleton-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fallback mobile — HTML do Planner é fixo em 1280px+; abaixo disso mostra CTA */
+.comercial .modulo-demo-mobile {
+  display: none;
+}
+@media (max-width: 900px) {
+  .comercial .modulo-demo-frame,
+  .comercial .modulo-demo-skeleton {
+    display: none;
+  }
+  .comercial .modulo-demo-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 48px 24px;
+    max-width: 480px;
+    margin: 0 auto;
+    position: absolute;
+    inset: 0;
+    justify-content: center;
+  }
+  .comercial .modulo-demo-mobile-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--color-nuki-preto, #000);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .comercial .modulo-demo-mobile-body {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-nuki-cinza-medio, #595959);
+    margin: 0;
+  }
+  .comercial .modulo-demo-mobile-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    background: var(--color-nuki-preto, #000);
+    color: var(--color-nuki-branco, #fff);
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    margin-top: 8px;
+  }
+  .comercial .modulo-demo-mobile-link:hover {
+    background: var(--color-nuki-verde-02, #047676);
+  }
 }
 
 /* ===== DIFERENCIAIS — grid 3x2 ===== */
@@ -689,6 +908,85 @@
   border-color: var(--color-nuki-verde-02, #047676);
   color: var(--color-nuki-verde-02, #047676);
   background: rgba(4, 118, 118, 0.04);
+}
+
+/* -------- Picker de presets (passo 1 do adicionar ambient) --------
+   Aparece antes do form custom. Mostra os 5 chips + "Personalizado" e um
+   botão de cancelar. Layout: grid 2-col em desktop, empilhado em mobile. */
+.comercial .calc-add-ambient-picker {
+  margin-top: 8px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--color-nuki-verde-02, #047676);
+  background: rgba(4, 118, 118, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.comercial .calc-add-ambient-picker-label {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-nuki-cinza-medio, #595959);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.comercial .calc-add-ambient-preset-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+.comercial .calc-add-ambient-preset {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--color-nuki-cinza-divisor, #f0f0f0);
+  background: var(--color-nuki-branco, #fff);
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    transform 0.15s;
+}
+.comercial .calc-add-ambient-preset:hover {
+  border-color: var(--color-nuki-verde-02, #047676);
+  background: rgba(4, 118, 118, 0.06);
+  transform: translateY(-1px);
+}
+.comercial .calc-add-ambient-preset-nome {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-nuki-preto, #000);
+}
+.comercial .calc-add-ambient-preset-classe {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-nuki-cinza-medio, #595959);
+}
+.comercial .calc-add-ambient-preset-molhada .calc-add-ambient-preset-classe {
+  color: var(--color-nuki-verde-02, #047676);
+}
+/* "Personalizado" é o portal pro form livre — sinaliza com borda tracejada
+   pra ler "outro" e não "mais uma opção pronta". */
+.comercial .calc-add-ambient-preset-custom {
+  border-style: dashed;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+}
+.comercial .calc-add-ambient-preset-custom .calc-add-ambient-preset-nome {
+  font-weight: 600;
+  color: var(--color-nuki-cinza-medio, #595959);
+}
+.comercial .calc-add-ambient-preset-custom:hover .calc-add-ambient-preset-nome {
+  color: var(--color-nuki-verde-02, #047676);
 }
 
 /* Form aberto — input + classe pills + ações, empilhados */
@@ -1255,6 +1553,95 @@
   color: var(--color-nuki-cinza-medio, #595959);
   line-height: 1.55;
   margin: 0;
+}
+
+/* -------- Admin panel escondido (Ctrl+Alt+K) --------
+   Card fixed top-right pra o apresentador ajustar o valor por imagem antes
+   de mostrar a calculadora ao cliente. Nunca aparece por conta própria —
+   só sob demanda pelo atalho. Estética discreta escura pra sinalizar "tool
+   interno", não parte do produto. */
+.comercial .calc-admin-panel {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  width: 240px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--color-nuki-preto, #000);
+  color: var(--color-nuki-branco, #fff);
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.28),
+    0 2px 6px rgba(0, 0, 0, 0.18);
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.comercial .calc-admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.comercial .calc-admin-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+.comercial .calc-admin-close {
+  background: transparent;
+  border: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 20px;
+  line-height: 1;
+  padding: 2px 6px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.comercial .calc-admin-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-nuki-branco, #fff);
+}
+.comercial .calc-admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.comercial .calc-admin-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+.comercial .calc-admin-field input {
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-nuki-branco, #fff);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  outline: 0;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+.comercial .calc-admin-field input:focus {
+  border-color: var(--color-nuki-verde-02, #047676);
+  background: rgba(255, 255, 255, 0.1);
+}
+.comercial .calc-admin-hint {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* -------- Disclaimer de aproximação -------- */

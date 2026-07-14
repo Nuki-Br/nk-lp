@@ -563,3 +563,585 @@
   .jornada .device-screen img.device { animation: none; }
   .jornada .device-screen { transition: none; }
 }
+
+/* ===== Foundation do layout "slide comercial" =====
+   Portado do /comercial pra funcionar também na home. Design tokens + classes
+   base (.cm-wrap, .cm-section) escopadas em `.jornada` porque ambas as rotas
+   têm essa classe no root (home = `.jornada`; /comercial = `.jornada.comercial`).
+   O /comercial ainda declara os mesmos valores em `.comercial` — inofensivo,
+   valores idênticos. */
+.jornada {
+  --cm-pad: 24px;
+  --cm-max: 1440px;
+}
+@media (min-width: 640px) { .jornada { --cm-pad: 32px; } }
+@media (min-width: 768px) { .jornada { --cm-pad: 48px; } }
+@media (min-width: 1024px) { .jornada { --cm-pad: 64px; } }
+@media (min-width: 1280px) { .jornada { --cm-pad: 108px; } }
+
+.jornada .cm-wrap {
+  max-width: var(--cm-max);
+  margin: 0 auto;
+  padding: 0 var(--cm-pad);
+  position: relative;
+  z-index: 1;
+}
+
+/* Seção genérica: cobre viewport, centraliza, dá respiro pra apresentação
+   consumida com setas (viver um "slide" por vez) sem impedir scroll natural. */
+.jornada .cm-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12vh 0;
+  scroll-margin-top: 0;
+}
+
+/* Variant fullscreen — usado por seções que hospedam iframe (ex: demo dos
+   módulos). Elimina padding/flex-center do container base, deixando o
+   conteúdo interno ocupar viewport inteiro sem margens forçadas. */
+.jornada .cm-section.is-fullscreen {
+  padding: 0;
+  min-height: 100vh;
+  display: block;
+}
+
+/* ===== MÓDULOS — slide com tabs internos =====
+   Portado do /comercial pra ficar acessível na home também. Escopado em
+   `.jornada` porque ambas as rotas têm essa classe no root
+   (home = `.jornada`, /comercial = `.jornada .comercial`).
+   Cada módulo (Planner · Personaliza · Inspetor) vira uma slide estática
+   no padrão comercial: layout 2-col (copy + shot), tabs verticais dos
+   beats à esquerda, screenshot grande à direita com cross-fade ao trocar
+   de tab. Nada scroll-driven. Variantes .is-desktop / .is-phone controlam
+   o aspect ratio do shot (landscape 8:5 vs celular 9:16 centralizado). */
+.jornada .modulo-slide {
+  background: var(--color-nuki-branco, #fff);
+  /* Ancora bgnum e pearl (absolutas), e clipa o numeral 38vh que ultrapassa
+     lateralmente. */
+  position: relative;
+  overflow: hidden;
+}
+/* Slide dos módulos respira um pouco mais largo que o wrap default (1440px)
+   pra dar espaço extra ao shot na coluna direita, sem "estourar" a régua
+   das outras seções da apresentação. */
+.jornada .modulo-slide .cm-wrap {
+  max-width: 1600px;
+}
+/* Ajusta a posição lateral do .bgnum importado dos rules acima — no /jornada
+   original, `right: 2vw` só se aplica em `.module:not(.reverse)`, que não é
+   nosso caso. */
+.jornada .modulo-slide .bgnum {
+  right: 2vw;
+}
+/* Pearl decorativa — mesma linguagem do /antiga (SobreANuki, FaleComAGente).
+   Off-canvas, borrada, transparente. Sem interação. */
+.jornada .modulo-slide-pearl {
+  position: absolute;
+  right: -80px;
+  bottom: -40px;
+  width: clamp(280px, 32vw, 480px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+/* Home (só `.jornada`, sem `.comercial`) esconde o pearl — decisão de UX pra
+   deixar o slide mais limpo fora do contexto da apresentação. Só o /comercial
+   (que tem `.jornada.comercial` no root) segue mostrando. */
+.jornada:not(.comercial) .modulo-slide-pearl {
+  display: none;
+}
+.jornada .modulo-slide-grid {
+  display: grid;
+  /* Coluna esquerda estreita ("book column") + mídia gorda dominando à direita.
+     Copy encosta no início do wrap, mídia respira até 1050px. Espelha o
+     layout do RecursoPersonalizacao do /antiga. */
+  grid-template-columns: minmax(260px, 380px) minmax(0, 1050px);
+  justify-content: space-between;
+  gap: clamp(24px, 3.5vw, 56px);
+  align-items: start;
+  /* Fica acima do bgnum + pearl (ambos z:0). */
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 900px) {
+  .jornada .modulo-slide-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  /* Decorações somem no mobile — coluna vertical não tem espaço lateral pro
+     numeral respirar, e a pearl clutter os beats empilhados. */
+  .jornada .modulo-slide .bgnum,
+  .jornada .modulo-slide-pearl {
+    display: none;
+  }
+}
+.jornada .modulo-slide-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+/* Chip verde-suave — espelha a receita de `.tipologia-tag` (comercial.css). É a
+   assinatura da tag Nuki no /antiga; texto solto vira pílula com bg verde-claro. */
+.jornada .modulo-slide-copy .tag {
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-nuki-verde-02, #047676);
+  background: var(--color-nuki-verde-suave, #e6fafa);
+  padding: 6px 14px;
+  border-radius: 999px;
+  align-self: flex-start;
+  margin: 0;
+  line-height: 1.4;
+}
+/* Título com peso misto — assinatura Nuki (fino prefixo + extrabold nome).
+   Espelha o padrão dos H2 do /antiga (SobreANuki:23-25, SuaIdentidade:9-11). */
+.jornada .modulo-slide-copy h2 {
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.05;
+  margin: 0;
+  letter-spacing: -0.01em;
+  color: var(--color-nuki-preto, #000);
+}
+.jornada .modulo-slide-h2-pre {
+  font-weight: 400;
+  opacity: 0.7;
+}
+.jornada .modulo-slide-copy h2 strong {
+  font-weight: 800;
+}
+.jornada .modulo-slide-copy .lead {
+  font-size: 15px;
+  color: var(--color-nuki-cinza, #434343);
+  line-height: 1.55;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Tabs verticais — uma por beat */
+.jornada .modulo-slide-tabs {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.jornada .modulo-slide-tab {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px 18px;
+  background: var(--color-nuki-branco, #fff);
+  border: 1px solid var(--color-nuki-cinza-divisor, #f0f0f0);
+  border-radius: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    transform 0.15s;
+}
+.jornada .modulo-slide-tab:hover {
+  border-color: var(--color-nuki-cinza-borda, #d9d9d9);
+}
+.jornada .modulo-slide-tab.on {
+  border-color: var(--color-nuki-verde-02, #047676);
+  background: rgba(4, 118, 118, 0.04);
+}
+.jornada .modulo-slide-tab-num {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--color-nuki-cinza-medio, #595959);
+  margin-bottom: 4px;
+}
+.jornada .modulo-slide-tab.on .modulo-slide-tab-num {
+  color: var(--color-nuki-verde-02, #047676);
+}
+.jornada .modulo-slide-tab-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-nuki-preto, #000);
+  line-height: 1.35;
+}
+
+/* Descrição do beat ativo */
+.jornada .modulo-slide-detail {
+  margin-top: 4px;
+  min-height: 60px;
+}
+.jornada .modulo-slide-detail-desc {
+  font-size: 14px;
+  color: var(--color-nuki-cinza, #434343);
+  line-height: 1.55;
+  margin: 0;
+  animation: modulo-detail-in 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@keyframes modulo-detail-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Highlights (2 stat cards horizontais) */
+.jornada .modulo-slide-highlights {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-nuki-cinza-divisor, #f0f0f0);
+}
+.jornada .modulo-slide-hl {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.jornada .modulo-slide-hl-num {
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 800;
+  color: var(--color-nuki-preto, #000);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.jornada .modulo-slide-hl-lbl {
+  font-size: 11px;
+  color: var(--color-nuki-cinza-medio, #595959);
+  max-width: 150px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* CTA editorial "▷ Explorar" — mesmo peso e família do "Saiba mais →"
+   (.modulo-slide-link). Diferença é só o glyph (▷ vs →) e a semântica:
+   "Explorar" abre a demo (iframe inline no /comercial ou modal na home),
+   "Saiba mais" leva a uma página de recurso. Sem pílula, sem preenchimento
+   — lê como link de fluxo, não como botão que compete com o conteúdo. */
+.jornada .modulo-slide-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 2px;
+  border: 0;
+  background: transparent;
+  color: var(--color-nuki-preto, #000);
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: 12px;
+  border-bottom: 1.5px solid transparent;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+.jornada .modulo-slide-cta:hover {
+  color: var(--color-nuki-verde-02, #047676);
+  border-bottom-color: currentColor;
+}
+.jornada .modulo-slide-cta-glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-nuki-verde-02, #047676);
+  font-size: 11px;
+  line-height: 1;
+  transition: transform 0.2s;
+}
+.jornada .modulo-slide-cta:hover .modulo-slide-cta-glyph {
+  transform: translateX(2px);
+}
+
+.jornada .modulo-slide-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--color-nuki-preto, #000);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.jornada .modulo-slide-link:hover {
+  color: var(--color-nuki-verde-02, #047676);
+}
+
+/* -------- Coluna direita: stage do cross-fade -------- */
+.jornada .modulo-slide-shot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.jornada .modulo-slide-shot-stage {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+.jornada .modulo-slide.is-desktop .modulo-slide-shot-stage {
+  aspect-ratio: 8 / 5;
+  max-width: 1050px;
+}
+.jornada .modulo-slide.is-phone .modulo-slide-shot-stage {
+  aspect-ratio: 9 / 16;
+  max-width: 360px;
+  margin: 0 auto;
+}
+/* Glow verde-02 sutil atrás do phone (igual ao do jornada scrollytelling, escopado) */
+.jornada .modulo-slide.is-phone .modulo-slide-shot-stage::before {
+  content: "";
+  position: absolute;
+  inset: -12% -28%;
+  z-index: 0;
+  background: radial-gradient(closest-side, rgba(4, 118, 118, 0.1), transparent 70%);
+  pointer-events: none;
+}
+.jornada .modulo-slide-shot-slot {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  display: block;
+  transition: opacity 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+  z-index: 1;
+}
+.jornada .modulo-slide-shot-slot.on {
+  opacity: 1;
+}
+.jornada .modulo-slide-shot-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 10px;
+}
+.jornada .modulo-slide.is-desktop .modulo-slide-shot-slot img {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 6px 16px rgba(0, 0, 0, 0.08),
+    0 24px 48px rgba(0, 0, 0, 0.08);
+}
+.jornada .modulo-slide.is-phone .modulo-slide-shot-slot img {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12))
+    drop-shadow(0 24px 48px rgba(0, 0, 0, 0.2));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jornada .modulo-slide-shot-slot {
+    transition: none;
+  }
+  .jornada .modulo-slide-detail-desc {
+    animation: none;
+  }
+}
+
+/* ===== Modal fullscreen da demo (usado na home) =====
+   Overlay que abre por cima da home quando o user clica em "▷ Explorar" no
+   `ModuloSlide`. Diferente do `.modulo-demo-slide` (inline no /comercial),
+   este é `position: fixed` cobrindo a viewport, com scroll do body travado
+   via JS. Fecha por ×, ESC do parent, ou postMessage do iframe. */
+.modulo-demo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-nuki-cinza-claro, #f7f7f7);
+  color: var(--color-nuki-preto, #000);
+  animation: modulo-demo-modal-in 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@keyframes modulo-demo-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.modulo-demo-modal-bar {
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 20px;
+  background: var(--color-nuki-branco, #fff);
+  border-bottom: 1px solid var(--color-nuki-cinza-divisor, #f0f0f0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  flex-shrink: 0;
+}
+.modulo-demo-modal-title {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--color-nuki-cinza-medio, #595959);
+}
+.modulo-demo-modal-title strong {
+  font-weight: 800;
+  color: var(--color-nuki-preto, #000);
+  letter-spacing: 0.01em;
+}
+.modulo-demo-modal-sep {
+  opacity: 0.4;
+}
+.modulo-demo-modal-suffix {
+  color: var(--color-nuki-verde-02, #047676);
+  font-weight: 600;
+  font-size: 12px;
+}
+.modulo-demo-modal-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--color-nuki-cinza-divisor, #f0f0f0);
+  border-radius: 999px;
+  background: var(--color-nuki-branco, #fff);
+  color: var(--color-nuki-cinza-medio, #595959);
+  font-family: inherit;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+.modulo-demo-modal-close:hover,
+.modulo-demo-modal-close:focus-visible {
+  background: var(--color-nuki-cinza-claro, #f7f7f7);
+  border-color: var(--color-nuki-cinza-borda, #d9d9d9);
+  color: var(--color-nuki-preto, #000);
+  outline: 0;
+}
+
+.modulo-demo-modal-stage {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  background: var(--color-nuki-cinza-claro, #f7f7f7);
+  overflow: hidden;
+}
+.modulo-demo-modal-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+}
+
+/* Skeleton overlay — same recipe do slide inline pra manter identidade. */
+.modulo-demo-modal-skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: var(--color-nuki-cinza-claro, #f7f7f7);
+  pointer-events: none;
+}
+.modulo-demo-modal-skeleton-pulse {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(4, 118, 118, 0.28),
+    rgba(4, 118, 118, 0.06) 60%,
+    transparent 80%
+  );
+  animation: modulo-demo-pulse 1.4s ease-in-out infinite;
+}
+.modulo-demo-modal-skeleton-text {
+  font-size: 13px;
+  color: var(--color-nuki-cinza-medio, #595959);
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+/* Fallback mobile — HTMLs de demo são pensados pra desktop. Abaixo de 900px
+   escondemos o iframe e mostramos CTA pra abrir em nova aba. */
+.modulo-demo-modal-mobile {
+  display: none;
+}
+@media (max-width: 900px) {
+  .modulo-demo-modal-frame,
+  .modulo-demo-modal-skeleton {
+    display: none;
+  }
+  .modulo-demo-modal-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 48px 24px;
+    max-width: 480px;
+    margin: 0 auto;
+    position: absolute;
+    inset: 0;
+    justify-content: center;
+  }
+  .modulo-demo-modal-mobile-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--color-nuki-preto, #000);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .modulo-demo-modal-mobile-body {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-nuki-cinza-medio, #595959);
+    margin: 0;
+  }
+  .modulo-demo-modal-mobile-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    background: var(--color-nuki-preto, #000);
+    color: var(--color-nuki-branco, #fff);
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    margin-top: 8px;
+  }
+  .modulo-demo-modal-mobile-link:hover {
+    background: var(--color-nuki-verde-02, #047676);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modulo-demo-modal {
+    animation: none;
+  }
+}
