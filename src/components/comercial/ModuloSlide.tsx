@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { ModuloData, ModuloShot } from "./modulos.data";
@@ -29,30 +29,50 @@ const AUTO_ADVANCE_MS = 5000;
  * de fazer scroll pro `#{id}-demo`. Usado na home, onde a demo abre em modal
  * fullscreen em vez de slide adjacente. Ausente = comportamento default do
  * /comercial (scroll pro slide de demo).
+ *
+ * `hideDemoCta` — oculta o botão "Explorar o …" (só faz sentido pra módulos com
+ * `demoUrl`). Usado na home pública, que não deve expor as demos interativas.
  */
 export function ModuloSlide({
   data,
   index,
   onOpenDemo,
+  hideDemoCta = false,
 }: {
   data: ModuloData;
   index: number;
   onOpenDemo?: () => void;
+  hideDemoCta?: boolean;
 }) {
   const [beatAtivo, setBeatAtivo] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  /* Timer dos beats só roda quando a seção está de fato visível — evita gastar
+     ciclos (e "queimar" beats) enquanto o módulo está fora da viewport. */
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.35 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
     const reduce =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || isPaused || data.beats.length <= 1) return;
+    if (reduce || isPaused || !isVisible || data.beats.length <= 1) return;
 
     const timer = window.setInterval(() => {
       setBeatAtivo((prev) => (prev + 1) % data.beats.length);
     }, AUTO_ADVANCE_MS);
     return () => window.clearInterval(timer);
-  }, [isPaused, data.beats.length]);
+  }, [isPaused, isVisible, data.beats.length]);
 
   const beat = data.beats[beatAtivo];
   const isPhone = data.beats[0]?.shot.kind === "phone";
@@ -60,6 +80,7 @@ export function ModuloSlide({
 
   return (
     <section
+      ref={sectionRef}
       className={`cm-section modulo-slide${isPhone ? " is-phone" : " is-desktop"}`}
       id={data.id}
       data-reveal-group=""
@@ -145,24 +166,26 @@ export function ModuloSlide({
             </div>
 
             {data.demoUrl ? (
-              <button
-                type="button"
-                className="modulo-slide-cta reveal"
-                onClick={() => {
-                  if (onOpenDemo) {
-                    onOpenDemo();
-                    return;
-                  }
-                  document
-                    .getElementById(`${data.id}-demo`)
-                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
-                }}
-              >
-                <span className="modulo-slide-cta-glyph" aria-hidden="true">
-                  ▷
-                </span>
-                Explorar o {data.title.strong}
-              </button>
+              hideDemoCta ? null : (
+                <button
+                  type="button"
+                  className="modulo-slide-cta reveal"
+                  onClick={() => {
+                    if (onOpenDemo) {
+                      onOpenDemo();
+                      return;
+                    }
+                    document
+                      .getElementById(`${data.id}-demo`)
+                      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
+                >
+                  <span className="modulo-slide-cta-glyph" aria-hidden="true">
+                    ▷
+                  </span>
+                  Explorar o {data.title.strong}
+                </button>
+              )
             ) : (
               <Link className="modulo-slide-link reveal" href={data.saibaMaisHref}>
                 Saiba mais <span aria-hidden="true">→</span>

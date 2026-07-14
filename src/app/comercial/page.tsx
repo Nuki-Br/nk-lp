@@ -60,8 +60,8 @@ export default function ComercialPage() {
             de imagens/custo publicado pela Calculadora e compor o "Total
             consolidado" sem prop drilling entre seções irmãs. */}
         <CalculadoraProvider>
-          <Calculadora />
           <CTA />
+          <Calculadora />
         </CalculadoraProvider>
       </main>
       <Footer />
