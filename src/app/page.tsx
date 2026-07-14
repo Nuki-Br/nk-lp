@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Topbar } from "@/components/topbar";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
+import { Depoimento } from "@/components/depoimento";
 import { CarrosselLogos } from "@/components/carrossel-logos";
 import {
   HomeModulos,
@@ -14,16 +15,16 @@ import "./jornada.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nukibr.com"),
-  title: "Nuki — A jornada, do custo à entrega",
+  title: "Nuki — Personalização de acabamentos, do custo à entrega",
   description:
-    "Software de personalização para construtoras e incorporadoras: do memorial de incorporação à vistoria de entrega, num só fluxo — Planner, Personaliza e Inspetor.",
+    "A plataforma que organiza a personalização de acabamentos de ponta a ponta para construtoras e incorporadoras — do memorial de custo à vistoria de entrega. Planner, Personaliza e Inspetor, num sistema só.",
   openGraph: {
     type: "website",
     siteName: "Nuki",
     locale: "pt_BR",
-    title: "Nuki — A jornada, do custo à entrega",
+    title: "Nuki — Personalização de acabamentos, do custo à entrega",
     description:
-      "Do memorial de incorporação à vistoria de entrega, num só fluxo: Planner, Personaliza e Inspetor.",
+      "Planeje, personalize e entregue. Sem planilha no meio: Planner, Personaliza e Inspetor num sistema só, para construtoras e incorporadoras.",
     images: [
       {
         url: "/jornada/og-cover.png",
@@ -44,8 +45,9 @@ export default function JornadaPage() {
         <Hero />
         <JourneyHero />
         <HomeModulos />
+        <CarrosselLogos backgroundClassName="bg-nuki-preto py-8" />
         <JourneyOutro />
-        <CarrosselLogos backgroundClassName="bg-nuki-preto" />
+        {/* <Depoimento /> */}
       </main>
       <Footer />
       <JourneyScripts />

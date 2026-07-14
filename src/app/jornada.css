@@ -49,10 +49,10 @@
 }
 .jornada .hero h1 {
   font-weight: 800;
-  font-size: clamp(28px, 6vw, 66px);
+  font-size: clamp(28px, 6vw, 58px);
   line-height: 1.04;
   margin: 0;
-  max-width: 14ch;
+  max-width: 18ch;
 }
 .jornada .hero h1 em {
   font-style: normal;

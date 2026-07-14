@@ -1,11 +1,16 @@
 export function JourneyHero() {
   return (
     <header className="hero" data-reveal-group="">
-      <p className="kicker reveal">Lançamentos Nuki</p>
+      <p className="kicker reveal">O problema</p>
       <h1 className="reveal">
-        A jornada, <em>do custo à entrega.</em>
+        Hoje, a personalização vive espalhada em{" "}
+        <em>planilhas, e-mails e PDFs.</em>
       </h1>
-      <p className="reveal">Planner, Personaliza e Inspetor — role para descer.</p>
+      <p className="reveal max-w-[600px]">
+        Três áreas, três verdades diferentes: meses no orçamento, retrabalho
+        entre pós-venda, engenharia e obra, e risco jurídico nos aditivos. <b>A Nuki
+        junta tudo numa jornada só</b>  — role para ver.
+      </p>
       <a className="scrolldot reveal" href="#planner" aria-label="Ir para a Jornada">
         <svg
           width="28"

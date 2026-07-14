@@ -64,7 +64,7 @@ export const modulos: ModuloData[] = [
     tag: "Fase 01 — Planejamento",
     title: { pre: "Conheça o", strong: "Planner" },
     descricao:
-      "Estrutura o memorial de personalização antes da venda começar. Do catálogo de materiais à formação de custo — tudo na plataforma, com colaboração da construtora sem perder a rastreabilidade.",
+      "Estrutura o memorial e forma o custo antes da venda começar — o que hoje leva 3 a 4 meses em planilhas. Catálogo, tipologias e preços na plataforma, com a construtora colaborando por link e rastreabilidade total.",
     saibaMaisHref: "/recursos/controle-analise",
     demoUrl: "/demos/planner/index.html",
     beats: [
@@ -109,7 +109,7 @@ export const modulos: ModuloData[] = [
     tag: "Fase 02 — Personalização",
     title: { pre: "Descubra o", strong: "Personaliza" },
     descricao:
-      "O cliente escolhe seus acabamentos com clareza sobre impacto técnico e financeiro. Aditivos digitais, revisão técnica e dashboards de receita — tudo puxando o que o Planner já produziu.",
+      "Seu cliente escolhe os acabamentos vendo o impacto técnico e financeiro na hora — e cada decisão vira aditivo digital, receita no dashboard e insumo pronto para a obra. Tudo puxando o que o Planner já produziu.",
     saibaMaisHref: "/recursos/personalizacao",
     beats: [
       {
@@ -163,7 +163,7 @@ export const modulos: ModuloData[] = [
     tag: "Fase 03 — Entrega",
     title: { pre: "Entenda o", strong: "Inspetor" },
     descricao:
-      "Vistoria em obra sai do papel e ganha rastreabilidade. Checklist automático das escolhas do cliente, fotos, conformidade e relatório pronto no fim da inspeção.",
+      "A vistoria sai do papel e ganha rastreabilidade. Checklist automático das escolhas do cliente, foto e conformidade item a item, relatório pronto no fim da inspeção — retrabalho de obra custa 10x mais quando aparece na entrega.",
     saibaMaisHref: "/recursos/controle-analise",
     demoUrl: "/demos/inspetor/index.html",
     beats: [
