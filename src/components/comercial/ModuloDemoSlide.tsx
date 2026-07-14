@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Clarity from "@microsoft/clarity";
 import type { ModuloData } from "./modulos.data";
 
 /**
@@ -88,7 +89,11 @@ export function ModuloDemoSlide({ data }: { data: ModuloData }) {
           src={data.demoUrl}
           title={`${data.title.strong} — demo interativa`}
           loading="lazy"
-          onLoad={() => setLoaded(true)}
+          onLoad={() => {
+            setLoaded(true);
+            Clarity.setTag("modulo", data.id);
+            Clarity.event("demo_opened");
+          }}
         />
 
         {!loaded && (

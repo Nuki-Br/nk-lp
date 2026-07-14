@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
+import Clarity from "@microsoft/clarity";
 import { useDemoModal } from "./DemoModalContext";
 
 const FOCUSABLE =
@@ -173,6 +174,8 @@ function FormStep({
     );
 
     track("demo_requested", { company });
+    Clarity.event("demo_requested");
+    Clarity.setTag("company", company);
 
     onSubmit(email);
   }

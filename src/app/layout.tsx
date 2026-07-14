@@ -3,6 +3,8 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { DemoModalProvider } from "@/components/demo-modal";
+import { ClarityInit } from "@/components/analytics/ClarityInit";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -28,6 +30,8 @@ export default function RootLayout({
           {children}
         </DemoModalProvider>
         <Analytics />
+        <ClarityInit />
+        <GoogleAnalytics />
       </body>
     </html>
   );
