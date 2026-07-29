@@ -30,19 +30,21 @@ const AUTO_ADVANCE_MS = 5000;
  * fullscreen em vez de slide adjacente. Ausente = comportamento default do
  * /comercial (scroll pro slide de demo).
  *
- * `hideDemoCta` — oculta o botão "Explorar o …" (só faz sentido pra módulos com
- * `demoUrl`). Usado na home pública, que não deve expor as demos interativas.
+ * `hideAppCtas` — oculta os CTAs que levam pro produto: tanto o botão "Explorar o …"
+ * da demo (`demoUrl`) quanto os links dos apps no ar (`links`). Usado na home
+ * pública, que não deve expor nem as demos interativas nem os apps internos — nela
+ * o módulo cai no "Saiba mais →" da página de recurso, nunca fica sem CTA.
  */
 export function ModuloSlide({
   data,
   index,
   onOpenDemo,
-  hideDemoCta = false,
+  hideAppCtas = false,
 }: {
   data: ModuloData;
   index: number;
   onOpenDemo?: () => void;
-  hideDemoCta?: boolean;
+  hideAppCtas?: boolean;
 }) {
   const [beatAtivo, setBeatAtivo] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -165,27 +167,42 @@ export function ModuloSlide({
               ))}
             </div>
 
-            {data.demoUrl ? (
-              hideDemoCta ? null : (
-                <button
-                  type="button"
-                  className="modulo-slide-cta reveal"
-                  onClick={() => {
-                    if (onOpenDemo) {
-                      onOpenDemo();
-                      return;
-                    }
-                    document
-                      .getElementById(`${data.id}-demo`)
-                      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }}
-                >
-                  <span className="modulo-slide-cta-glyph" aria-hidden="true">
-                    ▷
-                  </span>
-                  Explorar o {data.title.strong}
-                </button>
-              )
+            {!hideAppCtas && data.links?.length ? (
+              <div className="modulo-slide-ctas reveal">
+                {data.links.map((l) => (
+                  <a
+                    key={l.href}
+                    className="modulo-slide-cta"
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="modulo-slide-cta-glyph" aria-hidden="true">
+                      ↗
+                    </span>
+                    {l.label}
+                  </a>
+                ))}
+              </div>
+            ) : !hideAppCtas && data.demoUrl ? (
+              <button
+                type="button"
+                className="modulo-slide-cta reveal"
+                onClick={() => {
+                  if (onOpenDemo) {
+                    onOpenDemo();
+                    return;
+                  }
+                  document
+                    .getElementById(`${data.id}-demo`)
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+              >
+                <span className="modulo-slide-cta-glyph" aria-hidden="true">
+                  ▷
+                </span>
+                Explorar o {data.title.strong}
+              </button>
             ) : (
               <Link className="modulo-slide-link reveal" href={data.saibaMaisHref}>
                 Saiba mais <span aria-hidden="true">→</span>

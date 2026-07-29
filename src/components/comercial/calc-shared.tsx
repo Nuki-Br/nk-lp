@@ -39,6 +39,11 @@ export const currency = (n: number) =>
 export const clamp = (v: number, min: number, max: number) =>
   Math.max(min, Math.min(max, v));
 
+/** Preço mensal do plano já com o desconto do ciclo aplicado, arredondado.
+    Usado pelos cards de plano (CTA) e pelo total consolidado (via Context). */
+export const precoComDesconto = (precoMes: number, desconto: number) =>
+  Math.round(precoMes * (1 - desconto));
+
 /** Stepper compartilhado. Estilo default é claro (fundo branco, botão preto);
     o CSS pai pode sobrescrever cores via descendant selectors — usado assim
     no `.cta-plano-simulador` pra virar variant dark. */

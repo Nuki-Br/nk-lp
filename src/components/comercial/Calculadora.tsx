@@ -14,7 +14,17 @@ import {
   type MetragemState,
 } from "./comercial.data";
 import { Stepper, useCountUp, currency, clamp } from "./calc-shared";
-import { useCalculadoraTotals } from "./CalculadoraContext";
+import {
+  useCalculadoraTotals,
+  usePlanoSimulador,
+  type ModoPlano,
+} from "./CalculadoraContext";
+
+/** Opções do seletor de modelo de precificação no painel escondido. */
+const MODOS_PLANO: { id: ModoPlano; label: string }[] = [
+  { id: "tres", label: "3 planos" },
+  { id: "unico", label: "Plano único" },
+];
 
 /* ============ TIPOS AUXILIARES ============ */
 
@@ -171,6 +181,8 @@ export function Calculadora() {
   /* Publica os totais no context pra CTA compor o "Total consolidado".
      Sync intencional de estado derivado entre seções irmãs; alternativa
      seria lift-up completo do state da Calculadora — refactor grande demais. */
+  const { modoPlano, setModoPlano } = usePlanoSimulador();
+
   const { setTotals } = useCalculadoraTotals();
   useEffect(() => {
     setTotals({ imagensTotal, custoImagens: custoTotal });
@@ -307,6 +319,27 @@ export function Calculadora() {
             >
               ×
             </button>
+          </div>
+          <div className="calc-admin-field">
+            <span className="calc-admin-label">Modelo de precificação</span>
+            <div
+              className="calc-admin-seg"
+              role="radiogroup"
+              aria-label="Modelo de precificação"
+            >
+              {MODOS_PLANO.map((m) => (
+                <button
+                  key={m.id}
+                  type="button"
+                  role="radio"
+                  aria-checked={modoPlano === m.id}
+                  className={`calc-admin-seg-btn${modoPlano === m.id ? " on" : ""}`}
+                  onClick={() => setModoPlano(m.id)}
+                >
+                  {m.label}
+                </button>
+              ))}
+            </div>
           </div>
           <div className="calc-admin-field">
             <label className="calc-admin-label" htmlFor="calc-admin-vpi">
@@ -471,7 +504,7 @@ export function Calculadora() {
                     <div className="calc-axes-head">
                       <label className="calc-label">Ambientes impactados nas variações</label>
                       <p className="calc-axes-hint">
-                        1 unidade de cada ambient marcado é re-renderizada por variação extra, usando os componentes configurados acima.
+                        1 unidade de cada ambiente marcado entra de novo na contagem por variação extra, usando os componentes configurados acima.
                       </p>
                     </div>
                     <div className="calc-axes-grid">
@@ -518,7 +551,7 @@ export function Calculadora() {
               <div className="calc-out-divider" aria-hidden="true" />
               <div className="calc-out-block">
                 <span className="calc-out-value">{currency(custoDisplay)}</span>
-                <span className="calc-out-label">operação com parceiro homologado</span>
+                <span className="calc-out-label">setup de imagens estimado</span>
               </div>
             </div>
 
@@ -529,7 +562,7 @@ export function Calculadora() {
               <div className="calc-disclaimer-body">
                 <p className="calc-disclaimer-title">Este valor é uma aproximação</p>
                 <p className="calc-disclaimer-text">
-                  A estimativa serve como referência inicial pra dimensionar o esforço da operação de imagens. O orçamento oficial só é fechado no momento da contratação da geração das imagens com um parceiro homologado (arquiteto ou escritório), quando são consideradas as particularidades reais do empreendimento e do catálogo de acabamentos.
+                  A estimativa serve como referência inicial pra dimensionar o setup do empreendimento. O valor oficial só é fechado quando são consideradas as particularidades reais do empreendimento e do catálogo de acabamentos.
                 </p>
               </div>
             </aside>

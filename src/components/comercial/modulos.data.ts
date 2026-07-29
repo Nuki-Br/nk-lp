@@ -45,6 +45,10 @@ export type ModuloData = {
   beats: ModuloBeat[];
   highlights: ModuloHighlight[];
   saibaMaisHref: string;
+  /** Opcional. CTAs que abrem o produto real em nova aba. Tem precedência sobre
+      `demoUrl` e sobre o "Saiba mais" — quando o módulo já tem app público no ar,
+      mandar o prospect pro produto vale mais que qualquer demo embutida. */
+  links?: { label: string; href: string }[];
   /** Opcional. Se presente, um segundo slide fullscreen é renderizado logo após o
       descritivo com esse HTML embutido num iframe. O descritivo troca o "Saiba
       mais" por um CTA "▷ Explorar o {title}" que ancora em `#{id}-demo`.
@@ -66,7 +70,7 @@ export const modulos: ModuloData[] = [
     descricao:
       "Estrutura o memorial e forma o custo antes da venda começar — o que hoje leva 3 a 4 meses em planilhas. Catálogo, tipologias e preços na plataforma, com a construtora colaborando por link e rastreabilidade total.",
     saibaMaisHref: "/recursos/controle-analise",
-    demoUrl: "/demos/planner/index.html",
+    links: [{ label: "Explorar o Planner", href: "https://planner.nukibr.com/" }],
     beats: [
       {
         title: "Configure o memorial",
@@ -111,6 +115,10 @@ export const modulos: ModuloData[] = [
     descricao:
       "Seu cliente escolhe os acabamentos vendo o impacto técnico e financeiro na hora — e cada decisão vira aditivo digital, receita no dashboard e insumo pronto para a obra. Tudo puxando o que o Planner já produziu.",
     saibaMaisHref: "/recursos/personalizacao",
+    links: [
+      { label: "Conheça o Personaliza", href: "https://admin.nukibr.com/" },
+      { label: "Visão do cliente", href: "https://structa.nukibr.com/" },
+    ],
     beats: [
       {
         title: "Começa pela planta ideal",

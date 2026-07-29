@@ -4,7 +4,7 @@ import { SolicitarDemoButton } from "@/components/demo-modal";
 export function Footer() {
   return (
     <footer className="w-full bg-nuki-cinza-claro shadow-[0_10px_20.7px_0_rgba(0,0,0,0.25)]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start gap-6 px-6 py-8 sm:px-8 sm:py-10 md:flex-row md:items-center md:justify-between md:px-12 md:py-10 lg:h-[160px] lg:gap-[152px] lg:px-16 lg:py-0 xl:px-[108px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start gap-6 px-6 py-8 sm:px-8 sm:py-10 md:flex-row md:items-center md:justify-between md:px-12 md:py-10 lg:h-[160px] lg:gap-16 lg:px-16 lg:py-0 xl:gap-[152px] xl:px-[108px]">
         <a href="/" aria-label="Nuki" className="shrink-0">
           <img
             src="/footer/nuki-logo-horizontal-preto.png"
@@ -15,8 +15,8 @@ export function Footer() {
           />
         </a>
 
-        <div className="flex w-full flex-col items-start gap-8 md:flex-row md:items-center md:justify-between lg:w-[912px]">
-          <div className="grid w-full grid-cols-1 items-start gap-8 sm:grid-cols-2 md:w-auto md:flex md:flex-1 md:items-start md:gap-[152px]">
+        <div className="flex w-full min-w-0 flex-col items-start gap-8 md:flex-row md:items-center md:justify-between lg:w-[912px]">
+          <div className="grid w-full min-w-0 grid-cols-1 items-start gap-8 sm:grid-cols-2 md:w-auto md:flex md:flex-1 md:items-start md:justify-between lg:justify-start lg:gap-[152px]">
             <nav aria-label="Recursos" className="flex flex-col gap-1.5">
               <p className="text-[12px] font-extrabold leading-6 tracking-[0.15px] text-nuki-preto">
                 Recursos
@@ -78,7 +78,7 @@ export function Footer() {
             </div>
           </div>
 
-          <SolicitarDemoButton className="w-full rounded-full bg-nuki-preto px-6 py-3 text-center text-[14px] font-bold text-nuki-branco transition-colors hover:bg-nuki-verde-02 md:w-auto lg:py-[10px]">
+          <SolicitarDemoButton className="w-full rounded-full bg-nuki-preto px-6 py-3 text-center text-[14px] font-bold text-nuki-branco transition-colors hover:bg-nuki-verde-02 md:w-auto md:shrink-0 lg:py-[10px]">
             Solicitar demo
           </SolicitarDemoButton>
         </div>
