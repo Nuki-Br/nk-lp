@@ -15,6 +15,7 @@ export const comercialNav = [
   { id: "cases", label: "Cases" },
   { id: "calculadora", label: "Estime o setup" },
   { id: "cta", label: "Plano & contato" },
+  { id: "total", label: "Total estimado" },
 ] as const;
 
 export type ProblemaCard = {
@@ -307,6 +308,27 @@ export type CicloCobranca = { id: string; label: string; desconto: number };
 export const ciclosCobranca: CicloCobranca[] = [
   { id: "mensal", label: "Mensal", desconto: 0 },
   { id: "trimestral", label: "Trimestral", desconto: 0.03 },
+  { id: "semestral", label: "Semestral", desconto: 0.05 },
+  { id: "anual", label: "Anual", desconto: 0.1 },
+];
+
+/** Modelo alternativo de precificação: um plano só, com todos os módulos.
+    Alternado no painel escondido (Ctrl+Alt+K) via `modoPlano` no
+    CalculadoraContext. O modelo de 3 tiers segue sendo o default. */
+export const planoUnico: Plano[] = [
+  {
+    n: "Plano único",
+    itens: ["Planner", "Personaliza", "Inspetor", "Infraestrutura", "Suporte"],
+    preco: "R$ 1.150/mês",
+    precoMes: 1150,
+    destaque: true,
+  },
+];
+
+/** Ciclos do plano único — sem o trimestral, só os descontos progressivos
+    de semestral (−5%) e anual (−10%). */
+export const ciclosPlanoUnico: CicloCobranca[] = [
+  { id: "mensal", label: "Mensal", desconto: 0 },
   { id: "semestral", label: "Semestral", desconto: 0.05 },
   { id: "anual", label: "Anual", desconto: 0.1 },
 ];

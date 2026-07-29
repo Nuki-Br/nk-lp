@@ -2,6 +2,8 @@
 
 Este doc explica como integrar o HTML de um módulo (Planner / Personaliza / Inspetor) como demo interativa dentro do slide de `/comercial`. Foi escrito depois da integração do **Planner** — o mesmo passo-a-passo vale pra adicionar os outros.
 
+> **Status atual.** As demos do **Planner** e do **Personaliza** foram aposentadas: os produtos estão no ar e os slides linkam direto pra eles (`links` em `modulos.data.ts` → `planner.nukibr.com`, `admin.nukibr.com`, `structa.nukibr.com`). `scripts/prepare-planner-demo.mjs` e `public/demos/planner/` foram removidos junto. **O único demo vivo é o Inspetor** — e `scripts/prepare-inspetor-demo.mjs` é a referência de código deste doc. O padrão segue válido pra módulos sem produto público acessível ao prospect. Trechos abaixo que citam o Planner são exemplos históricos dos patches, não arquivos existentes.
+
 ## Convenção de paths
 
 | Papel                 | Localização                                             |
@@ -91,7 +93,7 @@ Referência: `scripts/prepare-inspetor-demo.mjs`.
 
 ## Estrutura do trim script
 
-Ver `scripts/prepare-planner-demo.mjs` como referência. Fluxo:
+Ver `scripts/prepare-inspetor-demo.mjs` como referência (único script sobrevivente). Fluxo canônico da variante manifest, como era feito no Planner:
 
 1. Ler HTML
 2. Regex extrair manifest JSON
@@ -125,7 +127,7 @@ Tudo já espera novos módulos:
    - Qual o nome do state var do item ativo? (`project`, `vistoria`, `checklist`, …)
    - Qual o nome do data global? (`window.PlannerData`, `window.InspetorData`, …)
    - O item hardcoded no global tem nome próprio? (`THE_PROJECT`, `THE_VISTORIA`, …)
-2. Copiar `scripts/prepare-planner-demo.mjs` → `scripts/prepare-<slug>-demo.mjs`
+2. Copiar `scripts/prepare-inspetor-demo.mjs` → `scripts/prepare-<slug>-demo.mjs`
 3. Ajustar constantes `SRC`, `OUT_DIR`, `OUT` no topo
 4. Adaptar as regexes de cada patch pro pattern do novo módulo (nome do state var, screen, global)
 5. Rodar: `cd nk-lp && node scripts/prepare-<slug>-demo.mjs`
