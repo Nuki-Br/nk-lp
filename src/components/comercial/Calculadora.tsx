@@ -262,6 +262,9 @@ export function Calculadora() {
     );
   };
 
+  /* Os guards de min/max rodam DENTRO do updater: `metragens.length` vem do
+     closure do render, então cliques em sequência antes do commit leriam um
+     length velho e furariam o teto (8 cliques rápidos = 9 metragens). */
   const addMetragem = () => {
     if (metragens.length >= CALC_RANGES.metragens.max) return;
     const id = nextIdRef.current++;
@@ -271,14 +274,18 @@ export function Calculadora() {
       variacoes: 1,
       impactoAmbientes: emptyImpacto(),
     };
-    setMetragens((prev) => [...prev, nova]);
-    setMetragemAtiva(metragens.length);
+    setMetragens((prev) =>
+      prev.length >= CALC_RANGES.metragens.max ? prev : [...prev, nova],
+    );
+    setMetragemAtiva(Math.min(metragens.length, CALC_RANGES.metragens.max - 1));
     setAddingAmbiente(null);
   };
 
   const removeMetragem = (idx: number) => {
     if (metragens.length <= CALC_RANGES.metragens.min) return;
-    setMetragens((prev) => prev.filter((_, i) => i !== idx));
+    setMetragens((prev) =>
+      prev.length <= CALC_RANGES.metragens.min ? prev : prev.filter((_, i) => i !== idx),
+    );
     setMetragemAtiva((prev) => {
       if (prev > idx) return prev - 1;
       if (prev === idx) return Math.max(0, idx - 1);
