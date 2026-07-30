@@ -286,7 +286,7 @@ export const CALC_RANGES = {
   quantidade: { min: 0, max: 5 },
   componentes: { min: 1, max: 15 },
   variacoes: { min: 1, max: 3 },
-  metragens: { min: 1, max: 3 },
+  metragens: { min: 1, max: 6 },
   opcoesSecas: { min: 1, max: 6 },
   opcoesMolhadas: { min: 1, max: 8 },
   precoPorImagem: { min: 1, max: 999 },
