@@ -1637,37 +1637,6 @@ html.demo-locked body {
   border-color: var(--color-nuki-verde-02, #047676);
   background: rgba(255, 255, 255, 0.1);
 }
-/* Segmented control do modelo de precificação (3 planos ↔ plano único). */
-.comercial .calc-admin-seg {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  padding: 4px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-}
-.comercial .calc-admin-seg-btn {
-  height: 28px;
-  border: 0;
-  border-radius: 6px;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.7);
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition:
-    background 0.15s,
-    color 0.15s;
-}
-.comercial .calc-admin-seg-btn:hover {
-  color: var(--color-nuki-branco, #fff);
-}
-.comercial .calc-admin-seg-btn.on {
-  background: var(--color-nuki-verde-02, #047676);
-  color: var(--color-nuki-branco, #fff);
-}
 .comercial .calc-admin-hint {
   margin: 0;
   font-size: 10px;
@@ -1790,21 +1759,18 @@ html.demo-locked body {
 .comercial .cta .cm-head .tag { color: var(--color-nuki-branco, #fff); }
 .comercial .cta .cm-head .tag { color: var(--color-nuki-verde-suave, #e6fafa); }
 .comercial .cta .cm-head .lead { color: rgba(255, 255, 255, 0.72); }
+/* Plano único — um card só, centralizado e estreito pra não virar uma faixa
+   larga demais. Segue como grid (e não bloco solto) porque o simulador de
+   meses e os cards continuam sendo uma lista, mesmo que hoje com 1 item. */
 .comercial .cta .planos {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: minmax(0, 460px);
+  justify-content: center;
   gap: 20px;
   margin-bottom: 6vh;
 }
-/* Modelo de plano único — um card só, centralizado e mais estreito, pra não
-   esticar num grid de 3 colunas nem virar uma faixa larga demais. */
-.comercial .cta .planos.is-unico {
-  grid-template-columns: minmax(0, 460px);
-  justify-content: center;
-}
 @media (max-width: 900px) {
-  .comercial .cta .planos,
-  .comercial .cta .planos.is-unico { grid-template-columns: 1fr; }
+  .comercial .cta .planos { grid-template-columns: 1fr; }
 }
 .comercial .cta .plano {
   background: rgba(255, 255, 255, 0.04);

@@ -1,17 +1,15 @@
 "use client";
 
+import { planos, ciclosCobranca } from "./comercial.data";
 import { Stepper, currency, precoComDesconto } from "./calc-shared";
 import { usePlanoSimulador } from "./CalculadoraContext";
 
 const MESES_MAX = 24;
 
 export function CTA() {
-  /* Meses/ciclo/modelo vivem no CalculadoraProvider — o CTA edita, a seção
-     #total (TotalEstimado, depois da Calculadora) lê os derivados. Qual lista
-     de planos e ciclos aparece depende do `modoPlano` (painel Ctrl+Alt+K). */
-  const { meses, setMeses, ciclo, setCiclo, modoPlano, planosAtivos, ciclosAtivos } =
-    usePlanoSimulador();
-  const unico = modoPlano === "unico";
+  /* Meses/ciclo vivem no CalculadoraProvider — o CTA edita, a seção
+     #total (TotalEstimado, depois da Calculadora) lê os derivados. */
+  const { meses, setMeses, ciclo, setCiclo } = usePlanoSimulador();
 
   const updateMeses = (idx: number, v: number) => {
     setMeses((prev) => prev.map((m, i) => (i === idx ? v : m)));
@@ -23,25 +21,15 @@ export function CTA() {
         <div className="cm-head">
           <p className="tag reveal">Plano & contato</p>
           <h2 className="reveal">
-            {unico ? (
-              <>
-                Todos os módulos em <em>um plano só</em>.
-              </>
-            ) : (
-              <>
-                Um plano para <em>cada fase</em> do seu empreendimento.
-              </>
-            )}
+            Todos os módulos em <em>um plano só</em>.
           </h2>
           <p className="lead reveal">
-            {unico
-              ? "Fee mensal por empreendimento ativo, com Planner, Personaliza e Inspetor inclusos desde o primeiro mês. Simule por quantos meses o empreendimento fica na plataforma."
-              : "Fee mensal por empreendimento ativo. Simule quantos meses o empreendimento fica em cada tier — a Nuki cobra por período em cada plano."}
+            Fee mensal por empreendimento ativo, com Planner, Personaliza e Inspetor inclusos desde o primeiro mês. Simule por quantos meses o empreendimento fica na plataforma.
           </p>
         </div>
 
         <div className="ciclo-toggle reveal" role="tablist" aria-label="Ciclo de cobrança">
-          {ciclosAtivos.map((c) => (
+          {ciclosCobranca.map((c) => (
             <button
               key={c.id}
               type="button"
@@ -58,8 +46,8 @@ export function CTA() {
           ))}
         </div>
 
-        <div className={`planos${unico ? " is-unico" : ""}`}>
-          {planosAtivos.map((p, i) => {
+        <div className="planos">
+          {planos.map((p, i) => {
             const precoMesFinal = precoComDesconto(p.precoMes, ciclo.desconto);
             const subtotal = (meses[i] ?? 0) * precoMesFinal;
             return (
@@ -85,9 +73,7 @@ export function CTA() {
                   </span>
                 </div>
                 <div className="cta-plano-simulador">
-                  <span className="cta-plano-simulador-label">
-                    {unico ? "Meses na plataforma" : "Meses neste plano"}
-                  </span>
+                  <span className="cta-plano-simulador-label">Meses na plataforma</span>
                   <Stepper
                     value={meses[i] ?? 0}
                     min={0}

@@ -14,17 +14,7 @@ import {
   type MetragemState,
 } from "./comercial.data";
 import { Stepper, useCountUp, currency, clamp } from "./calc-shared";
-import {
-  useCalculadoraTotals,
-  usePlanoSimulador,
-  type ModoPlano,
-} from "./CalculadoraContext";
-
-/** Opções do seletor de modelo de precificação no painel escondido. */
-const MODOS_PLANO: { id: ModoPlano; label: string }[] = [
-  { id: "tres", label: "3 planos" },
-  { id: "unico", label: "Plano único" },
-];
+import { useCalculadoraTotals } from "./CalculadoraContext";
 
 /* ============ TIPOS AUXILIARES ============ */
 
@@ -151,11 +141,17 @@ export function Calculadora() {
   const nextIdRef = useRef(metragens.length + 1);
   const nextCustomIdRef = useRef(1);
 
-  /* Listener global do atalho do painel escondido. Ctrl+Alt+K toggle, ESC
-     fecha (só quando aberto — não intercepta ESC de outros contextos). */
+  /* Listener global do atalho do painel escondido. Ctrl+Alt+K (Control+Option+K
+     no Mac) toggle, ESC fecha (só quando aberto — não intercepta ESC de outros
+     contextos).
+
+     Casa por `e.code`, NÃO por `e.key`: no Mac o Option é uma tecla morta que
+     transforma o caractere, então Option+K chega como `e.key === "˚"` e o
+     atalho nunca disparava pra quem usa macOS. `e.code` é a posição física da
+     tecla, imune a isso e a layouts não-US (ABNT2 etc). */
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.altKey && (e.key === "k" || e.key === "K")) {
+      if (e.ctrlKey && e.altKey && e.code === "KeyK") {
         e.preventDefault();
         setAdminOpen((v) => !v);
         return;
@@ -181,8 +177,6 @@ export function Calculadora() {
   /* Publica os totais no context pra CTA compor o "Total consolidado".
      Sync intencional de estado derivado entre seções irmãs; alternativa
      seria lift-up completo do state da Calculadora — refactor grande demais. */
-  const { modoPlano, setModoPlano } = usePlanoSimulador();
-
   const { setTotals } = useCalculadoraTotals();
   useEffect(() => {
     setTotals({ imagensTotal, custoImagens: custoTotal });
@@ -319,27 +313,6 @@ export function Calculadora() {
             >
               ×
             </button>
-          </div>
-          <div className="calc-admin-field">
-            <span className="calc-admin-label">Modelo de precificação</span>
-            <div
-              className="calc-admin-seg"
-              role="radiogroup"
-              aria-label="Modelo de precificação"
-            >
-              {MODOS_PLANO.map((m) => (
-                <button
-                  key={m.id}
-                  type="button"
-                  role="radio"
-                  aria-checked={modoPlano === m.id}
-                  className={`calc-admin-seg-btn${modoPlano === m.id ? " on" : ""}`}
-                  onClick={() => setModoPlano(m.id)}
-                >
-                  {m.label}
-                </button>
-              ))}
-            </div>
           </div>
           <div className="calc-admin-field">
             <label className="calc-admin-label" htmlFor="calc-admin-vpi">
