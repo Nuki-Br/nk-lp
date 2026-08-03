@@ -305,52 +305,23 @@ export type Plano = {
 /** Ciclo de cobrança — desconto aplicado sobre o preço mensal de cada plano. */
 export type CicloCobranca = { id: string; label: string; desconto: number };
 
+/** Descontos progressivos por ciclo. Sem trimestral — só semestral (−5%)
+    e anual (−10%). */
 export const ciclosCobranca: CicloCobranca[] = [
   { id: "mensal", label: "Mensal", desconto: 0 },
-  { id: "trimestral", label: "Trimestral", desconto: 0.03 },
   { id: "semestral", label: "Semestral", desconto: 0.05 },
   { id: "anual", label: "Anual", desconto: 0.1 },
 ];
 
-/** Modelo alternativo de precificação: um plano só, com todos os módulos.
-    Alternado no painel escondido (Ctrl+Alt+K) via `modoPlano` no
-    CalculadoraContext. O modelo de 3 tiers segue sendo o default. */
-export const planoUnico: Plano[] = [
+/** Modelo de precificação: um plano só, com todos os módulos inclusos.
+    Array de um item porque o CTA e o simulador de meses operam sobre lista —
+    mantém a porta aberta pra voltar a ter tiers sem refactor. */
+export const planos: Plano[] = [
   {
     n: "Plano único",
     itens: ["Planner", "Personaliza", "Inspetor", "Infraestrutura", "Suporte"],
     preco: "R$ 1.150/mês",
     precoMes: 1150,
-    destaque: true,
-  },
-];
-
-/** Ciclos do plano único — sem o trimestral, só os descontos progressivos
-    de semestral (−5%) e anual (−10%). */
-export const ciclosPlanoUnico: CicloCobranca[] = [
-  { id: "mensal", label: "Mensal", desconto: 0 },
-  { id: "semestral", label: "Semestral", desconto: 0.05 },
-  { id: "anual", label: "Anual", desconto: 0.1 },
-];
-
-export const planos: Plano[] = [
-  {
-    n: "Plano 01",
-    itens: ["Planner", "Infraestrutura", "Suporte"],
-    preco: "R$ 889/mês",
-    precoMes: 889,
-  },
-  {
-    n: "Plano 02",
-    itens: ["Planner", "Personaliza", "Infraestrutura", "Suporte"],
-    preco: "R$ 1.155/mês",
-    precoMes: 1155,
-  },
-  {
-    n: "Plano 03",
-    itens: ["Planner", "Personaliza", "Inspetor", "Infraestrutura", "Suporte"],
-    preco: "R$ 1.450/mês",
-    precoMes: 1450,
     destaque: true,
   },
 ];
