@@ -1,7 +1,6 @@
 /* Conteúdo da apresentação comercial Nuki.
-   Rascunhos baseados em (a) PPT "Migração do Modelo de Precificação" (slides 1-13)
-   e (b) contexto-de-produto-v2.md (§§ 1-12). Copy pode ser refinado pelo user;
-   estrutura das seções serve como base. */
+   Rascunhos baseados em contexto-de-produto-v2.md (§§ 1-12). Copy pode ser
+   refinado pelo user; estrutura das seções serve como base. */
 
 export const comercialNav = [
   { id: "capa", label: "Capa" },
@@ -14,7 +13,6 @@ export const comercialNav = [
   { id: "publico", label: "Pra quem serve" },
   { id: "cases", label: "Cases" },
   { id: "calculadora", label: "Estime o setup" },
-  { id: "cta", label: "Plano & contato" },
   { id: "total", label: "Total estimado" },
 ] as const;
 
@@ -291,37 +289,3 @@ export const CALC_RANGES = {
   opcoesMolhadas: { min: 1, max: 8 },
   precoPorImagem: { min: 1, max: 999 },
 };
-
-export type Plano = {
-  n: string;
-  itens: string[];
-  /** Rótulo de exibição formatado (ex: "R$ 889/mês") */
-  preco: string;
-  /** Valor mensal cru pra cálculos (soma × meses no simulador do CTA) */
-  precoMes: number;
-  destaque?: boolean;
-};
-
-/** Ciclo de cobrança — desconto aplicado sobre o preço mensal de cada plano. */
-export type CicloCobranca = { id: string; label: string; desconto: number };
-
-/** Descontos progressivos por ciclo. Sem trimestral — só semestral (−5%)
-    e anual (−10%). */
-export const ciclosCobranca: CicloCobranca[] = [
-  { id: "mensal", label: "Mensal", desconto: 0 },
-  { id: "semestral", label: "Semestral", desconto: 0.05 },
-  { id: "anual", label: "Anual", desconto: 0.1 },
-];
-
-/** Modelo de precificação: um plano só, com todos os módulos inclusos.
-    Array de um item porque o CTA e o simulador de meses operam sobre lista —
-    mantém a porta aberta pra voltar a ter tiers sem refactor. */
-export const planos: Plano[] = [
-  {
-    n: "Plano único",
-    itens: ["Planner", "Personaliza", "Inspetor", "Infraestrutura", "Suporte"],
-    preco: "R$ 1.150/mês",
-    precoMes: 1150,
-    destaque: true,
-  },
-];
