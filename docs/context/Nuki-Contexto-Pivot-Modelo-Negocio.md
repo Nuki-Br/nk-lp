@@ -36,7 +36,7 @@ Cobrávamos por **projeto completo**, pacote fechado por empreendimento, incluin
  
 ### 2.2 Como é agora
  
-Modelo de **recorrência por empreendimento ativo**: a Nuki entrega só a **plataforma** (os três módulos), e remove do pacote a parte operacional — configuração detalhada e geração de imagens 3D deixam de ser entregues pela Nuki diretamente.
+A Nuki entrega só a **plataforma** (os três módulos), e remove do pacote a parte operacional — configuração detalhada e geração de imagens 3D deixam de ser entregues pela Nuki diretamente.
  
 Essa parte operacional é terceirizada para **parceiros homologados** (ver seção 3).
  
@@ -52,7 +52,7 @@ Escritórios de arquitetura **homologados e treinados pela Nuki** para gerar ima
  
 ### 3.2 Modelo de receita
  
-Receita adicional para a Nuki via comissão — **~10% do valor do projeto fechado** entre construtora e parceiro. É uma fonte de receita estruturalmente diferente da recorrência por SaaS (transacional/marketplace vs. assinatura), o que vale tratar como uma segunda linha de negócio, não como um detalhe do módulo Planner.
+Receita adicional para a Nuki via comissão — **~10% do valor do projeto fechado** entre construtora e parceiro. É uma fonte de receita transacional, de marketplace, que vale tratar como uma segunda linha de negócio, não como um detalhe do módulo Planner.
  
 ### 3.3 Jornada hipotética
  
@@ -72,7 +72,7 @@ Receita adicional para a Nuki via comissão — **~10% do valor do projeto fecha
 ## 4. Síntese para uso em prompt/contexto de IA
  
 - **Produto:** suíte de 3 módulos (Planner → Personaliza → Inspetor) cobrindo o ciclo completo de personalização de unidades, do planejamento de custo à entrega validada em obra.
-- **Modelo comercial atual:** SaaS por recorrência, fee mensal por empreendimento ativo, plataforma apenas (sem operação de configuração/imagens).
+- **Modelo comercial atual:** plataforma apenas, sem operação de configuração/imagens — essa parte fica com parceiros homologados.
 - **Modelo comercial legado (descontinuado):** projeto completo com operação interna — limitado a ~18 empreendimentos/ano, motivo do pivot.
 - **Iniciativa em maturação:** hub de parceiros homologados (escritórios de arquitetura), comissão de ~10% por projeto fechado, jornada ainda não autônoma na plataforma.
 - **Documentação de produto dos módulos** (specs de tela, fluxos, modelo de dados) permanece válida e não é afetada por este pivot — este documento é a camada estratégica/comercial.

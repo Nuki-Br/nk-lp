@@ -9,7 +9,6 @@ import {
   PublicoAlvo,
   Cases,
   Calculadora,
-  CTA,
   TotalEstimado,
   CalculadoraProvider,
   ComercialProgressNav,
@@ -53,12 +52,10 @@ export default function ComercialPage() {
         <Diferenciais />
         <PublicoAlvo />
         <Cases />
-        {/* Provider engloba CTA + Calculadora + TotalEstimado — o CTA edita os
-            meses/ciclo, a Calculadora publica imagens/custo, e o TotalEstimado
-            (frame de fechamento) só lê os dois. Sem prop drilling entre
-            seções irmãs. */}
+        {/* Provider engloba Calculadora + TotalEstimado — a Calculadora publica
+            imagens/custo, e o TotalEstimado (frame de fechamento) só lê. Sem
+            prop drilling entre seções irmãs. */}
         <CalculadoraProvider>
-          <CTA />
           <Calculadora />
           <TotalEstimado />
         </CalculadoraProvider>
