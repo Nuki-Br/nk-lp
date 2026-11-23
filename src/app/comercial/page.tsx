@@ -8,9 +8,6 @@ import {
   Diferenciais,
   PublicoAlvo,
   Cases,
-  Calculadora,
-  TotalEstimado,
-  CalculadoraProvider,
   ComercialProgressNav,
   ComercialScripts,
 } from "@/components/comercial";
@@ -52,13 +49,6 @@ export default function ComercialPage() {
         <Diferenciais />
         <PublicoAlvo />
         <Cases />
-        {/* Provider engloba Calculadora + TotalEstimado — a Calculadora publica
-            imagens/custo, e o TotalEstimado (frame de fechamento) só lê. Sem
-            prop drilling entre seções irmãs. */}
-        <CalculadoraProvider>
-          <Calculadora />
-          <TotalEstimado />
-        </CalculadoraProvider>
       </main>
       <Footer />
       <ComercialScripts />
